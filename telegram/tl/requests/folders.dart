@@ -9,7 +9,7 @@ class EditPeerFolders {
 	List<dynamic> folderPeers;
 
 
-	EditPeerFolders({this.folderPeers});
+	EditPeerFolders({required this.folderPeers});
 
 	static EditPeerFolders fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -33,7 +33,7 @@ class DeleteFolder {
 	int folderId;
 
 
-	DeleteFolder({this.folderId});
+	DeleteFolder({required this.folderId});
 
 	static DeleteFolder fromReader(BinaryReader reader) {
 	var temp,len;var folderId = reader.readInt();		return new DeleteFolder(folderId : folderId);

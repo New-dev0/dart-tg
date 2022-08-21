@@ -14,13 +14,13 @@ class IGE {
    * @param iv {Buffer}
    * @returns {Buffer}
    */
-  static List<int> decryptIge(List<int> cipherText, List<int> key, List<int> iv) {
+  static List<int> decryptIge(List<int> cipherText, Uint8List key, List<int> iv) {
     key = Uint8List.fromList(key);
     iv = Uint8List.fromList(iv);
     cipherText = Uint8List.fromList(cipherText);
     List<int> iv1 = iv.sublist(0, (iv.length / 2).floor());
     List<int> iv2 = iv.sublist((iv.length / 2).floor());
-    List<int> plainText = new List<int>();
+    List<int> plainText = <int>[];
     BlockCipher aes = ECBBlockCipher(AESFastEngine());
     aes.init(
       false,
@@ -72,10 +72,10 @@ class IGE {
     BlockCipher aes = ECBBlockCipher(AESFastEngine());
     aes.init(
       true,
-      KeyParameter(key),
+      KeyParameter(key as Uint8List),
     );
 //aes.setAutoPadding(true)
-    List<int> cipherText = new List();
+    List<int> cipherText = [];
     final blockCount = (plainText.length / 16).floor();
 
     for (var blockIndex = 0; blockIndex < blockCount; blockIndex++) {

@@ -12,12 +12,12 @@ class SentCode {
 	int timeout;
 
 
-	SentCode({this.type, this.phoneCodeHash, this.nextType, this.timeout});
+	SentCode({required this.type, required this.phoneCodeHash, required this.nextType, required this.timeout});
 
 	static SentCode fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var type = reader.tgReadObject();var phoneCodeHash = reader.tgReadString();var nextType;if ((flags & 2)==1){var nextType = reader.tgReadObject(); } else {nextType=null;}var timeout;if ((flags & 4)==1){var timeout = reader.readInt(); } else {timeout=null;}		return new SentCode(type : type, phoneCodeHash : phoneCodeHash, nextType : nextType, timeout : timeout);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1577067778,4),[0,0,0,0],(this.type.getBytes() as List<int>),serializeBytes(this.phoneCodeHash),(this.nextType==null||this.nextType==false)?new List<int>():[(this.nextType.getBytes() as List<int>)].expand((element) => element).toList(),(this.timeout==null||this.timeout==false)?new List<int>():[readBufferFromBigInt(this.timeout,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1577067778,4),[0,0,0,0],(this.type.getBytes() as List<int>),serializeBytes(this.phoneCodeHash),(this.nextType==null||this.nextType==false)?<int>[]:[(this.nextType.getBytes() as List<int>)].expand((element) => element).toList(),(this.timeout==null||this.timeout==false)?<int>[]:[readBufferFromBigInt(this.timeout,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 
 }
 
@@ -30,12 +30,12 @@ class Authorization {
 	var user;
 
 
-	Authorization({this.tmpSessions, this.user});
+	Authorization({required this.tmpSessions, required this.user});
 
 	static Authorization fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var tmpSessions;if ((flags & 1)==1){var tmpSessions = reader.readInt(); } else {tmpSessions=null;}var user = reader.tgReadObject();		return new Authorization(tmpSessions : tmpSessions, user : user);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3439659286,4),[0,0,0,0],(this.tmpSessions==null||this.tmpSessions==false)?new List<int>():[readBufferFromBigInt(this.tmpSessions,4,little:true,signed:true)].expand((element) => element).toList(),(this.user.getBytes() as List<int>),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3439659286,4),[0,0,0,0],(this.tmpSessions==null||this.tmpSessions==false)?<int>[]:[readBufferFromBigInt(this.tmpSessions,4,little:true,signed:true)].expand((element) => element).toList(),(this.user.getBytes() as List<int>),].expand((element) => element).toList();}
 
 }
 
@@ -47,12 +47,12 @@ class AuthorizationSignUpRequired {
 	var termsOfService;
 
 
-	AuthorizationSignUpRequired({this.termsOfService});
+	AuthorizationSignUpRequired({required this.termsOfService});
 
 	static AuthorizationSignUpRequired fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var termsOfService;if ((flags & 1)==1){var termsOfService = reader.tgReadObject(); } else {termsOfService=null;}		return new AuthorizationSignUpRequired(termsOfService : termsOfService);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1148485274,4),[0,0,0,0],(this.termsOfService==null||this.termsOfService==false)?new List<int>():[(this.termsOfService.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1148485274,4),[0,0,0,0],(this.termsOfService==null||this.termsOfService==false)?<int>[]:[(this.termsOfService.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
 
 }
 
@@ -65,7 +65,7 @@ class ExportedAuthorization {
 	List<int> bytes;
 
 
-	ExportedAuthorization({this.id, this.bytes});
+	ExportedAuthorization({required this.id, required this.bytes});
 
 	static ExportedAuthorization fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.readInt();var bytes = reader.tgReadBytes();		return new ExportedAuthorization(id : id, bytes : bytes);
@@ -82,7 +82,7 @@ class PasswordRecovery {
 	String emailPattern;
 
 
-	PasswordRecovery({this.emailPattern});
+	PasswordRecovery({required this.emailPattern});
 
 	static PasswordRecovery fromReader(BinaryReader reader) {
 	var temp,len;var emailPattern = reader.tgReadString();		return new PasswordRecovery(emailPattern : emailPattern);
@@ -147,7 +147,7 @@ class SentCodeTypeApp {
 	int length;
 
 
-	SentCodeTypeApp({this.length});
+	SentCodeTypeApp({required this.length});
 
 	static SentCodeTypeApp fromReader(BinaryReader reader) {
 	var temp,len;var length = reader.readInt();		return new SentCodeTypeApp(length : length);
@@ -164,7 +164,7 @@ class SentCodeTypeSms {
 	int length;
 
 
-	SentCodeTypeSms({this.length});
+	SentCodeTypeSms({required this.length});
 
 	static SentCodeTypeSms fromReader(BinaryReader reader) {
 	var temp,len;var length = reader.readInt();		return new SentCodeTypeSms(length : length);
@@ -181,7 +181,7 @@ class SentCodeTypeCall {
 	int length;
 
 
-	SentCodeTypeCall({this.length});
+	SentCodeTypeCall({required this.length});
 
 	static SentCodeTypeCall fromReader(BinaryReader reader) {
 	var temp,len;var length = reader.readInt();		return new SentCodeTypeCall(length : length);
@@ -198,7 +198,7 @@ class SentCodeTypeFlashCall {
 	String pattern;
 
 
-	SentCodeTypeFlashCall({this.pattern});
+	SentCodeTypeFlashCall({required this.pattern});
 
 	static SentCodeTypeFlashCall fromReader(BinaryReader reader) {
 	var temp,len;var pattern = reader.tgReadString();		return new SentCodeTypeFlashCall(pattern : pattern);
@@ -216,7 +216,7 @@ class LoginToken {
 	List<int> token;
 
 
-	LoginToken({this.expires, this.token});
+	LoginToken({required this.expires, required this.token});
 
 	static LoginToken fromReader(BinaryReader reader) {
 	var temp,len;var expires = reader.readInt();var token = reader.tgReadBytes();		return new LoginToken(expires : expires, token : token);
@@ -234,7 +234,7 @@ class LoginTokenMigrateTo {
 	List<int> token;
 
 
-	LoginTokenMigrateTo({this.dcId, this.token});
+	LoginTokenMigrateTo({required this.dcId, required this.token});
 
 	static LoginTokenMigrateTo fromReader(BinaryReader reader) {
 	var temp,len;var dcId = reader.readInt();var token = reader.tgReadBytes();		return new LoginTokenMigrateTo(dcId : dcId, token : token);
@@ -251,7 +251,7 @@ class LoginTokenSuccess {
 	var authorization;
 
 
-	LoginTokenSuccess({this.authorization});
+	LoginTokenSuccess({required this.authorization});
 
 	static LoginTokenSuccess fromReader(BinaryReader reader) {
 	var temp,len;var authorization = reader.tgReadObject();		return new LoginTokenSuccess(authorization : authorization);

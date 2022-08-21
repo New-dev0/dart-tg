@@ -10,7 +10,7 @@ class ReadHistory {
 	int maxId;
 
 
-	ReadHistory({this.channel, this.maxId});
+	ReadHistory({required this.channel, required this.maxId});
 
 	static ReadHistory fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var maxId = reader.readInt();		return new ReadHistory(channel : channel, maxId : maxId);
@@ -31,7 +31,7 @@ class DeleteMessages {
 	List<int> id;
 
 
-	DeleteMessages({this.channel, this.id});
+	DeleteMessages({required this.channel, required this.id});
 
 	static DeleteMessages fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();reader.readInt();
@@ -56,7 +56,7 @@ class DeleteUserHistory {
 	var userId;
 
 
-	DeleteUserHistory({this.channel, this.userId});
+	DeleteUserHistory({required this.channel, required this.userId});
 
 	static DeleteUserHistory fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var userId = reader.tgReadObject();		return new DeleteUserHistory(channel : channel, userId : userId);
@@ -78,7 +78,7 @@ class ReportSpam {
 	List<int> id;
 
 
-	ReportSpam({this.channel, this.userId, this.id});
+	ReportSpam({required this.channel, required this.userId, required this.id});
 
 	static ReportSpam fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var userId = reader.tgReadObject();reader.readInt();
@@ -103,7 +103,7 @@ class GetMessages {
 	List<dynamic> id;
 
 
-	GetMessages({this.channel, this.id});
+	GetMessages({required this.channel, required this.id});
 
 	static GetMessages fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();reader.readInt();
@@ -131,7 +131,7 @@ class GetParticipants {
 	int hash;
 
 
-	GetParticipants({this.channel, this.filter, this.offset, this.limit, this.hash});
+	GetParticipants({required this.channel, required this.filter, required this.offset, required this.limit, required this.hash});
 
 	static GetParticipants fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var filter = reader.tgReadObject();var offset = reader.readInt();var limit = reader.readInt();var hash = reader.readInt();		return new GetParticipants(channel : channel, filter : filter, offset : offset, limit : limit, hash : hash);
@@ -152,7 +152,7 @@ class GetParticipant {
 	var userId;
 
 
-	GetParticipant({this.channel, this.userId});
+	GetParticipant({required this.channel, required this.userId});
 
 	static GetParticipant fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var userId = reader.tgReadObject();		return new GetParticipant(channel : channel, userId : userId);
@@ -172,7 +172,7 @@ class GetChannels {
 	List<dynamic> id;
 
 
-	GetChannels({this.id});
+	GetChannels({required this.id});
 
 	static GetChannels fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -196,7 +196,7 @@ class GetFullChannel {
 	var channel;
 
 
-	GetFullChannel({this.channel});
+	GetFullChannel({required this.channel});
 
 	static GetFullChannel fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();		return new GetFullChannel(channel : channel);
@@ -221,12 +221,12 @@ class CreateChannel {
 	String address;
 
 
-	CreateChannel({this.broadcast, this.megagroup, this.title, this.about, this.geoPoint, this.address});
+	CreateChannel({required this.broadcast, required this.megagroup, required this.title, required this.about, required this.geoPoint, required this.address});
 
 	static CreateChannel fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final broadcast = false;final megagroup = false;var title = reader.tgReadString();var about = reader.tgReadString();var geoPoint;if ((flags & 4)==1){var geoPoint = reader.tgReadObject(); } else {geoPoint=null;}var address;if ((flags & 4)==1){var address = reader.tgReadString(); } else {address=null;}		return new CreateChannel(broadcast : broadcast, megagroup : megagroup, title : title, about : about, geoPoint : geoPoint, address : address);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1029681423,4),[0,0,0,0],serializeBytes(this.title),serializeBytes(this.about),(this.geoPoint==null||this.geoPoint==false)?new List<int>():[(this.geoPoint.getBytes() as List<int>)].expand((element) => element).toList(),(this.address==null||this.address==false)?new List<int>():[serializeBytes(this.address)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1029681423,4),[0,0,0,0],serializeBytes(this.title),serializeBytes(this.about),(this.geoPoint==null||this.geoPoint==false)?<int>[]:[(this.geoPoint.getBytes() as List<int>)].expand((element) => element).toList(),(this.address==null||this.address==false)?<int>[]:[serializeBytes(this.address)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -244,7 +244,7 @@ class EditAdmin {
 	String rank;
 
 
-	EditAdmin({this.channel, this.userId, this.adminRights, this.rank});
+	EditAdmin({required this.channel, required this.userId, required this.adminRights, required this.rank});
 
 	static EditAdmin fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var userId = reader.tgReadObject();var adminRights = reader.tgReadObject();var rank = reader.tgReadString();		return new EditAdmin(channel : channel, userId : userId, adminRights : adminRights, rank : rank);
@@ -265,7 +265,7 @@ class EditTitle {
 	String title;
 
 
-	EditTitle({this.channel, this.title});
+	EditTitle({required this.channel, required this.title});
 
 	static EditTitle fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var title = reader.tgReadString();		return new EditTitle(channel : channel, title : title);
@@ -286,7 +286,7 @@ class EditPhoto {
 	var photo;
 
 
-	EditPhoto({this.channel, this.photo});
+	EditPhoto({required this.channel, required this.photo});
 
 	static EditPhoto fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var photo = reader.tgReadObject();		return new EditPhoto(channel : channel, photo : photo);
@@ -307,7 +307,7 @@ class CheckUsername {
 	String username;
 
 
-	CheckUsername({this.channel, this.username});
+	CheckUsername({required this.channel, required this.username});
 
 	static CheckUsername fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var username = reader.tgReadString();		return new CheckUsername(channel : channel, username : username);
@@ -328,7 +328,7 @@ class UpdateUsername {
 	String username;
 
 
-	UpdateUsername({this.channel, this.username});
+	UpdateUsername({required this.channel, required this.username});
 
 	static UpdateUsername fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var username = reader.tgReadString();		return new UpdateUsername(channel : channel, username : username);
@@ -348,7 +348,7 @@ class JoinChannel {
 	var channel;
 
 
-	JoinChannel({this.channel});
+	JoinChannel({required this.channel});
 
 	static JoinChannel fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();		return new JoinChannel(channel : channel);
@@ -368,7 +368,7 @@ class LeaveChannel {
 	var channel;
 
 
-	LeaveChannel({this.channel});
+	LeaveChannel({required this.channel});
 
 	static LeaveChannel fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();		return new LeaveChannel(channel : channel);
@@ -389,7 +389,7 @@ class InviteToChannel {
 	List<dynamic> users;
 
 
-	InviteToChannel({this.channel, this.users});
+	InviteToChannel({required this.channel, required this.users});
 
 	static InviteToChannel fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();reader.readInt();
@@ -413,7 +413,7 @@ class DeleteChannel {
 	var channel;
 
 
-	DeleteChannel({this.channel});
+	DeleteChannel({required this.channel});
 
 	static DeleteChannel fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();		return new DeleteChannel(channel : channel);
@@ -435,7 +435,7 @@ class ExportMessageLink {
 	bool grouped;
 
 
-	ExportMessageLink({this.channel, this.id, this.grouped});
+	ExportMessageLink({required this.channel, required this.id, required this.grouped});
 
 	static ExportMessageLink fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var id = reader.readInt();var grouped = reader.tgReadBool();		return new ExportMessageLink(channel : channel, id : id, grouped : grouped);
@@ -456,7 +456,7 @@ class ToggleSignatures {
 	bool enabled;
 
 
-	ToggleSignatures({this.channel, this.enabled});
+	ToggleSignatures({required this.channel, required this.enabled});
 
 	static ToggleSignatures fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var enabled = reader.tgReadBool();		return new ToggleSignatures(channel : channel, enabled : enabled);
@@ -477,7 +477,7 @@ class GetAdminedPublicChannels {
 	bool checkLimit;
 
 
-	GetAdminedPublicChannels({this.byLocation, this.checkLimit});
+	GetAdminedPublicChannels({required this.byLocation, required this.checkLimit});
 
 	static GetAdminedPublicChannels fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final byLocation = false;final checkLimit = false;		return new GetAdminedPublicChannels(byLocation : byLocation, checkLimit : checkLimit);
@@ -499,7 +499,7 @@ class EditBanned {
 	var bannedRights;
 
 
-	EditBanned({this.channel, this.userId, this.bannedRights});
+	EditBanned({required this.channel, required this.userId, required this.bannedRights});
 
 	static EditBanned fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var userId = reader.tgReadObject();var bannedRights = reader.tgReadObject();		return new EditBanned(channel : channel, userId : userId, bannedRights : bannedRights);
@@ -525,7 +525,7 @@ class GetAdminLog {
 	int limit;
 
 
-	GetAdminLog({this.channel, this.q, this.eventsFilter, this.admins, this.maxId, this.minId, this.limit});
+	GetAdminLog({required this.channel, required this.q, required this.eventsFilter, required this.admins, required this.maxId, required this.minId, required this.limit});
 
 	static GetAdminLog fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var channel = reader.tgReadObject();var q = reader.tgReadString();var eventsFilter;if ((flags & 1)==1){var eventsFilter = reader.tgReadObject(); } else {eventsFilter=null;}var admins;if ((flags & 2)==1){reader.readInt();
@@ -534,7 +534,7 @@ List<dynamic> admins = [];len = reader.readInt();
 		admins.add(reader.tgReadObject());
 } } else {admins=null;}var maxId = reader.readLong();var minId = reader.readLong();var limit = reader.readInt();		return new GetAdminLog(channel : channel, q : q, eventsFilter : eventsFilter, admins : admins, maxId : maxId, minId : minId, limit : limit);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(870184064,4),[0,0,0,0],(this.channel.getBytes() as List<int>),serializeBytes(this.q),(this.eventsFilter==null||this.eventsFilter==false)?new List<int>():[(this.eventsFilter.getBytes() as List<int>)].expand((element) => element).toList(),(this.admins==null||this.admins==false)?new List<int>():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.admins.length,4,little:true,signed:true),this.admins.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),readBufferFromBigInt(this.maxId,8,little:true,signed:true),readBufferFromBigInt(this.minId,8,little:true,signed:true),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(870184064,4),[0,0,0,0],(this.channel.getBytes() as List<int>),serializeBytes(this.q),(this.eventsFilter==null||this.eventsFilter==false)?<int>[]:[(this.eventsFilter.getBytes() as List<int>)].expand((element) => element).toList(),(this.admins==null||this.admins==false)?<int>[]:[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.admins.length,4,little:true,signed:true),this.admins.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),readBufferFromBigInt(this.maxId,8,little:true,signed:true),readBufferFromBigInt(this.minId,8,little:true,signed:true),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -550,7 +550,7 @@ class SetStickers {
 	var stickerset;
 
 
-	SetStickers({this.channel, this.stickerset});
+	SetStickers({required this.channel, required this.stickerset});
 
 	static SetStickers fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var stickerset = reader.tgReadObject();		return new SetStickers(channel : channel, stickerset : stickerset);
@@ -571,7 +571,7 @@ class ReadMessageContents {
 	List<int> id;
 
 
-	ReadMessageContents({this.channel, this.id});
+	ReadMessageContents({required this.channel, required this.id});
 
 	static ReadMessageContents fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();reader.readInt();
@@ -596,7 +596,7 @@ class DeleteHistory {
 	int maxId;
 
 
-	DeleteHistory({this.channel, this.maxId});
+	DeleteHistory({required this.channel, required this.maxId});
 
 	static DeleteHistory fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var maxId = reader.readInt();		return new DeleteHistory(channel : channel, maxId : maxId);
@@ -617,7 +617,7 @@ class TogglePreHistoryHidden {
 	bool enabled;
 
 
-	TogglePreHistoryHidden({this.channel, this.enabled});
+	TogglePreHistoryHidden({required this.channel, required this.enabled});
 
 	static TogglePreHistoryHidden fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var enabled = reader.tgReadBool();		return new TogglePreHistoryHidden(channel : channel, enabled : enabled);
@@ -637,7 +637,7 @@ class GetLeftChannels {
 	int offset;
 
 
-	GetLeftChannels({this.offset});
+	GetLeftChannels({required this.offset});
 
 	static GetLeftChannels fromReader(BinaryReader reader) {
 	var temp,len;var offset = reader.readInt();		return new GetLeftChannels(offset : offset);
@@ -677,7 +677,7 @@ class SetDiscussionGroup {
 	var group;
 
 
-	SetDiscussionGroup({this.broadcast, this.group});
+	SetDiscussionGroup({required this.broadcast, required this.group});
 
 	static SetDiscussionGroup fromReader(BinaryReader reader) {
 	var temp,len;var broadcast = reader.tgReadObject();var group = reader.tgReadObject();		return new SetDiscussionGroup(broadcast : broadcast, group : group);
@@ -699,7 +699,7 @@ class EditCreator {
 	var password;
 
 
-	EditCreator({this.channel, this.userId, this.password});
+	EditCreator({required this.channel, required this.userId, required this.password});
 
 	static EditCreator fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var userId = reader.tgReadObject();var password = reader.tgReadObject();		return new EditCreator(channel : channel, userId : userId, password : password);
@@ -721,7 +721,7 @@ class EditLocation {
 	String address;
 
 
-	EditLocation({this.channel, this.geoPoint, this.address});
+	EditLocation({required this.channel, required this.geoPoint, required this.address});
 
 	static EditLocation fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var geoPoint = reader.tgReadObject();var address = reader.tgReadString();		return new EditLocation(channel : channel, geoPoint : geoPoint, address : address);
@@ -742,7 +742,7 @@ class ToggleSlowMode {
 	int seconds;
 
 
-	ToggleSlowMode({this.channel, this.seconds});
+	ToggleSlowMode({required this.channel, required this.seconds});
 
 	static ToggleSlowMode fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var seconds = reader.readInt();		return new ToggleSlowMode(channel : channel, seconds : seconds);

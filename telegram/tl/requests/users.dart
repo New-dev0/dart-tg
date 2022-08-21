@@ -9,7 +9,7 @@ class GetUsers {
 	List<dynamic> id;
 
 
-	GetUsers({this.id});
+	GetUsers({required this.id});
 
 	static GetUsers fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -33,7 +33,7 @@ class GetFullUser {
 	var id;
 
 
-	GetFullUser({this.id});
+	GetFullUser({required this.id});
 
 	static GetFullUser fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();		return new GetFullUser(id : id);
@@ -54,7 +54,7 @@ class SetSecureValueErrors {
 	List<dynamic> errors;
 
 
-	SetSecureValueErrors({this.id, this.errors});
+	SetSecureValueErrors({required this.id, required this.errors});
 
 	static SetSecureValueErrors fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();reader.readInt();

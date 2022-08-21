@@ -49,7 +49,7 @@ class Session {
    * Returns an ``AuthKey`` instance associated with the saved
    * data center, or `None` if a new one should be generated.
    */
-  get authKey{
+  AuthKey get authKey {
     throw('Not Implemented');
   }
 

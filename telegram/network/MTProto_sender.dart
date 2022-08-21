@@ -30,18 +30,18 @@ import '../tl/requests/auth.dart';
  * key exists yet.
  */
 class MTProtoSender {
-  Map<int, dynamic> _handlers;
-  Set<BigInt> _pendingAck;
-  List _lastAcks;
-  MessagePacker _sendQueue;
-  Map<BigInt, dynamic> _pendingState;
-  MTProtoState _state;
-  Logger _log;
-  AuthKey authKey;
+  late Map<int, dynamic> _handlers;
+  late Set<BigInt> _pendingAck;
+  late List _lastAcks;
+  late MessagePacker _sendQueue;
+  late Map<BigInt, dynamic> _pendingState;
+  late MTProtoState _state;
+  late Logger _log;
+  late AuthKey authKey;
   var _connection;
-  bool _userConnected, _reconnecting, _disconnected;
+  late bool _userConnected, _reconnecting, _disconnected;
   var _sendLoopHandle, _recvLoopHandle, _autoReconnectCallback;
-  int _retries, _delay, _dcId;
+  late int _retries, _delay, _dcId;
   dynamic _authKeyCallback, _updateCallback;
 
   /**
@@ -768,7 +768,7 @@ class MTProtoSender {
     try {
       await this.disconnect();
     } catch (err) {
-      this._log.warn(err);
+      this._log.warn(err.toString());
     }
     this._sendQueue.append(null);
 

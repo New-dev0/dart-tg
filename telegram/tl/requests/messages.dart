@@ -9,7 +9,7 @@ class GetMessages {
 	List<dynamic> id;
 
 
-	GetMessages({this.id});
+	GetMessages({required this.id});
 
 	static GetMessages fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -39,12 +39,12 @@ class GetDialogs {
 	int hash;
 
 
-	GetDialogs({this.excludePinned, this.folderId, this.offsetDate, this.offsetId, this.offsetPeer, this.limit, this.hash});
+	GetDialogs({required this.excludePinned, required this.folderId, required this.offsetDate, required this.offsetId, required this.offsetPeer, required this.limit, required this.hash});
 
 	static GetDialogs fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final excludePinned = false;var folderId;if ((flags & 2)==1){var folderId = reader.readInt(); } else {folderId=null;}var offsetDate = reader.readInt();var offsetId = reader.readInt();var offsetPeer = reader.tgReadObject();var limit = reader.readInt();var hash = reader.readInt();		return new GetDialogs(excludePinned : excludePinned, folderId : folderId, offsetDate : offsetDate, offsetId : offsetId, offsetPeer : offsetPeer, limit : limit, hash : hash);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2699967347,4),[0,0,0,0],(this.folderId==null||this.folderId==false)?new List<int>():[readBufferFromBigInt(this.folderId,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(this.offsetDate,4,little:true,signed:true),readBufferFromBigInt(this.offsetId,4,little:true,signed:true),(this.offsetPeer.getBytes() as List<int>),readBufferFromBigInt(this.limit,4,little:true,signed:true),readBufferFromBigInt(this.hash,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2699967347,4),[0,0,0,0],(this.folderId==null||this.folderId==false)?<int>[]:[readBufferFromBigInt(this.folderId,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(this.offsetDate,4,little:true,signed:true),readBufferFromBigInt(this.offsetId,4,little:true,signed:true),(this.offsetPeer.getBytes() as List<int>),readBufferFromBigInt(this.limit,4,little:true,signed:true),readBufferFromBigInt(this.hash,4,little:true,signed:true),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -66,7 +66,7 @@ class GetHistory {
 	int hash;
 
 
-	GetHistory({this.peer, this.offsetId, this.offsetDate, this.addOffset, this.limit, this.maxId, this.minId, this.hash});
+	GetHistory({required this.peer, required this.offsetId, required this.offsetDate, required this.addOffset, required this.limit, required this.maxId, required this.minId, required this.hash});
 
 	static GetHistory fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var offsetId = reader.readInt();var offsetDate = reader.readInt();var addOffset = reader.readInt();var limit = reader.readInt();var maxId = reader.readInt();var minId = reader.readInt();var hash = reader.readInt();		return new GetHistory(peer : peer, offsetId : offsetId, offsetDate : offsetDate, addOffset : addOffset, limit : limit, maxId : maxId, minId : minId, hash : hash);
@@ -97,12 +97,12 @@ class Search {
 	int hash;
 
 
-	Search({this.peer, this.q, this.fromId, this.filter, this.minDate, this.maxDate, this.offsetId, this.addOffset, this.limit, this.maxId, this.minId, this.hash});
+	Search({required this.peer, required this.q, required this.fromId, required this.filter, required this.minDate, required this.maxDate, required this.offsetId, required this.addOffset, required this.limit, required this.maxId, required this.minId, required this.hash});
 
 	static Search fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var peer = reader.tgReadObject();var q = reader.tgReadString();var fromId;if ((flags & 1)==1){var fromId = reader.tgReadObject(); } else {fromId=null;}var filter = reader.tgReadObject();var minDate = reader.readInt();var maxDate = reader.readInt();var offsetId = reader.readInt();var addOffset = reader.readInt();var limit = reader.readInt();var maxId = reader.readInt();var minId = reader.readInt();var hash = reader.readInt();		return new Search(peer : peer, q : q, fromId : fromId, filter : filter, minDate : minDate, maxDate : maxDate, offsetId : offsetId, addOffset : addOffset, limit : limit, maxId : maxId, minId : minId, hash : hash);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2249518952,4),[0,0,0,0],(this.peer.getBytes() as List<int>),serializeBytes(this.q),(this.fromId==null||this.fromId==false)?new List<int>():[(this.fromId.getBytes() as List<int>)].expand((element) => element).toList(),(this.filter.getBytes() as List<int>),readBufferFromBigInt(this.minDate,4,little:true,signed:true),readBufferFromBigInt(this.maxDate,4,little:true,signed:true),readBufferFromBigInt(this.offsetId,4,little:true,signed:true),readBufferFromBigInt(this.addOffset,4,little:true,signed:true),readBufferFromBigInt(this.limit,4,little:true,signed:true),readBufferFromBigInt(this.maxId,4,little:true,signed:true),readBufferFromBigInt(this.minId,4,little:true,signed:true),readBufferFromBigInt(this.hash,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2249518952,4),[0,0,0,0],(this.peer.getBytes() as List<int>),serializeBytes(this.q),(this.fromId==null||this.fromId==false)?<int>[]:[(this.fromId.getBytes() as List<int>)].expand((element) => element).toList(),(this.filter.getBytes() as List<int>),readBufferFromBigInt(this.minDate,4,little:true,signed:true),readBufferFromBigInt(this.maxDate,4,little:true,signed:true),readBufferFromBigInt(this.offsetId,4,little:true,signed:true),readBufferFromBigInt(this.addOffset,4,little:true,signed:true),readBufferFromBigInt(this.limit,4,little:true,signed:true),readBufferFromBigInt(this.maxId,4,little:true,signed:true),readBufferFromBigInt(this.minId,4,little:true,signed:true),readBufferFromBigInt(this.hash,4,little:true,signed:true),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -118,7 +118,7 @@ class ReadHistory {
 	int maxId;
 
 
-	ReadHistory({this.peer, this.maxId});
+	ReadHistory({required this.peer, required this.maxId});
 
 	static ReadHistory fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var maxId = reader.readInt();		return new ReadHistory(peer : peer, maxId : maxId);
@@ -141,7 +141,7 @@ class DeleteHistory {
 	int maxId;
 
 
-	DeleteHistory({this.justClear, this.revoke, this.peer, this.maxId});
+	DeleteHistory({required this.justClear, required this.revoke, required this.peer, required this.maxId});
 
 	static DeleteHistory fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final justClear = false;final revoke = false;var peer = reader.tgReadObject();var maxId = reader.readInt();		return new DeleteHistory(justClear : justClear, revoke : revoke, peer : peer, maxId : maxId);
@@ -162,7 +162,7 @@ class DeleteMessages {
 	List<int> id;
 
 
-	DeleteMessages({this.revoke, this.id});
+	DeleteMessages({required this.revoke, required this.id});
 
 	static DeleteMessages fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final revoke = false;reader.readInt();
@@ -186,7 +186,7 @@ class ReceivedMessages {
 	int maxId;
 
 
-	ReceivedMessages({this.maxId});
+	ReceivedMessages({required this.maxId});
 
 	static ReceivedMessages fromReader(BinaryReader reader) {
 	var temp,len;var maxId = reader.readInt();		return new ReceivedMessages(maxId : maxId);
@@ -207,7 +207,7 @@ class SetTyping {
 	var action;
 
 
-	SetTyping({this.peer, this.action});
+	SetTyping({required this.peer, required this.action});
 
 	static SetTyping fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var action = reader.tgReadObject();		return new SetTyping(peer : peer, action : action);
@@ -237,7 +237,7 @@ class SendMessage {
 	int scheduleDate;
 
 
-	SendMessage({this.noWebpage, this.silent, this.background, this.clearDraft, this.peer, this.replyToMsgId, this.message, this.randomId, this.replyMarkup, this.entities, this.scheduleDate});
+	SendMessage({required this.noWebpage, required this.silent, required this.background, required this.clearDraft, required this.peer, required this.replyToMsgId, required this.message, required this.randomId, required this.replyMarkup, required this.entities, required this.scheduleDate});
 
 	static SendMessage fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final noWebpage = false;final silent = false;final background = false;final clearDraft = false;var peer = reader.tgReadObject();var replyToMsgId;if ((flags & 1)==1){var replyToMsgId = reader.readInt(); } else {replyToMsgId=null;}var message = reader.tgReadString();var randomId = reader.readLong();var replyMarkup;if ((flags & 4)==1){var replyMarkup = reader.tgReadObject(); } else {replyMarkup=null;}var entities;if ((flags & 8)==1){reader.readInt();
@@ -246,7 +246,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 } } else {entities=null;}var scheduleDate;if ((flags & 1024)==1){var scheduleDate = reader.readInt(); } else {scheduleDate=null;}		return new SendMessage(noWebpage : noWebpage, silent : silent, background : background, clearDraft : clearDraft, peer : peer, replyToMsgId : replyToMsgId, message : message, randomId : randomId, replyMarkup : replyMarkup, entities : entities, scheduleDate : scheduleDate);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1376532592,4),[0,0,0,0],(this.peer.getBytes() as List<int>),(this.replyToMsgId==null||this.replyToMsgId==false)?new List<int>():[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),serializeBytes(this.message),readBufferFromBigInt(this.randomId,8,little:true,signed:true),(this.replyMarkup==null||this.replyMarkup==false)?new List<int>():[(this.replyMarkup.getBytes() as List<int>)].expand((element) => element).toList(),(this.entities==null||this.entities==false)?new List<int>():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),(this.scheduleDate==null||this.scheduleDate==false)?new List<int>():[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1376532592,4),[0,0,0,0],(this.peer.getBytes() as List<int>),(this.replyToMsgId==null||this.replyToMsgId==false)?<int>[]:[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),serializeBytes(this.message),readBufferFromBigInt(this.randomId,8,little:true,signed:true),(this.replyMarkup==null||this.replyMarkup==false)?<int>[]:[(this.replyMarkup.getBytes() as List<int>)].expand((element) => element).toList(),(this.entities==null||this.entities==false)?<int>[]:[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),(this.scheduleDate==null||this.scheduleDate==false)?<int>[]:[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -271,7 +271,7 @@ class SendMedia {
 	int scheduleDate;
 
 
-	SendMedia({this.silent, this.background, this.clearDraft, this.peer, this.replyToMsgId, this.media, this.message, this.randomId, this.replyMarkup, this.entities, this.scheduleDate});
+	SendMedia({required this.silent, required this.background, required this.clearDraft, required this.peer, required this.replyToMsgId, required this.media, required this.message, required this.randomId, required this.replyMarkup, required this.entities, required this.scheduleDate});
 
 	static SendMedia fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final silent = false;final background = false;final clearDraft = false;var peer = reader.tgReadObject();var replyToMsgId;if ((flags & 1)==1){var replyToMsgId = reader.readInt(); } else {replyToMsgId=null;}var media = reader.tgReadObject();var message = reader.tgReadString();var randomId = reader.readLong();var replyMarkup;if ((flags & 4)==1){var replyMarkup = reader.tgReadObject(); } else {replyMarkup=null;}var entities;if ((flags & 8)==1){reader.readInt();
@@ -280,7 +280,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 } } else {entities=null;}var scheduleDate;if ((flags & 1024)==1){var scheduleDate = reader.readInt(); } else {scheduleDate=null;}		return new SendMedia(silent : silent, background : background, clearDraft : clearDraft, peer : peer, replyToMsgId : replyToMsgId, media : media, message : message, randomId : randomId, replyMarkup : replyMarkup, entities : entities, scheduleDate : scheduleDate);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(881978281,4),[0,0,0,0],(this.peer.getBytes() as List<int>),(this.replyToMsgId==null||this.replyToMsgId==false)?new List<int>():[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),(this.media.getBytes() as List<int>),serializeBytes(this.message),readBufferFromBigInt(this.randomId,8,little:true,signed:true),(this.replyMarkup==null||this.replyMarkup==false)?new List<int>():[(this.replyMarkup.getBytes() as List<int>)].expand((element) => element).toList(),(this.entities==null||this.entities==false)?new List<int>():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),(this.scheduleDate==null||this.scheduleDate==false)?new List<int>():[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(881978281,4),[0,0,0,0],(this.peer.getBytes() as List<int>),(this.replyToMsgId==null||this.replyToMsgId==false)?<int>[]:[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),(this.media.getBytes() as List<int>),serializeBytes(this.message),readBufferFromBigInt(this.randomId,8,little:true,signed:true),(this.replyMarkup==null||this.replyMarkup==false)?<int>[]:[(this.replyMarkup.getBytes() as List<int>)].expand((element) => element).toList(),(this.entities==null||this.entities==false)?<int>[]:[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),(this.scheduleDate==null||this.scheduleDate==false)?<int>[]:[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -303,7 +303,7 @@ class ForwardMessages {
 	int scheduleDate;
 
 
-	ForwardMessages({this.silent, this.background, this.withMyScore, this.grouped, this.fromPeer, this.id, this.randomId, this.toPeer, this.scheduleDate});
+	ForwardMessages({required this.silent, required this.background, required this.withMyScore, required this.grouped, required this.fromPeer, required this.id, required this.randomId, required this.toPeer, required this.scheduleDate});
 
 	static ForwardMessages fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final silent = false;final background = false;final withMyScore = false;final grouped = false;var fromPeer = reader.tgReadObject();reader.readInt();
@@ -316,7 +316,7 @@ List<BigInt> randomId = [];len = reader.readInt();
 		randomId.add(reader.readLong());
 }var toPeer = reader.tgReadObject();var scheduleDate;if ((flags & 1024)==1){var scheduleDate = reader.readInt(); } else {scheduleDate=null;}		return new ForwardMessages(silent : silent, background : background, withMyScore : withMyScore, grouped : grouped, fromPeer : fromPeer, id : id, randomId : randomId, toPeer : toPeer, scheduleDate : scheduleDate);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3657360910,4),[0,0,0,0],(this.fromPeer.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.randomId.length,4,little:true,signed:true),this.randomId.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),(this.toPeer.getBytes() as List<int>),(this.scheduleDate==null||this.scheduleDate==false)?new List<int>():[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3657360910,4),[0,0,0,0],(this.fromPeer.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.randomId.length,4,little:true,signed:true),this.randomId.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),(this.toPeer.getBytes() as List<int>),(this.scheduleDate==null||this.scheduleDate==false)?<int>[]:[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -331,7 +331,7 @@ class ReportSpam {
 	var peer;
 
 
-	ReportSpam({this.peer});
+	ReportSpam({required this.peer});
 
 	static ReportSpam fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();		return new ReportSpam(peer : peer);
@@ -351,7 +351,7 @@ class GetPeerSettings {
 	var peer;
 
 
-	GetPeerSettings({this.peer});
+	GetPeerSettings({required this.peer});
 
 	static GetPeerSettings fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();		return new GetPeerSettings(peer : peer);
@@ -373,7 +373,7 @@ class Report {
 	var reason;
 
 
-	Report({this.peer, this.id, this.reason});
+	Report({required this.peer, required this.id, required this.reason});
 
 	static Report fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();reader.readInt();
@@ -397,7 +397,7 @@ class GetChats {
 	List<int> id;
 
 
-	GetChats({this.id});
+	GetChats({required this.id});
 
 	static GetChats fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -421,7 +421,7 @@ class GetFullChat {
 	int chatId;
 
 
-	GetFullChat({this.chatId});
+	GetFullChat({required this.chatId});
 
 	static GetFullChat fromReader(BinaryReader reader) {
 	var temp,len;var chatId = reader.readInt();		return new GetFullChat(chatId : chatId);
@@ -442,7 +442,7 @@ class EditChatTitle {
 	String title;
 
 
-	EditChatTitle({this.chatId, this.title});
+	EditChatTitle({required this.chatId, required this.title});
 
 	static EditChatTitle fromReader(BinaryReader reader) {
 	var temp,len;var chatId = reader.readInt();var title = reader.tgReadString();		return new EditChatTitle(chatId : chatId, title : title);
@@ -463,7 +463,7 @@ class EditChatPhoto {
 	var photo;
 
 
-	EditChatPhoto({this.chatId, this.photo});
+	EditChatPhoto({required this.chatId, required this.photo});
 
 	static EditChatPhoto fromReader(BinaryReader reader) {
 	var temp,len;var chatId = reader.readInt();var photo = reader.tgReadObject();		return new EditChatPhoto(chatId : chatId, photo : photo);
@@ -485,7 +485,7 @@ class AddChatUser {
 	int fwdLimit;
 
 
-	AddChatUser({this.chatId, this.userId, this.fwdLimit});
+	AddChatUser({required this.chatId, required this.userId, required this.fwdLimit});
 
 	static AddChatUser fromReader(BinaryReader reader) {
 	var temp,len;var chatId = reader.readInt();var userId = reader.tgReadObject();var fwdLimit = reader.readInt();		return new AddChatUser(chatId : chatId, userId : userId, fwdLimit : fwdLimit);
@@ -506,7 +506,7 @@ class DeleteChatUser {
 	var userId;
 
 
-	DeleteChatUser({this.chatId, this.userId});
+	DeleteChatUser({required this.chatId, required this.userId});
 
 	static DeleteChatUser fromReader(BinaryReader reader) {
 	var temp,len;var chatId = reader.readInt();var userId = reader.tgReadObject();		return new DeleteChatUser(chatId : chatId, userId : userId);
@@ -527,7 +527,7 @@ class CreateChat {
 	String title;
 
 
-	CreateChat({this.users, this.title});
+	CreateChat({required this.users, required this.title});
 
 	static CreateChat fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -552,7 +552,7 @@ class GetDhConfig {
 	int randomLength;
 
 
-	GetDhConfig({this.version, this.randomLength});
+	GetDhConfig({required this.version, required this.randomLength});
 
 	static GetDhConfig fromReader(BinaryReader reader) {
 	var temp,len;var version = reader.readInt();var randomLength = reader.readInt();		return new GetDhConfig(version : version, randomLength : randomLength);
@@ -574,7 +574,7 @@ class RequestEncryption {
 	List<int> gA;
 
 
-	RequestEncryption({this.userId, this.randomId, this.gA});
+	RequestEncryption({required this.userId, required this.randomId, required this.gA});
 
 	static RequestEncryption fromReader(BinaryReader reader) {
 	var temp,len;var userId = reader.tgReadObject();var randomId = reader.readInt();var gA = reader.tgReadBytes();		return new RequestEncryption(userId : userId, randomId : randomId, gA : gA);
@@ -596,7 +596,7 @@ class AcceptEncryption {
 	BigInt keyFingerprint;
 
 
-	AcceptEncryption({this.peer, this.gB, this.keyFingerprint});
+	AcceptEncryption({required this.peer, required this.gB, required this.keyFingerprint});
 
 	static AcceptEncryption fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var gB = reader.tgReadBytes();var keyFingerprint = reader.readLong();		return new AcceptEncryption(peer : peer, gB : gB, keyFingerprint : keyFingerprint);
@@ -616,7 +616,7 @@ class DiscardEncryption {
 	int chatId;
 
 
-	DiscardEncryption({this.chatId});
+	DiscardEncryption({required this.chatId});
 
 	static DiscardEncryption fromReader(BinaryReader reader) {
 	var temp,len;var chatId = reader.readInt();		return new DiscardEncryption(chatId : chatId);
@@ -637,7 +637,7 @@ class SetEncryptedTyping {
 	bool typing;
 
 
-	SetEncryptedTyping({this.peer, this.typing});
+	SetEncryptedTyping({required this.peer, required this.typing});
 
 	static SetEncryptedTyping fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var typing = reader.tgReadBool();		return new SetEncryptedTyping(peer : peer, typing : typing);
@@ -658,7 +658,7 @@ class ReadEncryptedHistory {
 	int maxDate;
 
 
-	ReadEncryptedHistory({this.peer, this.maxDate});
+	ReadEncryptedHistory({required this.peer, required this.maxDate});
 
 	static ReadEncryptedHistory fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var maxDate = reader.readInt();		return new ReadEncryptedHistory(peer : peer, maxDate : maxDate);
@@ -680,7 +680,7 @@ class SendEncrypted {
 	List<int> data;
 
 
-	SendEncrypted({this.peer, this.randomId, this.data});
+	SendEncrypted({required this.peer, required this.randomId, required this.data});
 
 	static SendEncrypted fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var randomId = reader.readLong();var data = reader.tgReadBytes();		return new SendEncrypted(peer : peer, randomId : randomId, data : data);
@@ -703,7 +703,7 @@ class SendEncryptedFile {
 	var file;
 
 
-	SendEncryptedFile({this.peer, this.randomId, this.data, this.file});
+	SendEncryptedFile({required this.peer, required this.randomId, required this.data, required this.file});
 
 	static SendEncryptedFile fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var randomId = reader.readLong();var data = reader.tgReadBytes();var file = reader.tgReadObject();		return new SendEncryptedFile(peer : peer, randomId : randomId, data : data, file : file);
@@ -725,7 +725,7 @@ class SendEncryptedService {
 	List<int> data;
 
 
-	SendEncryptedService({this.peer, this.randomId, this.data});
+	SendEncryptedService({required this.peer, required this.randomId, required this.data});
 
 	static SendEncryptedService fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var randomId = reader.readLong();var data = reader.tgReadBytes();		return new SendEncryptedService(peer : peer, randomId : randomId, data : data);
@@ -745,7 +745,7 @@ class ReceivedQueue {
 	int maxQts;
 
 
-	ReceivedQueue({this.maxQts});
+	ReceivedQueue({required this.maxQts});
 
 	static ReceivedQueue fromReader(BinaryReader reader) {
 	var temp,len;var maxQts = reader.readInt();		return new ReceivedQueue(maxQts : maxQts);
@@ -758,7 +758,7 @@ final range = reader.readInt();
 final List<BigInt> result = [];
  for (int i=0;i<range;i++){
 	result.add(reader.readLong());}
-	}
+	return result;}
 
 }
 
@@ -770,7 +770,7 @@ class ReportEncryptedSpam {
 	var peer;
 
 
-	ReportEncryptedSpam({this.peer});
+	ReportEncryptedSpam({required this.peer});
 
 	static ReportEncryptedSpam fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();		return new ReportEncryptedSpam(peer : peer);
@@ -790,7 +790,7 @@ class ReadMessageContents {
 	List<int> id;
 
 
-	ReadMessageContents({this.id});
+	ReadMessageContents({required this.id});
 
 	static ReadMessageContents fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -815,7 +815,7 @@ class GetStickers {
 	int hash;
 
 
-	GetStickers({this.emoticon, this.hash});
+	GetStickers({required this.emoticon, required this.hash});
 
 	static GetStickers fromReader(BinaryReader reader) {
 	var temp,len;var emoticon = reader.tgReadString();var hash = reader.readInt();		return new GetStickers(emoticon : emoticon, hash : hash);
@@ -835,7 +835,7 @@ class GetAllStickers {
 	int hash;
 
 
-	GetAllStickers({this.hash});
+	GetAllStickers({required this.hash});
 
 	static GetAllStickers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();		return new GetAllStickers(hash : hash);
@@ -856,7 +856,7 @@ class GetWebPagePreview {
 	List<dynamic> entities;
 
 
-	GetWebPagePreview({this.message, this.entities});
+	GetWebPagePreview({required this.message, required this.entities});
 
 	static GetWebPagePreview fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var message = reader.tgReadString();var entities;if ((flags & 8)==1){reader.readInt();
@@ -865,7 +865,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 } } else {entities=null;}		return new GetWebPagePreview(message : message, entities : entities);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2338894028,4),[0,0,0,0],serializeBytes(this.message),(this.entities==null||this.entities==false)?new List<int>():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2338894028,4),[0,0,0,0],serializeBytes(this.message),(this.entities==null||this.entities==false)?<int>[]:[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -880,7 +880,7 @@ class ExportChatInvite {
 	var peer;
 
 
-	ExportChatInvite({this.peer});
+	ExportChatInvite({required this.peer});
 
 	static ExportChatInvite fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();		return new ExportChatInvite(peer : peer);
@@ -900,7 +900,7 @@ class CheckChatInvite {
 	String hash;
 
 
-	CheckChatInvite({this.hash});
+	CheckChatInvite({required this.hash});
 
 	static CheckChatInvite fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.tgReadString();		return new CheckChatInvite(hash : hash);
@@ -920,7 +920,7 @@ class ImportChatInvite {
 	String hash;
 
 
-	ImportChatInvite({this.hash});
+	ImportChatInvite({required this.hash});
 
 	static ImportChatInvite fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.tgReadString();		return new ImportChatInvite(hash : hash);
@@ -940,7 +940,7 @@ class GetStickerSet {
 	var stickerset;
 
 
-	GetStickerSet({this.stickerset});
+	GetStickerSet({required this.stickerset});
 
 	static GetStickerSet fromReader(BinaryReader reader) {
 	var temp,len;var stickerset = reader.tgReadObject();		return new GetStickerSet(stickerset : stickerset);
@@ -961,7 +961,7 @@ class InstallStickerSet {
 	bool archived;
 
 
-	InstallStickerSet({this.stickerset, this.archived});
+	InstallStickerSet({required this.stickerset, required this.archived});
 
 	static InstallStickerSet fromReader(BinaryReader reader) {
 	var temp,len;var stickerset = reader.tgReadObject();var archived = reader.tgReadBool();		return new InstallStickerSet(stickerset : stickerset, archived : archived);
@@ -981,7 +981,7 @@ class UninstallStickerSet {
 	var stickerset;
 
 
-	UninstallStickerSet({this.stickerset});
+	UninstallStickerSet({required this.stickerset});
 
 	static UninstallStickerSet fromReader(BinaryReader reader) {
 	var temp,len;var stickerset = reader.tgReadObject();		return new UninstallStickerSet(stickerset : stickerset);
@@ -1004,7 +1004,7 @@ class StartBot {
 	String startParam;
 
 
-	StartBot({this.bot, this.peer, this.randomId, this.startParam});
+	StartBot({required this.bot, required this.peer, required this.randomId, required this.startParam});
 
 	static StartBot fromReader(BinaryReader reader) {
 	var temp,len;var bot = reader.tgReadObject();var peer = reader.tgReadObject();var randomId = reader.readLong();var startParam = reader.tgReadString();		return new StartBot(bot : bot, peer : peer, randomId : randomId, startParam : startParam);
@@ -1026,7 +1026,7 @@ class GetMessagesViews {
 	bool increment;
 
 
-	GetMessagesViews({this.peer, this.id, this.increment});
+	GetMessagesViews({required this.peer, required this.id, required this.increment});
 
 	static GetMessagesViews fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();reader.readInt();
@@ -1043,7 +1043,7 @@ final range = reader.readInt();
 final List<int> result = [];
  for (int i=0;i<range;i++){
 	result.add(reader.readInt());}
-	}
+	return result;}
 
 }
 
@@ -1057,7 +1057,7 @@ class EditChatAdmin {
 	bool isAdmin;
 
 
-	EditChatAdmin({this.chatId, this.userId, this.isAdmin});
+	EditChatAdmin({required this.chatId, required this.userId, required this.isAdmin});
 
 	static EditChatAdmin fromReader(BinaryReader reader) {
 	var temp,len;var chatId = reader.readInt();var userId = reader.tgReadObject();var isAdmin = reader.tgReadBool();		return new EditChatAdmin(chatId : chatId, userId : userId, isAdmin : isAdmin);
@@ -1077,7 +1077,7 @@ class MigrateChat {
 	int chatId;
 
 
-	MigrateChat({this.chatId});
+	MigrateChat({required this.chatId});
 
 	static MigrateChat fromReader(BinaryReader reader) {
 	var temp,len;var chatId = reader.readInt();		return new MigrateChat(chatId : chatId);
@@ -1102,12 +1102,12 @@ class SearchGlobal {
 	int limit;
 
 
-	SearchGlobal({this.folderId, this.q, this.offsetRate, this.offsetPeer, this.offsetId, this.limit});
+	SearchGlobal({required this.folderId, required this.q, required this.offsetRate, required this.offsetPeer, required this.offsetId, required this.limit});
 
 	static SearchGlobal fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var folderId;if ((flags & 1)==1){var folderId = reader.readInt(); } else {folderId=null;}var q = reader.tgReadString();var offsetRate = reader.readInt();var offsetPeer = reader.tgReadObject();var offsetId = reader.readInt();var limit = reader.readInt();		return new SearchGlobal(folderId : folderId, q : q, offsetRate : offsetRate, offsetPeer : offsetPeer, offsetId : offsetId, limit : limit);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3211928996,4),[0,0,0,0],(this.folderId==null||this.folderId==false)?new List<int>():[readBufferFromBigInt(this.folderId,4,little:true,signed:true)].expand((element) => element).toList(),serializeBytes(this.q),readBufferFromBigInt(this.offsetRate,4,little:true,signed:true),(this.offsetPeer.getBytes() as List<int>),readBufferFromBigInt(this.offsetId,4,little:true,signed:true),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3211928996,4),[0,0,0,0],(this.folderId==null||this.folderId==false)?<int>[]:[readBufferFromBigInt(this.folderId,4,little:true,signed:true)].expand((element) => element).toList(),serializeBytes(this.q),readBufferFromBigInt(this.offsetRate,4,little:true,signed:true),(this.offsetPeer.getBytes() as List<int>),readBufferFromBigInt(this.offsetId,4,little:true,signed:true),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1123,7 +1123,7 @@ class ReorderStickerSets {
 	List<BigInt> order;
 
 
-	ReorderStickerSets({this.masks, this.order});
+	ReorderStickerSets({required this.masks, required this.order});
 
 	static ReorderStickerSets fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final masks = false;reader.readInt();
@@ -1149,7 +1149,7 @@ class GetDocumentByHash {
 	String mimeType;
 
 
-	GetDocumentByHash({this.sha256, this.size, this.mimeType});
+	GetDocumentByHash({required this.sha256, required this.size, required this.mimeType});
 
 	static GetDocumentByHash fromReader(BinaryReader reader) {
 	var temp,len;var sha256 = reader.tgReadBytes();var size = reader.readInt();var mimeType = reader.tgReadString();		return new GetDocumentByHash(sha256 : sha256, size : size, mimeType : mimeType);
@@ -1170,7 +1170,7 @@ class SearchGifs {
 	int offset;
 
 
-	SearchGifs({this.q, this.offset});
+	SearchGifs({required this.q, required this.offset});
 
 	static SearchGifs fromReader(BinaryReader reader) {
 	var temp,len;var q = reader.tgReadString();var offset = reader.readInt();		return new SearchGifs(q : q, offset : offset);
@@ -1190,7 +1190,7 @@ class GetSavedGifs {
 	int hash;
 
 
-	GetSavedGifs({this.hash});
+	GetSavedGifs({required this.hash});
 
 	static GetSavedGifs fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();		return new GetSavedGifs(hash : hash);
@@ -1211,7 +1211,7 @@ class SaveGif {
 	bool unsave;
 
 
-	SaveGif({this.id, this.unsave});
+	SaveGif({required this.id, required this.unsave});
 
 	static SaveGif fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();var unsave = reader.tgReadBool();		return new SaveGif(id : id, unsave : unsave);
@@ -1235,12 +1235,12 @@ class GetInlineBotResults {
 	String offset;
 
 
-	GetInlineBotResults({this.bot, this.peer, this.geoPoint, this.query, this.offset});
+	GetInlineBotResults({required this.bot, required this.peer, required this.geoPoint, required this.query, required this.offset});
 
 	static GetInlineBotResults fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var bot = reader.tgReadObject();var peer = reader.tgReadObject();var geoPoint;if ((flags & 1)==1){var geoPoint = reader.tgReadObject(); } else {geoPoint=null;}var query = reader.tgReadString();var offset = reader.tgReadString();		return new GetInlineBotResults(bot : bot, peer : peer, geoPoint : geoPoint, query : query, offset : offset);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1364105629,4),[0,0,0,0],(this.bot.getBytes() as List<int>),(this.peer.getBytes() as List<int>),(this.geoPoint==null||this.geoPoint==false)?new List<int>():[(this.geoPoint.getBytes() as List<int>)].expand((element) => element).toList(),serializeBytes(this.query),serializeBytes(this.offset),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1364105629,4),[0,0,0,0],(this.bot.getBytes() as List<int>),(this.peer.getBytes() as List<int>),(this.geoPoint==null||this.geoPoint==false)?<int>[]:[(this.geoPoint.getBytes() as List<int>)].expand((element) => element).toList(),serializeBytes(this.query),serializeBytes(this.offset),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1261,7 +1261,7 @@ class SetInlineBotResults {
 	var switchPm;
 
 
-	SetInlineBotResults({this.gallery, this.private, this.queryId, this.results, this.cacheTime, this.nextOffset, this.switchPm});
+	SetInlineBotResults({required this.gallery, required this.private, required this.queryId, required this.results, required this.cacheTime, required this.nextOffset, required this.switchPm});
 
 	static SetInlineBotResults fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final gallery = false;final private = false;var queryId = reader.readLong();reader.readInt();
@@ -1270,7 +1270,7 @@ List<dynamic> results = [];len = reader.readInt();
 		results.add(reader.tgReadObject());
 }var cacheTime = reader.readInt();var nextOffset;if ((flags & 4)==1){var nextOffset = reader.tgReadString(); } else {nextOffset=null;}var switchPm;if ((flags & 8)==1){var switchPm = reader.tgReadObject(); } else {switchPm=null;}		return new SetInlineBotResults(gallery : gallery, private : private, queryId : queryId, results : results, cacheTime : cacheTime, nextOffset : nextOffset, switchPm : switchPm);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3948847622,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.results.length,4,little:true,signed:true),this.results.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(this.cacheTime,4,little:true,signed:true),(this.nextOffset==null||this.nextOffset==false)?new List<int>():[serializeBytes(this.nextOffset)].expand((element) => element).toList(),(this.switchPm==null||this.switchPm==false)?new List<int>():[(this.switchPm.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3948847622,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.results.length,4,little:true,signed:true),this.results.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(this.cacheTime,4,little:true,signed:true),(this.nextOffset==null||this.nextOffset==false)?<int>[]:[serializeBytes(this.nextOffset)].expand((element) => element).toList(),(this.switchPm==null||this.switchPm==false)?<int>[]:[(this.switchPm.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1294,12 +1294,12 @@ class SendInlineBotResult {
 	int scheduleDate;
 
 
-	SendInlineBotResult({this.silent, this.background, this.clearDraft, this.hideVia, this.peer, this.replyToMsgId, this.randomId, this.queryId, this.id, this.scheduleDate});
+	SendInlineBotResult({required this.silent, required this.background, required this.clearDraft, required this.hideVia, required this.peer, required this.replyToMsgId, required this.randomId, required this.queryId, required this.id, required this.scheduleDate});
 
 	static SendInlineBotResult fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final silent = false;final background = false;final clearDraft = false;final hideVia = false;var peer = reader.tgReadObject();var replyToMsgId;if ((flags & 1)==1){var replyToMsgId = reader.readInt(); } else {replyToMsgId=null;}var randomId = reader.readLong();var queryId = reader.readLong();var id = reader.tgReadString();var scheduleDate;if ((flags & 1024)==1){var scheduleDate = reader.readInt(); } else {scheduleDate=null;}		return new SendInlineBotResult(silent : silent, background : background, clearDraft : clearDraft, hideVia : hideVia, peer : peer, replyToMsgId : replyToMsgId, randomId : randomId, queryId : queryId, id : id, scheduleDate : scheduleDate);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(570955184,4),[0,0,0,0],(this.peer.getBytes() as List<int>),(this.replyToMsgId==null||this.replyToMsgId==false)?new List<int>():[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(this.randomId,8,little:true,signed:true),readBufferFromBigInt(this.queryId,8,little:true,signed:true),serializeBytes(this.id),(this.scheduleDate==null||this.scheduleDate==false)?new List<int>():[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(570955184,4),[0,0,0,0],(this.peer.getBytes() as List<int>),(this.replyToMsgId==null||this.replyToMsgId==false)?<int>[]:[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(this.randomId,8,little:true,signed:true),readBufferFromBigInt(this.queryId,8,little:true,signed:true),serializeBytes(this.id),(this.scheduleDate==null||this.scheduleDate==false)?<int>[]:[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1315,7 +1315,7 @@ class GetMessageEditData {
 	int id;
 
 
-	GetMessageEditData({this.peer, this.id});
+	GetMessageEditData({required this.peer, required this.id});
 
 	static GetMessageEditData fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var id = reader.readInt();		return new GetMessageEditData(peer : peer, id : id);
@@ -1342,7 +1342,7 @@ class EditMessage {
 	int scheduleDate;
 
 
-	EditMessage({this.noWebpage, this.peer, this.id, this.message, this.media, this.replyMarkup, this.entities, this.scheduleDate});
+	EditMessage({required this.noWebpage, required this.peer, required this.id, required this.message, required this.media, required this.replyMarkup, required this.entities, required this.scheduleDate});
 
 	static EditMessage fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final noWebpage = false;var peer = reader.tgReadObject();var id = reader.readInt();var message;if ((flags & 2048)==1){var message = reader.tgReadString(); } else {message=null;}var media;if ((flags & 16384)==1){var media = reader.tgReadObject(); } else {media=null;}var replyMarkup;if ((flags & 4)==1){var replyMarkup = reader.tgReadObject(); } else {replyMarkup=null;}var entities;if ((flags & 8)==1){reader.readInt();
@@ -1351,7 +1351,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 } } else {entities=null;}var scheduleDate;if ((flags & 32768)==1){var scheduleDate = reader.readInt(); } else {scheduleDate=null;}		return new EditMessage(noWebpage : noWebpage, peer : peer, id : id, message : message, media : media, replyMarkup : replyMarkup, entities : entities, scheduleDate : scheduleDate);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1224152952,4),[0,0,0,0],(this.peer.getBytes() as List<int>),readBufferFromBigInt(this.id,4,little:true,signed:true),(this.message==null||this.message==false)?new List<int>():[serializeBytes(this.message)].expand((element) => element).toList(),(this.media==null||this.media==false)?new List<int>():[(this.media.getBytes() as List<int>)].expand((element) => element).toList(),(this.replyMarkup==null||this.replyMarkup==false)?new List<int>():[(this.replyMarkup.getBytes() as List<int>)].expand((element) => element).toList(),(this.entities==null||this.entities==false)?new List<int>():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),(this.scheduleDate==null||this.scheduleDate==false)?new List<int>():[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1224152952,4),[0,0,0,0],(this.peer.getBytes() as List<int>),readBufferFromBigInt(this.id,4,little:true,signed:true),(this.message==null||this.message==false)?<int>[]:[serializeBytes(this.message)].expand((element) => element).toList(),(this.media==null||this.media==false)?<int>[]:[(this.media.getBytes() as List<int>)].expand((element) => element).toList(),(this.replyMarkup==null||this.replyMarkup==false)?<int>[]:[(this.replyMarkup.getBytes() as List<int>)].expand((element) => element).toList(),(this.entities==null||this.entities==false)?<int>[]:[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),(this.scheduleDate==null||this.scheduleDate==false)?<int>[]:[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1371,7 +1371,7 @@ class EditInlineBotMessage {
 	List<dynamic> entities;
 
 
-	EditInlineBotMessage({this.noWebpage, this.id, this.message, this.media, this.replyMarkup, this.entities});
+	EditInlineBotMessage({required this.noWebpage, required this.id, required this.message, required this.media, required this.replyMarkup, required this.entities});
 
 	static EditInlineBotMessage fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final noWebpage = false;var id = reader.tgReadObject();var message;if ((flags & 2048)==1){var message = reader.tgReadString(); } else {message=null;}var media;if ((flags & 16384)==1){var media = reader.tgReadObject(); } else {media=null;}var replyMarkup;if ((flags & 4)==1){var replyMarkup = reader.tgReadObject(); } else {replyMarkup=null;}var entities;if ((flags & 8)==1){reader.readInt();
@@ -1380,7 +1380,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 } } else {entities=null;}		return new EditInlineBotMessage(noWebpage : noWebpage, id : id, message : message, media : media, replyMarkup : replyMarkup, entities : entities);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2203418042,4),[0,0,0,0],(this.id.getBytes() as List<int>),(this.message==null||this.message==false)?new List<int>():[serializeBytes(this.message)].expand((element) => element).toList(),(this.media==null||this.media==false)?new List<int>():[(this.media.getBytes() as List<int>)].expand((element) => element).toList(),(this.replyMarkup==null||this.replyMarkup==false)?new List<int>():[(this.replyMarkup.getBytes() as List<int>)].expand((element) => element).toList(),(this.entities==null||this.entities==false)?new List<int>():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2203418042,4),[0,0,0,0],(this.id.getBytes() as List<int>),(this.message==null||this.message==false)?<int>[]:[serializeBytes(this.message)].expand((element) => element).toList(),(this.media==null||this.media==false)?<int>[]:[(this.media.getBytes() as List<int>)].expand((element) => element).toList(),(this.replyMarkup==null||this.replyMarkup==false)?<int>[]:[(this.replyMarkup.getBytes() as List<int>)].expand((element) => element).toList(),(this.entities==null||this.entities==false)?<int>[]:[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1398,12 +1398,12 @@ class GetBotCallbackAnswer {
 	List<int> data;
 
 
-	GetBotCallbackAnswer({this.game, this.peer, this.msgId, this.data});
+	GetBotCallbackAnswer({required this.game, required this.peer, required this.msgId, required this.data});
 
 	static GetBotCallbackAnswer fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final game = false;var peer = reader.tgReadObject();var msgId = reader.readInt();var data;if ((flags & 1)==1){var data = reader.tgReadBytes(); } else {data=null;}		return new GetBotCallbackAnswer(game : game, peer : peer, msgId : msgId, data : data);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2164957164,4),[0,0,0,0],(this.peer.getBytes() as List<int>),readBufferFromBigInt(this.msgId,4,little:true,signed:true),(this.data==null||this.data==false)?new List<int>():[serializeBytes(this.data)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2164957164,4),[0,0,0,0],(this.peer.getBytes() as List<int>),readBufferFromBigInt(this.msgId,4,little:true,signed:true),(this.data==null||this.data==false)?<int>[]:[serializeBytes(this.data)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1422,12 +1422,12 @@ class SetBotCallbackAnswer {
 	int cacheTime;
 
 
-	SetBotCallbackAnswer({this.alert, this.queryId, this.message, this.url, this.cacheTime});
+	SetBotCallbackAnswer({required this.alert, required this.queryId, required this.message, required this.url, required this.cacheTime});
 
 	static SetBotCallbackAnswer fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final alert = false;var queryId = reader.readLong();var message;if ((flags & 1)==1){var message = reader.tgReadString(); } else {message=null;}var url;if ((flags & 4)==1){var url = reader.tgReadString(); } else {url=null;}var cacheTime = reader.readInt();		return new SetBotCallbackAnswer(alert : alert, queryId : queryId, message : message, url : url, cacheTime : cacheTime);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3582923530,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),(this.message==null||this.message==false)?new List<int>():[serializeBytes(this.message)].expand((element) => element).toList(),(this.url==null||this.url==false)?new List<int>():[serializeBytes(this.url)].expand((element) => element).toList(),readBufferFromBigInt(this.cacheTime,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3582923530,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),(this.message==null||this.message==false)?<int>[]:[serializeBytes(this.message)].expand((element) => element).toList(),(this.url==null||this.url==false)?<int>[]:[serializeBytes(this.url)].expand((element) => element).toList(),readBufferFromBigInt(this.cacheTime,4,little:true,signed:true),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1442,7 +1442,7 @@ class GetPeerDialogs {
 	List<dynamic> peers;
 
 
-	GetPeerDialogs({this.peers});
+	GetPeerDialogs({required this.peers});
 
 	static GetPeerDialogs fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -1470,7 +1470,7 @@ class SaveDraft {
 	List<dynamic> entities;
 
 
-	SaveDraft({this.noWebpage, this.replyToMsgId, this.peer, this.message, this.entities});
+	SaveDraft({required this.noWebpage, required this.replyToMsgId, required this.peer, required this.message, required this.entities});
 
 	static SaveDraft fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final noWebpage = false;var replyToMsgId;if ((flags & 1)==1){var replyToMsgId = reader.readInt(); } else {replyToMsgId=null;}var peer = reader.tgReadObject();var message = reader.tgReadString();var entities;if ((flags & 8)==1){reader.readInt();
@@ -1479,7 +1479,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 } } else {entities=null;}		return new SaveDraft(noWebpage : noWebpage, replyToMsgId : replyToMsgId, peer : peer, message : message, entities : entities);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3157909835,4),[0,0,0,0],(this.replyToMsgId==null||this.replyToMsgId==false)?new List<int>():[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),(this.peer.getBytes() as List<int>),serializeBytes(this.message),(this.entities==null||this.entities==false)?new List<int>():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3157909835,4),[0,0,0,0],(this.replyToMsgId==null||this.replyToMsgId==false)?<int>[]:[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),(this.peer.getBytes() as List<int>),serializeBytes(this.message),(this.entities==null||this.entities==false)?<int>[]:[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1513,7 +1513,7 @@ class GetFeaturedStickers {
 	int hash;
 
 
-	GetFeaturedStickers({this.hash});
+	GetFeaturedStickers({required this.hash});
 
 	static GetFeaturedStickers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();		return new GetFeaturedStickers(hash : hash);
@@ -1533,7 +1533,7 @@ class ReadFeaturedStickers {
 	List<BigInt> id;
 
 
-	ReadFeaturedStickers({this.id});
+	ReadFeaturedStickers({required this.id});
 
 	static ReadFeaturedStickers fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -1558,7 +1558,7 @@ class GetRecentStickers {
 	int hash;
 
 
-	GetRecentStickers({this.attached, this.hash});
+	GetRecentStickers({required this.attached, required this.hash});
 
 	static GetRecentStickers fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final attached = false;var hash = reader.readInt();		return new GetRecentStickers(attached : attached, hash : hash);
@@ -1580,7 +1580,7 @@ class SaveRecentSticker {
 	bool unsave;
 
 
-	SaveRecentSticker({this.attached, this.id, this.unsave});
+	SaveRecentSticker({required this.attached, required this.id, required this.unsave});
 
 	static SaveRecentSticker fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final attached = false;var id = reader.tgReadObject();var unsave = reader.tgReadBool();		return new SaveRecentSticker(attached : attached, id : id, unsave : unsave);
@@ -1600,7 +1600,7 @@ class ClearRecentStickers {
 	bool attached;
 
 
-	ClearRecentStickers({this.attached});
+	ClearRecentStickers({required this.attached});
 
 	static ClearRecentStickers fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final attached = false;		return new ClearRecentStickers(attached : attached);
@@ -1622,7 +1622,7 @@ class GetArchivedStickers {
 	int limit;
 
 
-	GetArchivedStickers({this.masks, this.offsetId, this.limit});
+	GetArchivedStickers({required this.masks, required this.offsetId, required this.limit});
 
 	static GetArchivedStickers fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final masks = false;var offsetId = reader.readLong();var limit = reader.readInt();		return new GetArchivedStickers(masks : masks, offsetId : offsetId, limit : limit);
@@ -1642,7 +1642,7 @@ class GetMaskStickers {
 	int hash;
 
 
-	GetMaskStickers({this.hash});
+	GetMaskStickers({required this.hash});
 
 	static GetMaskStickers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();		return new GetMaskStickers(hash : hash);
@@ -1662,7 +1662,7 @@ class GetAttachedStickers {
 	var media;
 
 
-	GetAttachedStickers({this.media});
+	GetAttachedStickers({required this.media});
 
 	static GetAttachedStickers fromReader(BinaryReader reader) {
 	var temp,len;var media = reader.tgReadObject();		return new GetAttachedStickers(media : media);
@@ -1687,7 +1687,7 @@ class SetGameScore {
 	int score;
 
 
-	SetGameScore({this.editMessage, this.force, this.peer, this.id, this.userId, this.score});
+	SetGameScore({required this.editMessage, required this.force, required this.peer, required this.id, required this.userId, required this.score});
 
 	static SetGameScore fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final editMessage = false;final force = false;var peer = reader.tgReadObject();var id = reader.readInt();var userId = reader.tgReadObject();var score = reader.readInt();		return new SetGameScore(editMessage : editMessage, force : force, peer : peer, id : id, userId : userId, score : score);
@@ -1711,7 +1711,7 @@ class SetInlineGameScore {
 	int score;
 
 
-	SetInlineGameScore({this.editMessage, this.force, this.id, this.userId, this.score});
+	SetInlineGameScore({required this.editMessage, required this.force, required this.id, required this.userId, required this.score});
 
 	static SetInlineGameScore fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final editMessage = false;final force = false;var id = reader.tgReadObject();var userId = reader.tgReadObject();var score = reader.readInt();		return new SetInlineGameScore(editMessage : editMessage, force : force, id : id, userId : userId, score : score);
@@ -1733,7 +1733,7 @@ class GetGameHighScores {
 	var userId;
 
 
-	GetGameHighScores({this.peer, this.id, this.userId});
+	GetGameHighScores({required this.peer, required this.id, required this.userId});
 
 	static GetGameHighScores fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var id = reader.readInt();var userId = reader.tgReadObject();		return new GetGameHighScores(peer : peer, id : id, userId : userId);
@@ -1754,7 +1754,7 @@ class GetInlineGameHighScores {
 	var userId;
 
 
-	GetInlineGameHighScores({this.id, this.userId});
+	GetInlineGameHighScores({required this.id, required this.userId});
 
 	static GetInlineGameHighScores fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();var userId = reader.tgReadObject();		return new GetInlineGameHighScores(id : id, userId : userId);
@@ -1776,7 +1776,7 @@ class GetCommonChats {
 	int limit;
 
 
-	GetCommonChats({this.userId, this.maxId, this.limit});
+	GetCommonChats({required this.userId, required this.maxId, required this.limit});
 
 	static GetCommonChats fromReader(BinaryReader reader) {
 	var temp,len;var userId = reader.tgReadObject();var maxId = reader.readInt();var limit = reader.readInt();		return new GetCommonChats(userId : userId, maxId : maxId, limit : limit);
@@ -1796,7 +1796,7 @@ class GetAllChats {
 	List<int> exceptIds;
 
 
-	GetAllChats({this.exceptIds});
+	GetAllChats({required this.exceptIds});
 
 	static GetAllChats fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -1821,7 +1821,7 @@ class GetWebPage {
 	int hash;
 
 
-	GetWebPage({this.url, this.hash});
+	GetWebPage({required this.url, required this.hash});
 
 	static GetWebPage fromReader(BinaryReader reader) {
 	var temp,len;var url = reader.tgReadString();var hash = reader.readInt();		return new GetWebPage(url : url, hash : hash);
@@ -1842,7 +1842,7 @@ class ToggleDialogPin {
 	var peer;
 
 
-	ToggleDialogPin({this.pinned, this.peer});
+	ToggleDialogPin({required this.pinned, required this.peer});
 
 	static ToggleDialogPin fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final pinned = false;var peer = reader.tgReadObject();		return new ToggleDialogPin(pinned : pinned, peer : peer);
@@ -1864,7 +1864,7 @@ class ReorderPinnedDialogs {
 	List<dynamic> order;
 
 
-	ReorderPinnedDialogs({this.force, this.folderId, this.order});
+	ReorderPinnedDialogs({required this.force, required this.folderId, required this.order});
 
 	static ReorderPinnedDialogs fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final force = false;var folderId = reader.readInt();reader.readInt();
@@ -1888,7 +1888,7 @@ class GetPinnedDialogs {
 	int folderId;
 
 
-	GetPinnedDialogs({this.folderId});
+	GetPinnedDialogs({required this.folderId});
 
 	static GetPinnedDialogs fromReader(BinaryReader reader) {
 	var temp,len;var folderId = reader.readInt();		return new GetPinnedDialogs(folderId : folderId);
@@ -1910,7 +1910,7 @@ class SetBotShippingResults {
 	List<dynamic> shippingOptions;
 
 
-	SetBotShippingResults({this.queryId, this.error, this.shippingOptions});
+	SetBotShippingResults({required this.queryId, required this.error, required this.shippingOptions});
 
 	static SetBotShippingResults fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var queryId = reader.readLong();var error;if ((flags & 1)==1){var error = reader.tgReadString(); } else {error=null;}var shippingOptions;if ((flags & 2)==1){reader.readInt();
@@ -1919,7 +1919,7 @@ List<dynamic> shippingOptions = [];len = reader.readInt();
 		shippingOptions.add(reader.tgReadObject());
 } } else {shippingOptions=null;}		return new SetBotShippingResults(queryId : queryId, error : error, shippingOptions : shippingOptions);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3858133754,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),(this.error==null||this.error==false)?new List<int>():[serializeBytes(this.error)].expand((element) => element).toList(),(this.shippingOptions==null||this.shippingOptions==false)?new List<int>():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.shippingOptions.length,4,little:true,signed:true),this.shippingOptions.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3858133754,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),(this.error==null||this.error==false)?<int>[]:[serializeBytes(this.error)].expand((element) => element).toList(),(this.shippingOptions==null||this.shippingOptions==false)?<int>[]:[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.shippingOptions.length,4,little:true,signed:true),this.shippingOptions.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1936,12 +1936,12 @@ class SetBotPrecheckoutResults {
 	String error;
 
 
-	SetBotPrecheckoutResults({this.success, this.queryId, this.error});
+	SetBotPrecheckoutResults({required this.success, required this.queryId, required this.error});
 
 	static SetBotPrecheckoutResults fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final success = false;var queryId = reader.readLong();var error;if ((flags & 1)==1){var error = reader.tgReadString(); } else {error=null;}		return new SetBotPrecheckoutResults(success : success, queryId : queryId, error : error);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(163765653,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),(this.error==null||this.error==false)?new List<int>():[serializeBytes(this.error)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(163765653,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),(this.error==null||this.error==false)?<int>[]:[serializeBytes(this.error)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1957,7 +1957,7 @@ class UploadMedia {
 	var media;
 
 
-	UploadMedia({this.peer, this.media});
+	UploadMedia({required this.peer, required this.media});
 
 	static UploadMedia fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var media = reader.tgReadObject();		return new UploadMedia(peer : peer, media : media);
@@ -1979,7 +1979,7 @@ class SendScreenshotNotification {
 	BigInt randomId;
 
 
-	SendScreenshotNotification({this.peer, this.replyToMsgId, this.randomId});
+	SendScreenshotNotification({required this.peer, required this.replyToMsgId, required this.randomId});
 
 	static SendScreenshotNotification fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var replyToMsgId = reader.readInt();var randomId = reader.readLong();		return new SendScreenshotNotification(peer : peer, replyToMsgId : replyToMsgId, randomId : randomId);
@@ -1999,7 +1999,7 @@ class GetFavedStickers {
 	int hash;
 
 
-	GetFavedStickers({this.hash});
+	GetFavedStickers({required this.hash});
 
 	static GetFavedStickers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();		return new GetFavedStickers(hash : hash);
@@ -2020,7 +2020,7 @@ class FaveSticker {
 	bool unfave;
 
 
-	FaveSticker({this.id, this.unfave});
+	FaveSticker({required this.id, required this.unfave});
 
 	static FaveSticker fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();var unfave = reader.tgReadBool();		return new FaveSticker(id : id, unfave : unfave);
@@ -2045,7 +2045,7 @@ class GetUnreadMentions {
 	int minId;
 
 
-	GetUnreadMentions({this.peer, this.offsetId, this.addOffset, this.limit, this.maxId, this.minId});
+	GetUnreadMentions({required this.peer, required this.offsetId, required this.addOffset, required this.limit, required this.maxId, required this.minId});
 
 	static GetUnreadMentions fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var offsetId = reader.readInt();var addOffset = reader.readInt();var limit = reader.readInt();var maxId = reader.readInt();var minId = reader.readInt();		return new GetUnreadMentions(peer : peer, offsetId : offsetId, addOffset : addOffset, limit : limit, maxId : maxId, minId : minId);
@@ -2065,7 +2065,7 @@ class ReadMentions {
 	var peer;
 
 
-	ReadMentions({this.peer});
+	ReadMentions({required this.peer});
 
 	static ReadMentions fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();		return new ReadMentions(peer : peer);
@@ -2087,7 +2087,7 @@ class GetRecentLocations {
 	int hash;
 
 
-	GetRecentLocations({this.peer, this.limit, this.hash});
+	GetRecentLocations({required this.peer, required this.limit, required this.hash});
 
 	static GetRecentLocations fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var limit = reader.readInt();var hash = reader.readInt();		return new GetRecentLocations(peer : peer, limit : limit, hash : hash);
@@ -2113,7 +2113,7 @@ class SendMultiMedia {
 	int scheduleDate;
 
 
-	SendMultiMedia({this.silent, this.background, this.clearDraft, this.peer, this.replyToMsgId, this.multiMedia, this.scheduleDate});
+	SendMultiMedia({required this.silent, required this.background, required this.clearDraft, required this.peer, required this.replyToMsgId, required this.multiMedia, required this.scheduleDate});
 
 	static SendMultiMedia fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final silent = false;final background = false;final clearDraft = false;var peer = reader.tgReadObject();var replyToMsgId;if ((flags & 1)==1){var replyToMsgId = reader.readInt(); } else {replyToMsgId=null;}reader.readInt();
@@ -2122,7 +2122,7 @@ List<dynamic> multiMedia = [];len = reader.readInt();
 		multiMedia.add(reader.tgReadObject());
 }var scheduleDate;if ((flags & 1024)==1){var scheduleDate = reader.readInt(); } else {scheduleDate=null;}		return new SendMultiMedia(silent : silent, background : background, clearDraft : clearDraft, peer : peer, replyToMsgId : replyToMsgId, multiMedia : multiMedia, scheduleDate : scheduleDate);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3422621899,4),[0,0,0,0],(this.peer.getBytes() as List<int>),(this.replyToMsgId==null||this.replyToMsgId==false)?new List<int>():[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.multiMedia.length,4,little:true,signed:true),this.multiMedia.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.scheduleDate==null||this.scheduleDate==false)?new List<int>():[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3422621899,4),[0,0,0,0],(this.peer.getBytes() as List<int>),(this.replyToMsgId==null||this.replyToMsgId==false)?<int>[]:[readBufferFromBigInt(this.replyToMsgId,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.multiMedia.length,4,little:true,signed:true),this.multiMedia.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.scheduleDate==null||this.scheduleDate==false)?<int>[]:[readBufferFromBigInt(this.scheduleDate,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -2138,7 +2138,7 @@ class UploadEncryptedFile {
 	var file;
 
 
-	UploadEncryptedFile({this.peer, this.file});
+	UploadEncryptedFile({required this.peer, required this.file});
 
 	static UploadEncryptedFile fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var file = reader.tgReadObject();		return new UploadEncryptedFile(peer : peer, file : file);
@@ -2160,7 +2160,7 @@ class SearchStickerSets {
 	int hash;
 
 
-	SearchStickerSets({this.excludeFeatured, this.q, this.hash});
+	SearchStickerSets({required this.excludeFeatured, required this.q, required this.hash});
 
 	static SearchStickerSets fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final excludeFeatured = false;var q = reader.tgReadString();var hash = reader.readInt();		return new SearchStickerSets(excludeFeatured : excludeFeatured, q : q, hash : hash);
@@ -2200,7 +2200,7 @@ class MarkDialogUnread {
 	var peer;
 
 
-	MarkDialogUnread({this.unread, this.peer});
+	MarkDialogUnread({required this.unread, required this.peer});
 
 	static MarkDialogUnread fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final unread = false;var peer = reader.tgReadObject();		return new MarkDialogUnread(unread : unread, peer : peer);
@@ -2260,7 +2260,7 @@ class UpdatePinnedMessage {
 	int id;
 
 
-	UpdatePinnedMessage({this.silent, this.peer, this.id});
+	UpdatePinnedMessage({required this.silent, required this.peer, required this.id});
 
 	static UpdatePinnedMessage fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final silent = false;var peer = reader.tgReadObject();var id = reader.readInt();		return new UpdatePinnedMessage(silent : silent, peer : peer, id : id);
@@ -2282,7 +2282,7 @@ class SendVote {
 	List<List<int>> options;
 
 
-	SendVote({this.peer, this.msgId, this.options});
+	SendVote({required this.peer, required this.msgId, required this.options});
 
 	static SendVote fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var msgId = reader.readInt();reader.readInt();
@@ -2307,7 +2307,7 @@ class GetPollResults {
 	int msgId;
 
 
-	GetPollResults({this.peer, this.msgId});
+	GetPollResults({required this.peer, required this.msgId});
 
 	static GetPollResults fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var msgId = reader.readInt();		return new GetPollResults(peer : peer, msgId : msgId);
@@ -2327,7 +2327,7 @@ class GetOnlines {
 	var peer;
 
 
-	GetOnlines({this.peer});
+	GetOnlines({required this.peer});
 
 	static GetOnlines fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();		return new GetOnlines(peer : peer);
@@ -2349,7 +2349,7 @@ class GetStatsURL {
 	String params;
 
 
-	GetStatsURL({this.dark, this.peer, this.params});
+	GetStatsURL({required this.dark, required this.peer, required this.params});
 
 	static GetStatsURL fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final dark = false;var peer = reader.tgReadObject();var params = reader.tgReadString();		return new GetStatsURL(dark : dark, peer : peer, params : params);
@@ -2370,7 +2370,7 @@ class EditChatAbout {
 	String about;
 
 
-	EditChatAbout({this.peer, this.about});
+	EditChatAbout({required this.peer, required this.about});
 
 	static EditChatAbout fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var about = reader.tgReadString();		return new EditChatAbout(peer : peer, about : about);
@@ -2391,7 +2391,7 @@ class EditChatDefaultBannedRights {
 	var bannedRights;
 
 
-	EditChatDefaultBannedRights({this.peer, this.bannedRights});
+	EditChatDefaultBannedRights({required this.peer, required this.bannedRights});
 
 	static EditChatDefaultBannedRights fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var bannedRights = reader.tgReadObject();		return new EditChatDefaultBannedRights(peer : peer, bannedRights : bannedRights);
@@ -2411,7 +2411,7 @@ class GetEmojiKeywords {
 	String langCode;
 
 
-	GetEmojiKeywords({this.langCode});
+	GetEmojiKeywords({required this.langCode});
 
 	static GetEmojiKeywords fromReader(BinaryReader reader) {
 	var temp,len;var langCode = reader.tgReadString();		return new GetEmojiKeywords(langCode : langCode);
@@ -2432,7 +2432,7 @@ class GetEmojiKeywordsDifference {
 	int fromVersion;
 
 
-	GetEmojiKeywordsDifference({this.langCode, this.fromVersion});
+	GetEmojiKeywordsDifference({required this.langCode, required this.fromVersion});
 
 	static GetEmojiKeywordsDifference fromReader(BinaryReader reader) {
 	var temp,len;var langCode = reader.tgReadString();var fromVersion = reader.readInt();		return new GetEmojiKeywordsDifference(langCode : langCode, fromVersion : fromVersion);
@@ -2452,7 +2452,7 @@ class GetEmojiKeywordsLanguages {
 	List<String> langCodes;
 
 
-	GetEmojiKeywordsLanguages({this.langCodes});
+	GetEmojiKeywordsLanguages({required this.langCodes});
 
 	static GetEmojiKeywordsLanguages fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -2476,7 +2476,7 @@ class GetEmojiURL {
 	String langCode;
 
 
-	GetEmojiURL({this.langCode});
+	GetEmojiURL({required this.langCode});
 
 	static GetEmojiURL fromReader(BinaryReader reader) {
 	var temp,len;var langCode = reader.tgReadString();		return new GetEmojiURL(langCode : langCode);
@@ -2497,7 +2497,7 @@ class GetSearchCounters {
 	List<dynamic> filters;
 
 
-	GetSearchCounters({this.peer, this.filters});
+	GetSearchCounters({required this.peer, required this.filters});
 
 	static GetSearchCounters fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();reader.readInt();
@@ -2523,7 +2523,7 @@ class RequestUrlAuth {
 	int buttonId;
 
 
-	RequestUrlAuth({this.peer, this.msgId, this.buttonId});
+	RequestUrlAuth({required this.peer, required this.msgId, required this.buttonId});
 
 	static RequestUrlAuth fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var msgId = reader.readInt();var buttonId = reader.readInt();		return new RequestUrlAuth(peer : peer, msgId : msgId, buttonId : buttonId);
@@ -2546,7 +2546,7 @@ class AcceptUrlAuth {
 	int buttonId;
 
 
-	AcceptUrlAuth({this.writeAllowed, this.peer, this.msgId, this.buttonId});
+	AcceptUrlAuth({required this.writeAllowed, required this.peer, required this.msgId, required this.buttonId});
 
 	static AcceptUrlAuth fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final writeAllowed = false;var peer = reader.tgReadObject();var msgId = reader.readInt();var buttonId = reader.readInt();		return new AcceptUrlAuth(writeAllowed : writeAllowed, peer : peer, msgId : msgId, buttonId : buttonId);
@@ -2566,7 +2566,7 @@ class HidePeerSettingsBar {
 	var peer;
 
 
-	HidePeerSettingsBar({this.peer});
+	HidePeerSettingsBar({required this.peer});
 
 	static HidePeerSettingsBar fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();		return new HidePeerSettingsBar(peer : peer);
@@ -2587,7 +2587,7 @@ class GetScheduledHistory {
 	int hash;
 
 
-	GetScheduledHistory({this.peer, this.hash});
+	GetScheduledHistory({required this.peer, required this.hash});
 
 	static GetScheduledHistory fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var hash = reader.readInt();		return new GetScheduledHistory(peer : peer, hash : hash);
@@ -2608,7 +2608,7 @@ class GetScheduledMessages {
 	List<int> id;
 
 
-	GetScheduledMessages({this.peer, this.id});
+	GetScheduledMessages({required this.peer, required this.id});
 
 	static GetScheduledMessages fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();reader.readInt();
@@ -2633,7 +2633,7 @@ class SendScheduledMessages {
 	List<int> id;
 
 
-	SendScheduledMessages({this.peer, this.id});
+	SendScheduledMessages({required this.peer, required this.id});
 
 	static SendScheduledMessages fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();reader.readInt();
@@ -2658,7 +2658,7 @@ class DeleteScheduledMessages {
 	List<int> id;
 
 
-	DeleteScheduledMessages({this.peer, this.id});
+	DeleteScheduledMessages({required this.peer, required this.id});
 
 	static DeleteScheduledMessages fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();reader.readInt();
@@ -2686,12 +2686,12 @@ class GetPollVotes {
 	int limit;
 
 
-	GetPollVotes({this.peer, this.id, this.option, this.offset, this.limit});
+	GetPollVotes({required this.peer, required this.id, required this.option, required this.offset, required this.limit});
 
 	static GetPollVotes fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var peer = reader.tgReadObject();var id = reader.readInt();var option;if ((flags & 1)==1){var option = reader.tgReadBytes(); } else {option=null;}var offset;if ((flags & 2)==1){var offset = reader.tgReadString(); } else {offset=null;}var limit = reader.readInt();		return new GetPollVotes(peer : peer, id : id, option : option, offset : offset, limit : limit);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3094231054,4),[0,0,0,0],(this.peer.getBytes() as List<int>),readBufferFromBigInt(this.id,4,little:true,signed:true),(this.option==null||this.option==false)?new List<int>():[serializeBytes(this.option)].expand((element) => element).toList(),(this.offset==null||this.offset==false)?new List<int>():[serializeBytes(this.offset)].expand((element) => element).toList(),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3094231054,4),[0,0,0,0],(this.peer.getBytes() as List<int>),readBufferFromBigInt(this.id,4,little:true,signed:true),(this.option==null||this.option==false)?<int>[]:[serializeBytes(this.option)].expand((element) => element).toList(),(this.offset==null||this.offset==false)?<int>[]:[serializeBytes(this.offset)].expand((element) => element).toList(),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -2709,7 +2709,7 @@ class ToggleStickerSets {
 	List<dynamic> stickersets;
 
 
-	ToggleStickerSets({this.uninstall, this.archive, this.unarchive, this.stickersets});
+	ToggleStickerSets({required this.uninstall, required this.archive, required this.unarchive, required this.stickersets});
 
 	static ToggleStickerSets fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final uninstall = false;final archive = false;final unarchive = false;reader.readInt();
@@ -2772,12 +2772,12 @@ class UpdateDialogFilter {
 	var filter;
 
 
-	UpdateDialogFilter({this.id, this.filter});
+	UpdateDialogFilter({required this.id, required this.filter});
 
 	static UpdateDialogFilter fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var id = reader.readInt();var filter;if ((flags & 1)==1){var filter = reader.tgReadObject(); } else {filter=null;}		return new UpdateDialogFilter(id : id, filter : filter);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(450142282,4),[0,0,0,0],readBufferFromBigInt(this.id,4,little:true,signed:true),(this.filter==null||this.filter==false)?new List<int>():[(this.filter.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(450142282,4),[0,0,0,0],readBufferFromBigInt(this.id,4,little:true,signed:true),(this.filter==null||this.filter==false)?<int>[]:[(this.filter.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -2792,7 +2792,7 @@ class UpdateDialogFiltersOrder {
 	List<int> order;
 
 
-	UpdateDialogFiltersOrder({this.order});
+	UpdateDialogFiltersOrder({required this.order});
 
 	static UpdateDialogFiltersOrder fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -2818,7 +2818,7 @@ class GetOldFeaturedStickers {
 	int hash;
 
 
-	GetOldFeaturedStickers({this.offset, this.limit, this.hash});
+	GetOldFeaturedStickers({required this.offset, required this.limit, required this.hash});
 
 	static GetOldFeaturedStickers fromReader(BinaryReader reader) {
 	var temp,len;var offset = reader.readInt();var limit = reader.readInt();var hash = reader.readInt();		return new GetOldFeaturedStickers(offset : offset, limit : limit, hash : hash);

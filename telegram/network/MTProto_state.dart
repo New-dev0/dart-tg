@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:typed_data';
+
 import '../crypto/IGE.dart';
 import '../crypto/auth_key.dart';
 import '../extensions/binary_reader.dart';
@@ -8,10 +11,10 @@ import '../utils.dart';
 import 'package:crypto/crypto.dart';
 
 class MTProtoState {
-  AuthKey authKey;
+  late AuthKey authKey;
   var _log,  salt, id, sequence;
-  int timeOffset;
-  BigInt _lastMsgId;
+  late int timeOffset;
+  late BigInt _lastMsgId;
 
   /**
    *
@@ -39,12 +42,12 @@ class MTProtoState {
    * @param loggers
    */
   MTProtoState(AuthKey authKey, loggers) {
-    this.authKey = authKey;
+    this.authKey = authKey ;
     this._log = loggers;
     this.timeOffset = 0;
     this.salt = BigInt.zero;
 
-    this.id = this.sequence = this._lastMsgId = null;
+    this.id = this.sequence = this._lastMsgId;
     this.reset();
   }
 
@@ -150,7 +153,7 @@ class MTProtoState {
 
     final msgKey = body.sublist(8, 24);
     final result = this._calcKey(this.authKey.getKey(), msgKey, false);
-    final key = result[0];
+    final key = result[0] as Uint8List;
     final iv = result[1];
 
     body = IGE.decryptIge(body.sublist(24), key, iv);
@@ -193,7 +196,7 @@ class MTProtoState {
     var a = BigInt.from(now.floor());
     var c = BigInt.from(nanoseconds);
     var newMsgId = (a<<32) | (c<<2);
-    if (this._lastMsgId>=newMsgId) {
+    if (this._lastMsgId >=newMsgId) {
       newMsgId = this._lastMsgId + BigInt.from(4);
     }
     this._lastMsgId = newMsgId;

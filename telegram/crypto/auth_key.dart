@@ -1,11 +1,13 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:crypto/crypto.dart';
 
 import '../extensions/binary_reader.dart';
 import '../utils.dart';
 
 class AuthKey {
-  List<int> _key, _hash;
-  BigInt auxHash, keyId;
+  late List<int> _key, _hash;
+  late BigInt auxHash, keyId;
 
   AuthKey(value, hash) {
     if (value == null || hash == null) {
@@ -21,7 +23,6 @@ class AuthKey {
 
   setKey(value) {
     if (value == null) {
-      this.keyId = this.auxHash = this._key = this._hash = null;
       return;
     }
     if (value is AuthKey) {

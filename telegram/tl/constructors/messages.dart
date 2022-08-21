@@ -12,7 +12,7 @@ class Dialogs {
 	List<dynamic> users;
 
 
-	Dialogs({this.dialogs, this.messages, this.chats, this.users});
+	Dialogs({required this.dialogs, required this.messages, required this.chats, required this.users});
 
 	static Dialogs fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -49,7 +49,7 @@ class DialogsSlice {
 	List<dynamic> users;
 
 
-	DialogsSlice({this.count, this.dialogs, this.messages, this.chats, this.users});
+	DialogsSlice({required this.count, required this.dialogs, required this.messages, required this.chats, required this.users});
 
 	static DialogsSlice fromReader(BinaryReader reader) {
 	var temp,len;var count = reader.readInt();reader.readInt();
@@ -82,7 +82,7 @@ class DialogsNotModified {
 	int count;
 
 
-	DialogsNotModified({this.count});
+	DialogsNotModified({required this.count});
 
 	static DialogsNotModified fromReader(BinaryReader reader) {
 	var temp,len;var count = reader.readInt();		return new DialogsNotModified(count : count);
@@ -101,7 +101,7 @@ class Messages {
 	List<dynamic> users;
 
 
-	Messages({this.messages, this.chats, this.users});
+	Messages({required this.messages, required this.chats, required this.users});
 
 	static Messages fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -135,7 +135,7 @@ class MessagesSlice {
 	List<dynamic> users;
 
 
-	MessagesSlice({this.inexact, this.count, this.nextRate, this.messages, this.chats, this.users});
+	MessagesSlice({required this.inexact, required this.count, required this.nextRate, required this.messages, required this.chats, required this.users});
 
 	static MessagesSlice fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final inexact = false;var count = reader.readInt();var nextRate;if ((flags & 1)==1){var nextRate = reader.readInt(); } else {nextRate=null;}reader.readInt();
@@ -152,7 +152,7 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }		return new MessagesSlice(inexact : inexact, count : count, nextRate : nextRate, messages : messages, chats : chats, users : users);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3371027998,4),[0,0,0,0],readBufferFromBigInt(this.count,4,little:true,signed:true),(this.nextRate==null||this.nextRate==false)?new List<int>():[readBufferFromBigInt(this.nextRate,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.messages.length,4,little:true,signed:true),this.messages.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.chats.length,4,little:true,signed:true),this.chats.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3371027998,4),[0,0,0,0],readBufferFromBigInt(this.count,4,little:true,signed:true),(this.nextRate==null||this.nextRate==false)?<int>[]:[readBufferFromBigInt(this.nextRate,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.messages.length,4,little:true,signed:true),this.messages.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.chats.length,4,little:true,signed:true),this.chats.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 
@@ -169,7 +169,7 @@ class ChannelMessages {
 	List<dynamic> users;
 
 
-	ChannelMessages({this.inexact, this.pts, this.count, this.messages, this.chats, this.users});
+	ChannelMessages({required this.inexact, required this.pts, required this.count, required this.messages, required this.chats, required this.users});
 
 	static ChannelMessages fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final inexact = false;var pts = reader.readInt();var count = reader.readInt();reader.readInt();
@@ -198,7 +198,7 @@ class MessagesNotModified {
 	int count;
 
 
-	MessagesNotModified({this.count});
+	MessagesNotModified({required this.count});
 
 	static MessagesNotModified fromReader(BinaryReader reader) {
 	var temp,len;var count = reader.readInt();		return new MessagesNotModified(count : count);
@@ -215,7 +215,7 @@ class Chats {
 	List<dynamic> chats;
 
 
-	Chats({this.chats});
+	Chats({required this.chats});
 
 	static Chats fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -237,7 +237,7 @@ class ChatsSlice {
 	List<dynamic> chats;
 
 
-	ChatsSlice({this.count, this.chats});
+	ChatsSlice({required this.count, required this.chats});
 
 	static ChatsSlice fromReader(BinaryReader reader) {
 	var temp,len;var count = reader.readInt();reader.readInt();
@@ -260,7 +260,7 @@ class ChatFull {
 	List<dynamic> users;
 
 
-	ChatFull({this.fullChat, this.chats, this.users});
+	ChatFull({required this.fullChat, required this.chats, required this.users});
 
 	static ChatFull fromReader(BinaryReader reader) {
 	var temp,len;var fullChat = reader.tgReadObject();reader.readInt();
@@ -287,7 +287,7 @@ class AffectedHistory {
 	int offset;
 
 
-	AffectedHistory({this.pts, this.ptsCount, this.offset});
+	AffectedHistory({required this.pts, required this.ptsCount, required this.offset});
 
 	static AffectedHistory fromReader(BinaryReader reader) {
 	var temp,len;var pts = reader.readInt();var ptsCount = reader.readInt();var offset = reader.readInt();		return new AffectedHistory(pts : pts, ptsCount : ptsCount, offset : offset);
@@ -304,7 +304,7 @@ class DhConfigNotModified {
 	List<int> random;
 
 
-	DhConfigNotModified({this.random});
+	DhConfigNotModified({required this.random});
 
 	static DhConfigNotModified fromReader(BinaryReader reader) {
 	var temp,len;var random = reader.tgReadBytes();		return new DhConfigNotModified(random : random);
@@ -324,7 +324,7 @@ class DhConfig {
 	List<int> random;
 
 
-	DhConfig({this.g, this.p, this.version, this.random});
+	DhConfig({required this.g, required this.p, required this.version, required this.random});
 
 	static DhConfig fromReader(BinaryReader reader) {
 	var temp,len;var g = reader.readInt();var p = reader.tgReadBytes();var version = reader.readInt();var random = reader.tgReadBytes();		return new DhConfig(g : g, p : p, version : version, random : random);
@@ -341,7 +341,7 @@ class SentEncryptedMessage {
 	int date;
 
 
-	SentEncryptedMessage({this.date});
+	SentEncryptedMessage({required this.date});
 
 	static SentEncryptedMessage fromReader(BinaryReader reader) {
 	var temp,len;var date = reader.readInt();		return new SentEncryptedMessage(date : date);
@@ -359,7 +359,7 @@ class SentEncryptedFile {
 	var file;
 
 
-	SentEncryptedFile({this.date, this.file});
+	SentEncryptedFile({required this.date, required this.file});
 
 	static SentEncryptedFile fromReader(BinaryReader reader) {
 	var temp,len;var date = reader.readInt();var file = reader.tgReadObject();		return new SentEncryptedFile(date : date, file : file);
@@ -393,7 +393,7 @@ class Stickers {
 	List<dynamic> stickers;
 
 
-	Stickers({this.hash, this.stickers});
+	Stickers({required this.hash, required this.stickers});
 
 	static Stickers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();reader.readInt();
@@ -431,7 +431,7 @@ class AllStickers {
 	List<dynamic> sets;
 
 
-	AllStickers({this.hash, this.sets});
+	AllStickers({required this.hash, required this.sets});
 
 	static AllStickers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();reader.readInt();
@@ -453,7 +453,7 @@ class AffectedMessages {
 	int ptsCount;
 
 
-	AffectedMessages({this.pts, this.ptsCount});
+	AffectedMessages({required this.pts, required this.ptsCount});
 
 	static AffectedMessages fromReader(BinaryReader reader) {
 	var temp,len;var pts = reader.readInt();var ptsCount = reader.readInt();		return new AffectedMessages(pts : pts, ptsCount : ptsCount);
@@ -472,7 +472,7 @@ class StickerSet {
 	List<dynamic> documents;
 
 
-	StickerSet({this.set, this.packs, this.documents});
+	StickerSet({required this.set, required this.packs, required this.documents});
 
 	static StickerSet fromReader(BinaryReader reader) {
 	var temp,len;var set = reader.tgReadObject();reader.readInt();
@@ -498,7 +498,7 @@ class FoundGifs {
 	List<dynamic> results;
 
 
-	FoundGifs({this.nextOffset, this.results});
+	FoundGifs({required this.nextOffset, required this.results});
 
 	static FoundGifs fromReader(BinaryReader reader) {
 	var temp,len;var nextOffset = reader.readInt();reader.readInt();
@@ -536,7 +536,7 @@ class SavedGifs {
 	List<dynamic> gifs;
 
 
-	SavedGifs({this.hash, this.gifs});
+	SavedGifs({required this.hash, required this.gifs});
 
 	static SavedGifs fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();reader.readInt();
@@ -563,7 +563,7 @@ class BotResults {
 	List<dynamic> users;
 
 
-	BotResults({this.gallery, this.queryId, this.nextOffset, this.switchPm, this.results, this.cacheTime, this.users});
+	BotResults({required this.gallery, required this.queryId, required this.nextOffset, required this.switchPm, required this.results, required this.cacheTime, required this.users});
 
 	static BotResults fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final gallery = false;var queryId = reader.readLong();var nextOffset;if ((flags & 2)==1){var nextOffset = reader.tgReadString(); } else {nextOffset=null;}var switchPm;if ((flags & 4)==1){var switchPm = reader.tgReadObject(); } else {switchPm=null;}reader.readInt();
@@ -576,7 +576,7 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }		return new BotResults(gallery : gallery, queryId : queryId, nextOffset : nextOffset, switchPm : switchPm, results : results, cacheTime : cacheTime, users : users);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2491197512,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),(this.nextOffset==null||this.nextOffset==false)?new List<int>():[serializeBytes(this.nextOffset)].expand((element) => element).toList(),(this.switchPm==null||this.switchPm==false)?new List<int>():[(this.switchPm.getBytes() as List<int>)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.results.length,4,little:true,signed:true),this.results.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(this.cacheTime,4,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2491197512,4),[0,0,0,0],readBufferFromBigInt(this.queryId,8,little:true,signed:true),(this.nextOffset==null||this.nextOffset==false)?<int>[]:[serializeBytes(this.nextOffset)].expand((element) => element).toList(),(this.switchPm==null||this.switchPm==false)?<int>[]:[(this.switchPm.getBytes() as List<int>)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.results.length,4,little:true,signed:true),this.results.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(this.cacheTime,4,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 
@@ -593,12 +593,12 @@ class BotCallbackAnswer {
 	int cacheTime;
 
 
-	BotCallbackAnswer({this.alert, this.hasUrl, this.nativeUi, this.message, this.url, this.cacheTime});
+	BotCallbackAnswer({required this.alert, required this.hasUrl, required this.nativeUi, required this.message, required this.url, required this.cacheTime});
 
 	static BotCallbackAnswer fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final alert = false;final hasUrl = false;final nativeUi = false;var message;if ((flags & 1)==1){var message = reader.tgReadString(); } else {message=null;}var url;if ((flags & 4)==1){var url = reader.tgReadString(); } else {url=null;}var cacheTime = reader.readInt();		return new BotCallbackAnswer(alert : alert, hasUrl : hasUrl, nativeUi : nativeUi, message : message, url : url, cacheTime : cacheTime);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(911761060,4),[0,0,0,0],(this.message==null||this.message==false)?new List<int>():[serializeBytes(this.message)].expand((element) => element).toList(),(this.url==null||this.url==false)?new List<int>():[serializeBytes(this.url)].expand((element) => element).toList(),readBufferFromBigInt(this.cacheTime,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(911761060,4),[0,0,0,0],(this.message==null||this.message==false)?<int>[]:[serializeBytes(this.message)].expand((element) => element).toList(),(this.url==null||this.url==false)?<int>[]:[serializeBytes(this.url)].expand((element) => element).toList(),readBufferFromBigInt(this.cacheTime,4,little:true,signed:true),].expand((element) => element).toList();}
 
 }
 
@@ -610,7 +610,7 @@ class MessageEditData {
 	bool caption;
 
 
-	MessageEditData({this.caption});
+	MessageEditData({required this.caption});
 
 	static MessageEditData fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final caption = false;		return new MessageEditData(caption : caption);
@@ -631,7 +631,7 @@ class PeerDialogs {
 	var state;
 
 
-	PeerDialogs({this.dialogs, this.messages, this.chats, this.users, this.state});
+	PeerDialogs({required this.dialogs, required this.messages, required this.chats, required this.users, required this.state});
 
 	static PeerDialogs fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -664,7 +664,7 @@ class FeaturedStickersNotModified {
 	int count;
 
 
-	FeaturedStickersNotModified({this.count});
+	FeaturedStickersNotModified({required this.count});
 
 	static FeaturedStickersNotModified fromReader(BinaryReader reader) {
 	var temp,len;var count = reader.readInt();		return new FeaturedStickersNotModified(count : count);
@@ -684,7 +684,7 @@ class FeaturedStickers {
 	List<BigInt> unread;
 
 
-	FeaturedStickers({this.hash, this.count, this.sets, this.unread});
+	FeaturedStickers({required this.hash, required this.count, required this.sets, required this.unread});
 
 	static FeaturedStickers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();var count = reader.readInt();reader.readInt();
@@ -728,7 +728,7 @@ class RecentStickers {
 	List<int> dates;
 
 
-	RecentStickers({this.hash, this.packs, this.stickers, this.dates});
+	RecentStickers({required this.hash, required this.packs, required this.stickers, required this.dates});
 
 	static RecentStickers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();reader.readInt();
@@ -758,7 +758,7 @@ class ArchivedStickers {
 	List<dynamic> sets;
 
 
-	ArchivedStickers({this.count, this.sets});
+	ArchivedStickers({required this.count, required this.sets});
 
 	static ArchivedStickers fromReader(BinaryReader reader) {
 	var temp,len;var count = reader.readInt();reader.readInt();
@@ -795,7 +795,7 @@ class StickerSetInstallResultArchive {
 	List<dynamic> sets;
 
 
-	StickerSetInstallResultArchive({this.sets});
+	StickerSetInstallResultArchive({required this.sets});
 
 	static StickerSetInstallResultArchive fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -817,7 +817,7 @@ class HighScores {
 	List<dynamic> users;
 
 
-	HighScores({this.scores, this.users});
+	HighScores({required this.scores, required this.users});
 
 	static HighScores fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -860,7 +860,7 @@ class FavedStickers {
 	List<dynamic> stickers;
 
 
-	FavedStickers({this.hash, this.packs, this.stickers});
+	FavedStickers({required this.hash, required this.packs, required this.stickers});
 
 	static FavedStickers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();reader.readInt();
@@ -902,7 +902,7 @@ class FoundStickerSets {
 	List<dynamic> sets;
 
 
-	FoundStickerSets({this.hash, this.sets});
+	FoundStickerSets({required this.hash, required this.sets});
 
 	static FoundStickerSets fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();reader.readInt();
@@ -925,7 +925,7 @@ class SearchCounter {
 	int count;
 
 
-	SearchCounter({this.inexact, this.filter, this.count});
+	SearchCounter({required this.inexact, required this.filter, required this.count});
 
 	static SearchCounter fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final inexact = false;var filter = reader.tgReadObject();var count = reader.readInt();		return new SearchCounter(inexact : inexact, filter : filter, count : count);
@@ -944,7 +944,7 @@ class InactiveChats {
 	List<dynamic> users;
 
 
-	InactiveChats({this.dates, this.chats, this.users});
+	InactiveChats({required this.dates, required this.chats, required this.users});
 
 	static InactiveChats fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -976,7 +976,7 @@ class VotesList {
 	String nextOffset;
 
 
-	VotesList({this.count, this.votes, this.users, this.nextOffset});
+	VotesList({required this.count, required this.votes, required this.users, required this.nextOffset});
 
 	static VotesList fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var count = reader.readInt();reader.readInt();
@@ -989,6 +989,6 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }var nextOffset;if ((flags & 1)==1){var nextOffset = reader.tgReadString(); } else {nextOffset=null;}		return new VotesList(count : count, votes : votes, users : users, nextOffset : nextOffset);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(136574537,4),[0,0,0,0],readBufferFromBigInt(this.count,4,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.votes.length,4,little:true,signed:true),this.votes.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.nextOffset==null||this.nextOffset==false)?new List<int>():[serializeBytes(this.nextOffset)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(136574537,4),[0,0,0,0],readBufferFromBigInt(this.count,4,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.votes.length,4,little:true,signed:true),this.votes.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.nextOffset==null||this.nextOffset==false)?<int>[]:[serializeBytes(this.nextOffset)].expand((element) => element).toList(),].expand((element) => element).toList();}
 
 }

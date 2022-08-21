@@ -9,7 +9,7 @@ class RPCResult {
   var body;
   var error;
   final ID=0xf35c6d01;
-  RPCResult({this.reqMsgId, this.body, this.error});
+  RPCResult({required this.reqMsgId, this.body, this.error});
 
   static fromReader(BinaryReader reader) {
     final msgId = reader.readLong();

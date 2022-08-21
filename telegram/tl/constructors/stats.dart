@@ -23,7 +23,7 @@ class BroadcastStats {
 	List<dynamic> recentMessageInteractions;
 
 
-	BroadcastStats({this.period, this.followers, this.viewsPerPost, this.sharesPerPost, this.enabledNotifications, this.growthGraph, this.followersGraph, this.muteGraph, this.topHoursGraph, this.interactionsGraph, this.ivInteractionsGraph, this.viewsBySourceGraph, this.newFollowersBySourceGraph, this.languagesGraph, this.recentMessageInteractions});
+	BroadcastStats({required this.period, required this.followers, required this.viewsPerPost, required this.sharesPerPost, required this.enabledNotifications, required this.growthGraph, required this.followersGraph, required this.muteGraph, required this.topHoursGraph, required this.interactionsGraph, required this.ivInteractionsGraph, required this.viewsBySourceGraph, required this.newFollowersBySourceGraph, required this.languagesGraph, required this.recentMessageInteractions});
 
 	static BroadcastStats fromReader(BinaryReader reader) {
 	var temp,len;var period = reader.tgReadObject();var followers = reader.tgReadObject();var viewsPerPost = reader.tgReadObject();var sharesPerPost = reader.tgReadObject();var enabledNotifications = reader.tgReadObject();var growthGraph = reader.tgReadObject();var followersGraph = reader.tgReadObject();var muteGraph = reader.tgReadObject();var topHoursGraph = reader.tgReadObject();var interactionsGraph = reader.tgReadObject();var ivInteractionsGraph = reader.tgReadObject();var viewsBySourceGraph = reader.tgReadObject();var newFollowersBySourceGraph = reader.tgReadObject();var languagesGraph = reader.tgReadObject();reader.readInt();

@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:typed_data';
+
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 import '../crypto/auth_key.dart';
@@ -32,8 +35,8 @@ doAuthentication(MTProtoPlainSender sender, log) async {
   log.debug('Starting authKey generation step 2');
   // Step 2 sending: DH Exchange
   final factRes = Factorizator.factorize(pq);
-  var p_int = factRes['p'];
-  var q_int = factRes['q'];
+  BigInt p_int = factRes['p'] as BigInt;
+  var q_int = factRes['q'] as BigInt;
   // TODO Bring back after 'Factorizator' fix.
   final List<int> p = getByteArray(p_int);
   final List<int> q = getByteArray(q_int);
@@ -108,8 +111,8 @@ doAuthentication(MTProtoPlainSender sender, log) async {
 
   // Step 3 sending: Complete DH Exchange
   final resData = await generateKeyDataFromNonce(resPQ.serverNonce, newNonce);
-  final key = resData['key'];
-  final iv = resData['iv'];
+  final key = resData['key'] as Uint8List;
+  final iv = resData['iv'] as List<int>;
   if (serverDhParams.encryptedAnswer.length % 16 != 0) {
     // See PR#453
     throw new SecurityError('Step 3 AES block size mismatch');

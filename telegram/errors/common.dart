@@ -19,7 +19,7 @@ class TypeNotFoundError implements Exception {
   int invalidConstructorId;
   int remaining;
 
-  TypeNotFoundError({this.invalidConstructorId, this.remaining});
+  TypeNotFoundError({required this.invalidConstructorId, required this.remaining});
 
   String toString() => '''Could not find a matching Constructor ID for the TLObject that was supposed to be
     read with ID ${invalidConstructorId}. Most likely, a TLObject was trying to be read when
@@ -34,7 +34,7 @@ class InvalidChecksumError implements Exception {
   int checksum;
   int validChecksum;
 
-  InvalidChecksumError({this.checksum, this.validChecksum});
+  InvalidChecksumError({required this.checksum, required this.validChecksum});
 
   String toString() => '''Invalid checksum (${checksum} when ${validChecksum} was expected).This
     packet should be skipped''';
@@ -47,7 +47,7 @@ class InvalidChecksumError implements Exception {
 class InvalidBufferError implements Exception {
   List<int> payload;
 
-  InvalidBufferError({this.payload});
+  InvalidBufferError({required this.payload});
 
   String toString() {
     if (payload.length == 4) {

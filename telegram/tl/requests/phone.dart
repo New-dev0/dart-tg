@@ -32,7 +32,7 @@ class RequestCall {
 	var protocol;
 
 
-	RequestCall({this.video, this.userId, this.randomId, this.gAHash, this.protocol});
+	RequestCall({required this.video, required this.userId, required this.randomId, required this.gAHash, required this.protocol});
 
 	static RequestCall fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final video = false;var userId = reader.tgReadObject();var randomId = reader.readInt();var gAHash = reader.tgReadBytes();var protocol = reader.tgReadObject();		return new RequestCall(video : video, userId : userId, randomId : randomId, gAHash : gAHash, protocol : protocol);
@@ -54,7 +54,7 @@ class AcceptCall {
 	var protocol;
 
 
-	AcceptCall({this.peer, this.gB, this.protocol});
+	AcceptCall({required this.peer, required this.gB, required this.protocol});
 
 	static AcceptCall fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var gB = reader.tgReadBytes();var protocol = reader.tgReadObject();		return new AcceptCall(peer : peer, gB : gB, protocol : protocol);
@@ -77,7 +77,7 @@ class ConfirmCall {
 	var protocol;
 
 
-	ConfirmCall({this.peer, this.gA, this.keyFingerprint, this.protocol});
+	ConfirmCall({required this.peer, required this.gA, required this.keyFingerprint, required this.protocol});
 
 	static ConfirmCall fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var gA = reader.tgReadBytes();var keyFingerprint = reader.readLong();var protocol = reader.tgReadObject();		return new ConfirmCall(peer : peer, gA : gA, keyFingerprint : keyFingerprint, protocol : protocol);
@@ -97,7 +97,7 @@ class ReceivedCall {
 	var peer;
 
 
-	ReceivedCall({this.peer});
+	ReceivedCall({required this.peer});
 
 	static ReceivedCall fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();		return new ReceivedCall(peer : peer);
@@ -121,7 +121,7 @@ class DiscardCall {
 	BigInt connectionId;
 
 
-	DiscardCall({this.video, this.peer, this.duration, this.reason, this.connectionId});
+	DiscardCall({required this.video, required this.peer, required this.duration, required this.reason, required this.connectionId});
 
 	static DiscardCall fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final video = false;var peer = reader.tgReadObject();var duration = reader.readInt();var reason = reader.tgReadObject();var connectionId = reader.readLong();		return new DiscardCall(video : video, peer : peer, duration : duration, reason : reason, connectionId : connectionId);
@@ -144,7 +144,7 @@ class SetCallRating {
 	String comment;
 
 
-	SetCallRating({this.userInitiative, this.peer, this.rating, this.comment});
+	SetCallRating({required this.userInitiative, required this.peer, required this.rating, required this.comment});
 
 	static SetCallRating fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final userInitiative = false;var peer = reader.tgReadObject();var rating = reader.readInt();var comment = reader.tgReadString();		return new SetCallRating(userInitiative : userInitiative, peer : peer, rating : rating, comment : comment);
@@ -165,7 +165,7 @@ class SaveCallDebug {
 	var debug;
 
 
-	SaveCallDebug({this.peer, this.debug});
+	SaveCallDebug({required this.peer, required this.debug});
 
 	static SaveCallDebug fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var debug = reader.tgReadObject();		return new SaveCallDebug(peer : peer, debug : debug);

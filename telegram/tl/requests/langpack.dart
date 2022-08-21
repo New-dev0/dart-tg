@@ -10,7 +10,7 @@ class GetLangPack {
 	String langCode;
 
 
-	GetLangPack({this.langPack, this.langCode});
+	GetLangPack({required this.langPack, required this.langCode});
 
 	static GetLangPack fromReader(BinaryReader reader) {
 	var temp,len;var langPack = reader.tgReadString();var langCode = reader.tgReadString();		return new GetLangPack(langPack : langPack, langCode : langCode);
@@ -32,7 +32,7 @@ class GetStrings {
 	List<String> keys;
 
 
-	GetStrings({this.langPack, this.langCode, this.keys});
+	GetStrings({required this.langPack, required this.langCode, required this.keys});
 
 	static GetStrings fromReader(BinaryReader reader) {
 	var temp,len;var langPack = reader.tgReadString();var langCode = reader.tgReadString();reader.readInt();
@@ -58,7 +58,7 @@ class GetDifference {
 	int fromVersion;
 
 
-	GetDifference({this.langPack, this.langCode, this.fromVersion});
+	GetDifference({required this.langPack, required this.langCode, required this.fromVersion});
 
 	static GetDifference fromReader(BinaryReader reader) {
 	var temp,len;var langPack = reader.tgReadString();var langCode = reader.tgReadString();var fromVersion = reader.readInt();		return new GetDifference(langPack : langPack, langCode : langCode, fromVersion : fromVersion);
@@ -78,7 +78,7 @@ class GetLanguages {
 	String langPack;
 
 
-	GetLanguages({this.langPack});
+	GetLanguages({required this.langPack});
 
 	static GetLanguages fromReader(BinaryReader reader) {
 	var temp,len;var langPack = reader.tgReadString();		return new GetLanguages(langPack : langPack);
@@ -99,7 +99,7 @@ class GetLanguage {
 	String langCode;
 
 
-	GetLanguage({this.langPack, this.langCode});
+	GetLanguage({required this.langPack, required this.langCode});
 
 	static GetLanguage fromReader(BinaryReader reader) {
 	var temp,len;var langPack = reader.tgReadString();var langCode = reader.tgReadString();		return new GetLanguage(langPack : langPack, langCode : langCode);

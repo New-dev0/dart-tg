@@ -1,7 +1,7 @@
 import 'dart:async';
 
 class AsyncQueue {
-  List<List<int>> _queue;
+  late List<List<int>> _queue;
   Completer<bool> canPush = new Completer<bool>();
   Completer<bool> canGet = new Completer<bool>();
 

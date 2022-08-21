@@ -11,7 +11,7 @@ class SaveFilePart {
 	List<int> bytes;
 
 
-	SaveFilePart({this.fileId, this.filePart, this.bytes});
+	SaveFilePart({required this.fileId, required this.filePart, required this.bytes});
 
 	static SaveFilePart fromReader(BinaryReader reader) {
 	var temp,len;var fileId = reader.readLong();var filePart = reader.readInt();var bytes = reader.tgReadBytes();		return new SaveFilePart(fileId : fileId, filePart : filePart, bytes : bytes);
@@ -35,7 +35,7 @@ class GetFile {
 	int limit;
 
 
-	GetFile({this.precise, this.cdnSupported, this.location, this.offset, this.limit});
+	GetFile({required this.precise, required this.cdnSupported, required this.location, required this.offset, required this.limit});
 
 	static GetFile fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final precise = false;final cdnSupported = false;var location = reader.tgReadObject();var offset = reader.readInt();var limit = reader.readInt();		return new GetFile(precise : precise, cdnSupported : cdnSupported, location : location, offset : offset, limit : limit);
@@ -58,7 +58,7 @@ class SaveBigFilePart {
 	List<int> bytes;
 
 
-	SaveBigFilePart({this.fileId, this.filePart, this.fileTotalParts, this.bytes});
+	SaveBigFilePart({required this.fileId, required this.filePart, required this.fileTotalParts, required this.bytes});
 
 	static SaveBigFilePart fromReader(BinaryReader reader) {
 	var temp,len;var fileId = reader.readLong();var filePart = reader.readInt();var fileTotalParts = reader.readInt();var bytes = reader.tgReadBytes();		return new SaveBigFilePart(fileId : fileId, filePart : filePart, fileTotalParts : fileTotalParts, bytes : bytes);
@@ -80,7 +80,7 @@ class GetWebFile {
 	int limit;
 
 
-	GetWebFile({this.location, this.offset, this.limit});
+	GetWebFile({required this.location, required this.offset, required this.limit});
 
 	static GetWebFile fromReader(BinaryReader reader) {
 	var temp,len;var location = reader.tgReadObject();var offset = reader.readInt();var limit = reader.readInt();		return new GetWebFile(location : location, offset : offset, limit : limit);
@@ -102,7 +102,7 @@ class GetCdnFile {
 	int limit;
 
 
-	GetCdnFile({this.fileToken, this.offset, this.limit});
+	GetCdnFile({required this.fileToken, required this.offset, required this.limit});
 
 	static GetCdnFile fromReader(BinaryReader reader) {
 	var temp,len;var fileToken = reader.tgReadBytes();var offset = reader.readInt();var limit = reader.readInt();		return new GetCdnFile(fileToken : fileToken, offset : offset, limit : limit);
@@ -123,7 +123,7 @@ class ReuploadCdnFile {
 	List<int> requestToken;
 
 
-	ReuploadCdnFile({this.fileToken, this.requestToken});
+	ReuploadCdnFile({required this.fileToken, required this.requestToken});
 
 	static ReuploadCdnFile fromReader(BinaryReader reader) {
 	var temp,len;var fileToken = reader.tgReadBytes();var requestToken = reader.tgReadBytes();		return new ReuploadCdnFile(fileToken : fileToken, requestToken : requestToken);
@@ -144,7 +144,7 @@ class GetCdnFileHashes {
 	int offset;
 
 
-	GetCdnFileHashes({this.fileToken, this.offset});
+	GetCdnFileHashes({required this.fileToken, required this.offset});
 
 	static GetCdnFileHashes fromReader(BinaryReader reader) {
 	var temp,len;var fileToken = reader.tgReadBytes();var offset = reader.readInt();		return new GetCdnFileHashes(fileToken : fileToken, offset : offset);
@@ -165,7 +165,7 @@ class GetFileHashes {
 	int offset;
 
 
-	GetFileHashes({this.location, this.offset});
+	GetFileHashes({required this.location, required this.offset});
 
 	static GetFileHashes fromReader(BinaryReader reader) {
 	var temp,len;var location = reader.tgReadObject();var offset = reader.readInt();		return new GetFileHashes(location : location, offset : offset);

@@ -10,7 +10,7 @@ class SendCustomRequest {
 	var params;
 
 
-	SendCustomRequest({this.customMethod, this.params});
+	SendCustomRequest({required this.customMethod, required this.params});
 
 	static SendCustomRequest fromReader(BinaryReader reader) {
 	var temp,len;var customMethod = reader.tgReadString();var params = reader.tgReadObject();		return new SendCustomRequest(customMethod : customMethod, params : params);
@@ -31,7 +31,7 @@ class AnswerWebhookJSONQuery {
 	var data;
 
 
-	AnswerWebhookJSONQuery({this.queryId, this.data});
+	AnswerWebhookJSONQuery({required this.queryId, required this.data});
 
 	static AnswerWebhookJSONQuery fromReader(BinaryReader reader) {
 	var temp,len;var queryId = reader.readLong();var data = reader.tgReadObject();		return new AnswerWebhookJSONQuery(queryId : queryId, data : data);
@@ -51,7 +51,7 @@ class SetBotCommands {
 	List<dynamic> commands;
 
 
-	SetBotCommands({this.commands});
+	SetBotCommands({required this.commands});
 
 	static SetBotCommands fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();

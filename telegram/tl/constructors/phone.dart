@@ -10,7 +10,7 @@ class PhoneCall {
 	List<dynamic> users;
 
 
-	PhoneCall({this.phoneCall, this.users});
+	PhoneCall({required this.phoneCall, required this.users});
 
 	static PhoneCall fromReader(BinaryReader reader) {
 	var temp,len;var phoneCall = reader.tgReadObject();reader.readInt();

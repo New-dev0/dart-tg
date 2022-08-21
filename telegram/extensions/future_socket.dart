@@ -5,13 +5,13 @@ import 'dart:io';
 import 'binary_writer.dart';
 
 class FutureSocket {
-  Socket client;
+  late Socket client;
   bool closed = false;
-  BinaryWriter stream;
+  late BinaryWriter stream;
   Completer<bool> canRead = new Completer<bool>();
 
   Future<void> connect(String ip, int port) async {
-    stream = new BinaryWriter(new List<int>());
+    stream = new BinaryWriter([]);
     canRead = new Completer<bool>();
 
     client = await Socket.connect(ip, port);
@@ -51,7 +51,7 @@ class FutureSocket {
   }
 
   Future<List<int>> readExactly(int number) async {
-    final readData = new BinaryWriter(new List());
+    final readData = new BinaryWriter([]);
     while (true) {
       final thisTime = await this.read(number);
       readData.write(thisTime);

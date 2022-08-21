@@ -17,14 +17,14 @@ const String DEFAULT_IPV6_IP = '[2001:67c:4e8:f002::a]';
 const int DEFAULT_PORT = 443;
 
 class TelegramClient {
-  final int apiId;
-  StringSession session;
-  var _initWith;
-  int _connectionRetries, _requestRetries, _retryDelay;
+  int apiId;
   final String apiHash;
-  MTProtoSender _sender;
-  Logger _log;
-  Type _connection;
+  late StringSession session;
+  var _initWith;
+  late int _connectionRetries, _requestRetries, _retryDelay;
+  late MTProtoSender _sender;
+  late Logger _log;
+  late Type _connection;
   var _eventBuilders;
 
   TelegramClient(session, this.apiId, this.apiHash,
@@ -52,8 +52,9 @@ class TelegramClient {
     _initWith = (x) {
       return new InvokeWithLayer(
         layer: LAYER,
-        query: new InitConnection(
+        query: InitConnection(
           apiId: this.apiId,
+          params: {},
           deviceModel: deviceModel ?? Platform.operatingSystem,
           systemVersion: systemVersion ?? Platform.operatingSystemVersion,
           appVersion: appVersion ?? '1.0',

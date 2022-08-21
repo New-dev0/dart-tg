@@ -10,7 +10,7 @@ class Photos {
 	List<dynamic> users;
 
 
-	Photos({this.photos, this.users});
+	Photos({required this.photos, required this.users});
 
 	static Photos fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -37,7 +37,7 @@ class PhotosSlice {
 	List<dynamic> users;
 
 
-	PhotosSlice({this.count, this.photos, this.users});
+	PhotosSlice({required this.count, required this.photos, required this.users});
 
 	static PhotosSlice fromReader(BinaryReader reader) {
 	var temp,len;var count = reader.readInt();reader.readInt();
@@ -63,7 +63,7 @@ class Photo {
 	List<dynamic> users;
 
 
-	Photo({this.photo, this.users});
+	Photo({required this.photo, required this.users});
 
 	static Photo fromReader(BinaryReader reader) {
 	var temp,len;var photo = reader.tgReadObject();reader.readInt();

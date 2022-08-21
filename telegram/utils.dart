@@ -109,7 +109,7 @@ List<int> getByteArray(BigInt integer, {signed: false}) {
 }
 
 List<int> toSignedLittleBuffer(BigInt big, {int number: 8}) {
-  final byteArray = new List<int>(number);
+  final byteArray = [number];
   for (var i = 0; i < number; i++) {
     byteArray[i] = ((big >> (8 * i)) & BigInt.from(255)).toInt();
   }
@@ -142,7 +142,7 @@ List<int> serializeBytes(dynamic data) {
     r.addAll([254, data.length % 256 , (data.length >> 8) % 256 , (data.length >> 16) % 256]);
     r.addAll(data);
   }
-  final s = new List<int>(padding);
+  final s = [padding];
   s.fillRange(0, padding, 0);
   r.addAll(s);
 

@@ -27,7 +27,7 @@ class Contacts {
 	List<dynamic> users;
 
 
-	Contacts({this.contacts, this.savedCount, this.users});
+	Contacts({required this.contacts, required this.savedCount, required this.users});
 
 	static Contacts fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -55,7 +55,7 @@ class ImportedContacts {
 	List<dynamic> users;
 
 
-	ImportedContacts({this.imported, this.popularInvites, this.retryContacts, this.users});
+	ImportedContacts({required this.imported, required this.popularInvites, required this.retryContacts, required this.users});
 
 	static ImportedContacts fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -89,7 +89,7 @@ class Blocked {
 	List<dynamic> users;
 
 
-	Blocked({this.blocked, this.users});
+	Blocked({required this.blocked, required this.users});
 
 	static Blocked fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -116,7 +116,7 @@ class BlockedSlice {
 	List<dynamic> users;
 
 
-	BlockedSlice({this.count, this.blocked, this.users});
+	BlockedSlice({required this.count, required this.blocked, required this.users});
 
 	static BlockedSlice fromReader(BinaryReader reader) {
 	var temp,len;var count = reader.readInt();reader.readInt();
@@ -144,7 +144,7 @@ class Found {
 	List<dynamic> users;
 
 
-	Found({this.myResults, this.results, this.chats, this.users});
+	Found({required this.myResults, required this.results, required this.chats, required this.users});
 
 	static Found fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -179,7 +179,7 @@ class ResolvedPeer {
 	List<dynamic> users;
 
 
-	ResolvedPeer({this.peer, this.chats, this.users});
+	ResolvedPeer({required this.peer, required this.chats, required this.users});
 
 	static ResolvedPeer fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();reader.readInt();
@@ -222,7 +222,7 @@ class TopPeers {
 	List<dynamic> users;
 
 
-	TopPeers({this.categories, this.chats, this.users});
+	TopPeers({required this.categories, required this.chats, required this.users});
 
 	static TopPeers fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();

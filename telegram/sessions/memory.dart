@@ -2,14 +2,12 @@ import '../crypto/auth_key.dart';
 import 'abstract.dart';
 
 class MemorySession extends Session {
-  String _serverAddress;
-  int _dcId, _port;
-  AuthKey _authKey;
+  String? _serverAddress;
+  int _dcId = 0;
+  int? _port;
+  late AuthKey _authKey;
 
   MemorySession() {
-    this._serverAddress = null;
-    this._dcId = 0;
-    this._port = null;
   }
 
   setDC(dcId, serverAddress, port) {

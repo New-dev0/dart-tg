@@ -20,10 +20,10 @@ class Connection {
   var PacketCodecClass;
   var _ip,_port,_dcId,_log,_connected,_sendTask,_recvTask,_codec,
   _obfuscation;
-  AsyncQueue _sendArray,_recvArray;
-  FutureSocket socket;
+  late AsyncQueue _sendArray,_recvArray;
+  late FutureSocket socket;
   Connection(ip, port, dcId, loggers) {
-    this._ip = ip;
+    _ip = ip;
     this._port = port;
     this._dcId = dcId;
     this._log = loggers;
@@ -48,7 +48,7 @@ class Connection {
     await this._initConn();
   }
   connect() async{
-    await this._connect();
+    this._connect();
     this._connected = true;
 
     if (this._sendTask==null) {
@@ -59,7 +59,7 @@ class Connection {
 
   disconnect() async{
     this._connected = false;
-    await this._recvArray.push(null);
+    await this._recvArray.push([]);
     await this.socket.close();
   }
 
@@ -122,7 +122,7 @@ class Connection {
   }
   _initConn() async {
     if (this._codec.tag!=null) {
-      await this.socket.write(this._codec.tag);
+      this.socket.write(this._codec.tag);
     }
   }
 

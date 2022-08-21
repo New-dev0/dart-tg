@@ -15,7 +15,7 @@ class AppUpdate {
 	String url;
 
 
-	AppUpdate({this.canNotSkip, this.id, this.version, this.text, this.entities, this.document, this.url});
+	AppUpdate({required this.canNotSkip, required this.id, required this.version, required this.text, required this.entities, required this.document, required this.url});
 
 	static AppUpdate fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final canNotSkip = false;var id = reader.readInt();var version = reader.tgReadString();var text = reader.tgReadString();reader.readInt();
@@ -24,7 +24,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 }var document;if ((flags & 2)==1){var document = reader.tgReadObject(); } else {document=null;}var url;if ((flags & 4)==1){var url = reader.tgReadString(); } else {url=null;}		return new AppUpdate(canNotSkip : canNotSkip, id : id, version : version, text : text, entities : entities, document : document, url : url);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(497489295,4),[0,0,0,0],readBufferFromBigInt(this.id,4,little:true,signed:true),serializeBytes(this.version),serializeBytes(this.text),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.document==null||this.document==false)?new List<int>():[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.url==null||this.url==false)?new List<int>():[serializeBytes(this.url)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(497489295,4),[0,0,0,0],readBufferFromBigInt(this.id,4,little:true,signed:true),serializeBytes(this.version),serializeBytes(this.text),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.document==null||this.document==false)?<int>[]:[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.url==null||this.url==false)?<int>[]:[serializeBytes(this.url)].expand((element) => element).toList(),].expand((element) => element).toList();}
 
 }
 
@@ -52,7 +52,7 @@ class InviteText {
 	String message;
 
 
-	InviteText({this.message});
+	InviteText({required this.message});
 
 	static InviteText fromReader(BinaryReader reader) {
 	var temp,len;var message = reader.tgReadString();		return new InviteText(message : message);
@@ -70,7 +70,7 @@ class Support {
 	var user;
 
 
-	Support({this.phoneNumber, this.user});
+	Support({required this.phoneNumber, required this.user});
 
 	static Support fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var user = reader.tgReadObject();		return new Support(phoneNumber : phoneNumber, user : user);
@@ -91,7 +91,7 @@ class TermsOfService {
 	int minAgeConfirm;
 
 
-	TermsOfService({this.popup, this.id, this.text, this.entities, this.minAgeConfirm});
+	TermsOfService({required this.popup, required this.id, required this.text, required this.entities, required this.minAgeConfirm});
 
 	static TermsOfService fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final popup = false;var id = reader.tgReadObject();var text = reader.tgReadString();reader.readInt();
@@ -100,7 +100,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 }var minAgeConfirm;if ((flags & 2)==1){var minAgeConfirm = reader.readInt(); } else {minAgeConfirm=null;}		return new TermsOfService(popup : popup, id : id, text : text, entities : entities, minAgeConfirm : minAgeConfirm);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2013922064,4),[0,0,0,0],(this.id.getBytes() as List<int>),serializeBytes(this.text),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.minAgeConfirm==null||this.minAgeConfirm==false)?new List<int>():[readBufferFromBigInt(this.minAgeConfirm,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2013922064,4),[0,0,0,0],(this.id.getBytes() as List<int>),serializeBytes(this.text),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.minAgeConfirm==null||this.minAgeConfirm==false)?<int>[]:[readBufferFromBigInt(this.minAgeConfirm,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 
 }
 
@@ -114,7 +114,7 @@ class RecentMeUrls {
 	List<dynamic> users;
 
 
-	RecentMeUrls({this.urls, this.chats, this.users});
+	RecentMeUrls({required this.urls, required this.chats, required this.users});
 
 	static RecentMeUrls fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -143,7 +143,7 @@ class ProxyDataEmpty {
 	int expires;
 
 
-	ProxyDataEmpty({this.expires});
+	ProxyDataEmpty({required this.expires});
 
 	static ProxyDataEmpty fromReader(BinaryReader reader) {
 	var temp,len;var expires = reader.readInt();		return new ProxyDataEmpty(expires : expires);
@@ -163,7 +163,7 @@ class ProxyDataPromo {
 	List<dynamic> users;
 
 
-	ProxyDataPromo({this.expires, this.peer, this.chats, this.users});
+	ProxyDataPromo({required this.expires, required this.peer, required this.chats, required this.users});
 
 	static ProxyDataPromo fromReader(BinaryReader reader) {
 	var temp,len;var expires = reader.readInt();var peer = reader.tgReadObject();reader.readInt();
@@ -188,7 +188,7 @@ class TermsOfServiceUpdateEmpty {
 	int expires;
 
 
-	TermsOfServiceUpdateEmpty({this.expires});
+	TermsOfServiceUpdateEmpty({required this.expires});
 
 	static TermsOfServiceUpdateEmpty fromReader(BinaryReader reader) {
 	var temp,len;var expires = reader.readInt();		return new TermsOfServiceUpdateEmpty(expires : expires);
@@ -206,7 +206,7 @@ class TermsOfServiceUpdate {
 	var termsOfService;
 
 
-	TermsOfServiceUpdate({this.expires, this.termsOfService});
+	TermsOfServiceUpdate({required this.expires, required this.termsOfService});
 
 	static TermsOfServiceUpdate fromReader(BinaryReader reader) {
 	var temp,len;var expires = reader.readInt();var termsOfService = reader.tgReadObject();		return new TermsOfServiceUpdate(expires : expires, termsOfService : termsOfService);
@@ -241,7 +241,7 @@ class DeepLinkInfo {
 	List<dynamic> entities;
 
 
-	DeepLinkInfo({this.updateApp, this.message, this.entities});
+	DeepLinkInfo({required this.updateApp, required this.message, required this.entities});
 
 	static DeepLinkInfo fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final updateApp = false;var message = reader.tgReadString();var entities;if ((flags & 2)==1){reader.readInt();
@@ -250,7 +250,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 } } else {entities=null;}		return new DeepLinkInfo(updateApp : updateApp, message : message, entities : entities);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1783556146,4),[0,0,0,0],serializeBytes(this.message),(this.entities==null||this.entities==false)?new List<int>():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1783556146,4),[0,0,0,0],serializeBytes(this.message),(this.entities==null||this.entities==false)?<int>[]:[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
 
 }
 
@@ -279,7 +279,7 @@ class PassportConfig {
 	var countriesLangs;
 
 
-	PassportConfig({this.hash, this.countriesLangs});
+	PassportConfig({required this.hash, required this.countriesLangs});
 
 	static PassportConfig fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();var countriesLangs = reader.tgReadObject();		return new PassportConfig(hash : hash, countriesLangs : countriesLangs);
@@ -296,7 +296,7 @@ class SupportName {
 	String name;
 
 
-	SupportName({this.name});
+	SupportName({required this.name});
 
 	static SupportName fromReader(BinaryReader reader) {
 	var temp,len;var name = reader.tgReadString();		return new SupportName(name : name);
@@ -332,7 +332,7 @@ class UserInfo {
 	int date;
 
 
-	UserInfo({this.message, this.entities, this.author, this.date});
+	UserInfo({required this.message, required this.entities, required this.author, required this.date});
 
 	static UserInfo fromReader(BinaryReader reader) {
 	var temp,len;var message = reader.tgReadString();reader.readInt();
@@ -355,7 +355,7 @@ class ConfigSimple {
 	List<dynamic> rules;
 
 
-	ConfigSimple({this.date, this.expires, this.rules});
+	ConfigSimple({required this.date, required this.expires, required this.rules});
 
 	static ConfigSimple fromReader(BinaryReader reader) {
 	var temp,len;var date = reader.readInt();var expires = reader.readInt();List<dynamic> rules = [];len = reader.readInt();

@@ -11,7 +11,7 @@ class File {
 	List<int> bytes;
 
 
-	File({this.type, this.mtime, this.bytes});
+	File({required this.type, required this.mtime, required this.bytes});
 
 	static File fromReader(BinaryReader reader) {
 	var temp,len;var type = reader.tgReadObject();var mtime = reader.readInt();var bytes = reader.tgReadBytes();		return new File(type : type, mtime : mtime, bytes : bytes);
@@ -32,7 +32,7 @@ class FileCdnRedirect {
 	List<dynamic> fileHashes;
 
 
-	FileCdnRedirect({this.dcId, this.fileToken, this.encryptionKey, this.encryptionIv, this.fileHashes});
+	FileCdnRedirect({required this.dcId, required this.fileToken, required this.encryptionKey, required this.encryptionIv, required this.fileHashes});
 
 	static FileCdnRedirect fromReader(BinaryReader reader) {
 	var temp,len;var dcId = reader.readInt();var fileToken = reader.tgReadBytes();var encryptionKey = reader.tgReadBytes();var encryptionIv = reader.tgReadBytes();reader.readInt();
@@ -57,7 +57,7 @@ class WebFile {
 	List<int> bytes;
 
 
-	WebFile({this.size, this.mimeType, this.fileType, this.mtime, this.bytes});
+	WebFile({required this.size, required this.mimeType, required this.fileType, required this.mtime, required this.bytes});
 
 	static WebFile fromReader(BinaryReader reader) {
 	var temp,len;var size = reader.readInt();var mimeType = reader.tgReadString();var fileType = reader.tgReadObject();var mtime = reader.readInt();var bytes = reader.tgReadBytes();		return new WebFile(size : size, mimeType : mimeType, fileType : fileType, mtime : mtime, bytes : bytes);
@@ -74,7 +74,7 @@ class CdnFileReuploadNeeded {
 	List<int> requestToken;
 
 
-	CdnFileReuploadNeeded({this.requestToken});
+	CdnFileReuploadNeeded({required this.requestToken});
 
 	static CdnFileReuploadNeeded fromReader(BinaryReader reader) {
 	var temp,len;var requestToken = reader.tgReadBytes();		return new CdnFileReuploadNeeded(requestToken : requestToken);
@@ -91,7 +91,7 @@ class CdnFile {
 	List<int> bytes;
 
 
-	CdnFile({this.bytes});
+	CdnFile({required this.bytes});
 
 	static CdnFile fromReader(BinaryReader reader) {
 	var temp,len;var bytes = reader.tgReadBytes();		return new CdnFile(bytes : bytes);

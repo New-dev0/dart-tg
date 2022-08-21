@@ -9,7 +9,7 @@ class GetPaymentForm {
 	int msgId;
 
 
-	GetPaymentForm({this.msgId});
+	GetPaymentForm({required this.msgId});
 
 	static GetPaymentForm fromReader(BinaryReader reader) {
 	var temp,len;var msgId = reader.readInt();		return new GetPaymentForm(msgId : msgId);
@@ -29,7 +29,7 @@ class GetPaymentReceipt {
 	int msgId;
 
 
-	GetPaymentReceipt({this.msgId});
+	GetPaymentReceipt({required this.msgId});
 
 	static GetPaymentReceipt fromReader(BinaryReader reader) {
 	var temp,len;var msgId = reader.readInt();		return new GetPaymentReceipt(msgId : msgId);
@@ -51,7 +51,7 @@ class ValidateRequestedInfo {
 	var info;
 
 
-	ValidateRequestedInfo({this.save, this.msgId, this.info});
+	ValidateRequestedInfo({required this.save, required this.msgId, required this.info});
 
 	static ValidateRequestedInfo fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final save = false;var msgId = reader.readInt();var info = reader.tgReadObject();		return new ValidateRequestedInfo(save : save, msgId : msgId, info : info);
@@ -74,12 +74,12 @@ class SendPaymentForm {
 	var credentials;
 
 
-	SendPaymentForm({this.msgId, this.requestedInfoId, this.shippingOptionId, this.credentials});
+	SendPaymentForm({required this.msgId, required this.requestedInfoId, required this.shippingOptionId, required this.credentials});
 
 	static SendPaymentForm fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var msgId = reader.readInt();var requestedInfoId;if ((flags & 1)==1){var requestedInfoId = reader.tgReadString(); } else {requestedInfoId=null;}var shippingOptionId;if ((flags & 2)==1){var shippingOptionId = reader.tgReadString(); } else {shippingOptionId=null;}var credentials = reader.tgReadObject();		return new SendPaymentForm(msgId : msgId, requestedInfoId : requestedInfoId, shippingOptionId : shippingOptionId, credentials : credentials);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(730364339,4),[0,0,0,0],readBufferFromBigInt(this.msgId,4,little:true,signed:true),(this.requestedInfoId==null||this.requestedInfoId==false)?new List<int>():[serializeBytes(this.requestedInfoId)].expand((element) => element).toList(),(this.shippingOptionId==null||this.shippingOptionId==false)?new List<int>():[serializeBytes(this.shippingOptionId)].expand((element) => element).toList(),(this.credentials.getBytes() as List<int>),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(730364339,4),[0,0,0,0],readBufferFromBigInt(this.msgId,4,little:true,signed:true),(this.requestedInfoId==null||this.requestedInfoId==false)?<int>[]:[serializeBytes(this.requestedInfoId)].expand((element) => element).toList(),(this.shippingOptionId==null||this.shippingOptionId==false)?<int>[]:[serializeBytes(this.shippingOptionId)].expand((element) => element).toList(),(this.credentials.getBytes() as List<int>),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -114,7 +114,7 @@ class ClearSavedInfo {
 	bool info;
 
 
-	ClearSavedInfo({this.credentials, this.info});
+	ClearSavedInfo({required this.credentials, required this.info});
 
 	static ClearSavedInfo fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final credentials = false;final info = false;		return new ClearSavedInfo(credentials : credentials, info : info);
@@ -134,7 +134,7 @@ class GetBankCardData {
 	String number;
 
 
-	GetBankCardData({this.number});
+	GetBankCardData({required this.number});
 
 	static GetBankCardData fromReader(BinaryReader reader) {
 	var temp,len;var number = reader.tgReadString();		return new GetBankCardData(number : number);

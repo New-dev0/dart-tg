@@ -47,7 +47,7 @@ class GetAppUpdate {
 	String source;
 
 
-	GetAppUpdate({this.source});
+	GetAppUpdate({required this.source});
 
 	static GetAppUpdate fromReader(BinaryReader reader) {
 	var temp,len;var source = reader.tgReadString();		return new GetAppUpdate(source : source);
@@ -105,7 +105,7 @@ class GetAppChangelog {
 	String prevAppVersion;
 
 
-	GetAppChangelog({this.prevAppVersion});
+	GetAppChangelog({required this.prevAppVersion});
 
 	static GetAppChangelog fromReader(BinaryReader reader) {
 	var temp,len;var prevAppVersion = reader.tgReadString();		return new GetAppChangelog(prevAppVersion : prevAppVersion);
@@ -126,7 +126,7 @@ class SetBotUpdatesStatus {
 	String message;
 
 
-	SetBotUpdatesStatus({this.pendingUpdatesCount, this.message});
+	SetBotUpdatesStatus({required this.pendingUpdatesCount, required this.message});
 
 	static SetBotUpdatesStatus fromReader(BinaryReader reader) {
 	var temp,len;var pendingUpdatesCount = reader.readInt();var message = reader.tgReadString();		return new SetBotUpdatesStatus(pendingUpdatesCount : pendingUpdatesCount, message : message);
@@ -165,7 +165,7 @@ class GetRecentMeUrls {
 	String referer;
 
 
-	GetRecentMeUrls({this.referer});
+	GetRecentMeUrls({required this.referer});
 
 	static GetRecentMeUrls fromReader(BinaryReader reader) {
 	var temp,len;var referer = reader.tgReadString();		return new GetRecentMeUrls(referer : referer);
@@ -223,7 +223,7 @@ class AcceptTermsOfService {
 	var id;
 
 
-	AcceptTermsOfService({this.id});
+	AcceptTermsOfService({required this.id});
 
 	static AcceptTermsOfService fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();		return new AcceptTermsOfService(id : id);
@@ -243,7 +243,7 @@ class GetDeepLinkInfo {
 	String path;
 
 
-	GetDeepLinkInfo({this.path});
+	GetDeepLinkInfo({required this.path});
 
 	static GetDeepLinkInfo fromReader(BinaryReader reader) {
 	var temp,len;var path = reader.tgReadString();		return new GetDeepLinkInfo(path : path);
@@ -282,7 +282,7 @@ class SaveAppLog {
 	List<dynamic> events;
 
 
-	SaveAppLog({this.events});
+	SaveAppLog({required this.events});
 
 	static SaveAppLog fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -306,7 +306,7 @@ class GetPassportConfig {
 	int hash;
 
 
-	GetPassportConfig({this.hash});
+	GetPassportConfig({required this.hash});
 
 	static GetPassportConfig fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();		return new GetPassportConfig(hash : hash);
@@ -345,7 +345,7 @@ class GetUserInfo {
 	var userId;
 
 
-	GetUserInfo({this.userId});
+	GetUserInfo({required this.userId});
 
 	static GetUserInfo fromReader(BinaryReader reader) {
 	var temp,len;var userId = reader.tgReadObject();		return new GetUserInfo(userId : userId);
@@ -367,7 +367,7 @@ class EditUserInfo {
 	List<dynamic> entities;
 
 
-	EditUserInfo({this.userId, this.message, this.entities});
+	EditUserInfo({required this.userId, required this.message, required this.entities});
 
 	static EditUserInfo fromReader(BinaryReader reader) {
 	var temp,len;var userId = reader.tgReadObject();var message = reader.tgReadString();reader.readInt();

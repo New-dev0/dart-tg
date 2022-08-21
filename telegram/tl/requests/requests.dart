@@ -10,7 +10,7 @@ class InvokeAfterMsg {
 	var query;
 
 
-	InvokeAfterMsg({this.msgId, this.query});
+	InvokeAfterMsg({required this.msgId, required this.query});
 
 	static InvokeAfterMsg fromReader(BinaryReader reader) {
 	var temp,len;var msgId = reader.readLong();var query = reader.tgReadObject();		return new InvokeAfterMsg(msgId : msgId, query : query);
@@ -31,7 +31,7 @@ class InvokeAfterMsgs {
 	var query;
 
 
-	InvokeAfterMsgs({this.msgIds, this.query});
+	InvokeAfterMsgs({required this.msgIds, required this.query});
 
 	static InvokeAfterMsgs fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -64,12 +64,12 @@ class InitConnection {
 	var query;
 
 
-	InitConnection({this.apiId, this.deviceModel, this.systemVersion, this.appVersion, this.systemLangCode, this.langPack, this.langCode, this.proxy, this.params, this.query});
+	InitConnection({required this.apiId, required this.deviceModel, required this.systemVersion, required this.appVersion, required this.systemLangCode, required this.langPack, required this.langCode, required this.proxy, required this.params, required this.query});
 
 	static InitConnection fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var apiId = reader.readInt();var deviceModel = reader.tgReadString();var systemVersion = reader.tgReadString();var appVersion = reader.tgReadString();var systemLangCode = reader.tgReadString();var langPack = reader.tgReadString();var langCode = reader.tgReadString();var proxy;if ((flags & 1)==1){var proxy = reader.tgReadObject(); } else {proxy=null;}var params;if ((flags & 2)==1){var params = reader.tgReadObject(); } else {params=null;}var query = reader.tgReadObject();		return new InitConnection(apiId : apiId, deviceModel : deviceModel, systemVersion : systemVersion, appVersion : appVersion, systemLangCode : systemLangCode, langPack : langPack, langCode : langCode, proxy : proxy, params : params, query : query);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3251461801,4),[0,0,0,0],readBufferFromBigInt(this.apiId,4,little:true,signed:true),serializeBytes(this.deviceModel),serializeBytes(this.systemVersion),serializeBytes(this.appVersion),serializeBytes(this.systemLangCode),serializeBytes(this.langPack),serializeBytes(this.langCode),(this.proxy==null||this.proxy==false)?new List<int>():[(this.proxy.getBytes() as List<int>)].expand((element) => element).toList(),(this.params==null||this.params==false)?new List<int>():[(this.params.getBytes() as List<int>)].expand((element) => element).toList(),(this.query.getBytes() as List<int>),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3251461801,4),[0,0,0,0],readBufferFromBigInt(this.apiId,4,little:true,signed:true),serializeBytes(this.deviceModel),serializeBytes(this.systemVersion),serializeBytes(this.appVersion),serializeBytes(this.systemLangCode),serializeBytes(this.langPack),serializeBytes(this.langCode),(this.proxy==null||this.proxy==false)?<int>[]:[(this.proxy.getBytes() as List<int>)].expand((element) => element).toList(),(this.params==null||this.params==false)?<int>[]:[(this.params.getBytes() as List<int>)].expand((element) => element).toList(),(this.query.getBytes() as List<int>),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -85,7 +85,7 @@ class InvokeWithLayer {
 	var query;
 
 
-	InvokeWithLayer({this.layer, this.query});
+	InvokeWithLayer({required this.layer, required this.query});
 
 	static InvokeWithLayer fromReader(BinaryReader reader) {
 	var temp,len;var layer = reader.readInt();var query = reader.tgReadObject();		return new InvokeWithLayer(layer : layer, query : query);
@@ -105,7 +105,7 @@ class InvokeWithoutUpdates {
 	var query;
 
 
-	InvokeWithoutUpdates({this.query});
+	InvokeWithoutUpdates({required this.query});
 
 	static InvokeWithoutUpdates fromReader(BinaryReader reader) {
 	var temp,len;var query = reader.tgReadObject();		return new InvokeWithoutUpdates(query : query);
@@ -126,7 +126,7 @@ class InvokeWithMessagesRange {
 	var query;
 
 
-	InvokeWithMessagesRange({this.range, this.query});
+	InvokeWithMessagesRange({required this.range, required this.query});
 
 	static InvokeWithMessagesRange fromReader(BinaryReader reader) {
 	var temp,len;var range = reader.tgReadObject();var query = reader.tgReadObject();		return new InvokeWithMessagesRange(range : range, query : query);
@@ -147,7 +147,7 @@ class InvokeWithTakeout {
 	var query;
 
 
-	InvokeWithTakeout({this.takeoutId, this.query});
+	InvokeWithTakeout({required this.takeoutId, required this.query});
 
 	static InvokeWithTakeout fromReader(BinaryReader reader) {
 	var temp,len;var takeoutId = reader.readLong();var query = reader.tgReadObject();		return new InvokeWithTakeout(takeoutId : takeoutId, query : query);
@@ -167,7 +167,7 @@ class ReqPq {
 	BigInt nonce;
 
 
-	ReqPq({this.nonce});
+	ReqPq({required this.nonce});
 
 	static ReqPq fromReader(BinaryReader reader) {
 	var temp,len;var nonce = reader.readLargeInt(128);		return new ReqPq(nonce : nonce);
@@ -187,7 +187,7 @@ class ReqPqMulti {
 	BigInt nonce;
 
 
-	ReqPqMulti({this.nonce});
+	ReqPqMulti({required this.nonce});
 
 	static ReqPqMulti fromReader(BinaryReader reader) {
 	var temp,len;var nonce = reader.readLargeInt(128);		return new ReqPqMulti(nonce : nonce);
@@ -212,7 +212,7 @@ class ReqDHParams {
 	List<int> encryptedData;
 
 
-	ReqDHParams({this.nonce, this.serverNonce, this.p, this.q, this.publicKeyFingerprint, this.encryptedData});
+	ReqDHParams({required this.nonce, required this.serverNonce, required this.p, required this.q, required this.publicKeyFingerprint, required this.encryptedData});
 
 	static ReqDHParams fromReader(BinaryReader reader) {
 	var temp,len;var nonce = reader.readLargeInt(128);var serverNonce = reader.readLargeInt(128);var p = reader.tgReadBytes();var q = reader.tgReadBytes();var publicKeyFingerprint = reader.readLong();var encryptedData = reader.tgReadBytes();		return new ReqDHParams(nonce : nonce, serverNonce : serverNonce, p : p, q : q, publicKeyFingerprint : publicKeyFingerprint, encryptedData : encryptedData);
@@ -234,7 +234,7 @@ class SetClientDHParams {
 	List<int> encryptedData;
 
 
-	SetClientDHParams({this.nonce, this.serverNonce, this.encryptedData});
+	SetClientDHParams({required this.nonce, required this.serverNonce, required this.encryptedData});
 
 	static SetClientDHParams fromReader(BinaryReader reader) {
 	var temp,len;var nonce = reader.readLargeInt(128);var serverNonce = reader.readLargeInt(128);var encryptedData = reader.tgReadBytes();		return new SetClientDHParams(nonce : nonce, serverNonce : serverNonce, encryptedData : encryptedData);
@@ -273,7 +273,7 @@ class RpcDropAnswer {
 	BigInt reqMsgId;
 
 
-	RpcDropAnswer({this.reqMsgId});
+	RpcDropAnswer({required this.reqMsgId});
 
 	static RpcDropAnswer fromReader(BinaryReader reader) {
 	var temp,len;var reqMsgId = reader.readLong();		return new RpcDropAnswer(reqMsgId : reqMsgId);
@@ -293,7 +293,7 @@ class GetFutureSalts {
 	int num;
 
 
-	GetFutureSalts({this.num});
+	GetFutureSalts({required this.num});
 
 	static GetFutureSalts fromReader(BinaryReader reader) {
 	var temp,len;var num = reader.readInt();		return new GetFutureSalts(num : num);
@@ -313,7 +313,7 @@ class Ping {
 	BigInt pingId;
 
 
-	Ping({this.pingId});
+	Ping({required this.pingId});
 
 	static Ping fromReader(BinaryReader reader) {
 	var temp,len;var pingId = reader.readLong();		return new Ping(pingId : pingId);
@@ -334,7 +334,7 @@ class PingDelayDisconnect {
 	int disconnectDelay;
 
 
-	PingDelayDisconnect({this.pingId, this.disconnectDelay});
+	PingDelayDisconnect({required this.pingId, required this.disconnectDelay});
 
 	static PingDelayDisconnect fromReader(BinaryReader reader) {
 	var temp,len;var pingId = reader.readLong();var disconnectDelay = reader.readInt();		return new PingDelayDisconnect(pingId : pingId, disconnectDelay : disconnectDelay);
@@ -354,7 +354,7 @@ class DestroySession {
 	BigInt sessionId;
 
 
-	DestroySession({this.sessionId});
+	DestroySession({required this.sessionId});
 
 	static DestroySession fromReader(BinaryReader reader) {
 	var temp,len;var sessionId = reader.readLong();		return new DestroySession(sessionId : sessionId);

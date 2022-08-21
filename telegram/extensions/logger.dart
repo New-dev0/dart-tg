@@ -72,12 +72,12 @@ class Logger {
    * @param message {string}
    * @param color {string}
    */
-  void _log(String level,String message,String color) {
+  void _log(String level,String message, String? color) {
     if (_level==null) {
       return;
     }
     if (this.canSend(level)) {
-      print(color + this.format(message, level) + this.colors['end']);
+      print((message as String) + this.format(message, level) + (this.colors['end'] as String));
     }
   }
 }

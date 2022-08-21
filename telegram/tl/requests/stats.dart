@@ -11,7 +11,7 @@ class GetBroadcastStats {
 	int tzOffset;
 
 
-	GetBroadcastStats({this.dark, this.channel, this.tzOffset});
+	GetBroadcastStats({required this.dark, required this.channel, required this.tzOffset});
 
 	static GetBroadcastStats fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final dark = false;var channel = reader.tgReadObject();var tzOffset = reader.readInt();		return new GetBroadcastStats(dark : dark, channel : channel, tzOffset : tzOffset);
@@ -32,12 +32,12 @@ class LoadAsyncGraph {
 	BigInt x;
 
 
-	LoadAsyncGraph({this.token, this.x});
+	LoadAsyncGraph({required this.token, required this.x});
 
 	static LoadAsyncGraph fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var token = reader.tgReadString();var x;if ((flags & 1)==1){var x = reader.readLong(); } else {x=null;}		return new LoadAsyncGraph(token : token, x : x);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1646092192,4),[0,0,0,0],serializeBytes(this.token),(this.x==null||this.x==false)?new List<int>():[readBufferFromBigInt(this.x,8,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1646092192,4),[0,0,0,0],serializeBytes(this.token),(this.x==null||this.x==false)?<int>[]:[readBufferFromBigInt(this.x,8,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

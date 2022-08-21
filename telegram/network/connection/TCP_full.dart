@@ -5,7 +5,7 @@ import '../../utils.dart';
 import 'connection.dart';
 
 class FullPacketCodec extends PacketCodec {
-  int _sendCounter;
+  late int _sendCounter;
   var tag = null;
 
   FullPacketCodec(connection) : super(connection) {
@@ -16,7 +16,7 @@ class FullPacketCodec extends PacketCodec {
 // https://core.telegram.org/mtproto#tcp-transport
 // total length, sequence number, packet and checksum (CRC32)
     final length = data.length + 12;
-    final toSend = new List<int>();
+    final toSend = <int>[];
 
     toSend.addAll(readBufferFromBigInt(length, 4, signed: true));
 

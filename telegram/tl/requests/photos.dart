@@ -9,7 +9,7 @@ class UpdateProfilePhoto {
 	var id;
 
 
-	UpdateProfilePhoto({this.id});
+	UpdateProfilePhoto({required this.id});
 
 	static UpdateProfilePhoto fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();		return new UpdateProfilePhoto(id : id);
@@ -29,7 +29,7 @@ class UploadProfilePhoto {
 	var file;
 
 
-	UploadProfilePhoto({this.file});
+	UploadProfilePhoto({required this.file});
 
 	static UploadProfilePhoto fromReader(BinaryReader reader) {
 	var temp,len;var file = reader.tgReadObject();		return new UploadProfilePhoto(file : file);
@@ -49,7 +49,7 @@ class DeletePhotos {
 	List<dynamic> id;
 
 
-	DeletePhotos({this.id});
+	DeletePhotos({required this.id});
 
 	static DeletePhotos fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -66,7 +66,7 @@ final range = reader.readInt();
 final List<BigInt> result = [];
  for (int i=0;i<range;i++){
 	result.add(reader.readLong());}
-	}
+	return result;}
 
 }
 
@@ -81,7 +81,7 @@ class GetUserPhotos {
 	int limit;
 
 
-	GetUserPhotos({this.userId, this.offset, this.maxId, this.limit});
+	GetUserPhotos({required this.userId, required this.offset, required this.maxId, required this.limit});
 
 	static GetUserPhotos fromReader(BinaryReader reader) {
 	var temp,len;var userId = reader.tgReadObject();var offset = reader.readInt();var maxId = reader.readLong();var limit = reader.readInt();		return new GetUserPhotos(userId : userId, offset : offset, maxId : maxId, limit : limit);

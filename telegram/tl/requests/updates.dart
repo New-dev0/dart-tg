@@ -31,12 +31,12 @@ class GetDifference {
 	int qts;
 
 
-	GetDifference({this.pts, this.ptsTotalLimit, this.date, this.qts});
+	GetDifference({required this.pts, required this.ptsTotalLimit, required this.date, required this.qts});
 
 	static GetDifference fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var pts = reader.readInt();var ptsTotalLimit;if ((flags & 1)==1){var ptsTotalLimit = reader.readInt(); } else {ptsTotalLimit=null;}var date = reader.readInt();var qts = reader.readInt();		return new GetDifference(pts : pts, ptsTotalLimit : ptsTotalLimit, date : date, qts : qts);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(630429265,4),[0,0,0,0],readBufferFromBigInt(this.pts,4,little:true,signed:true),(this.ptsTotalLimit==null||this.ptsTotalLimit==false)?new List<int>():[readBufferFromBigInt(this.ptsTotalLimit,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(this.date,4,little:true,signed:true),readBufferFromBigInt(this.qts,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(630429265,4),[0,0,0,0],readBufferFromBigInt(this.pts,4,little:true,signed:true),(this.ptsTotalLimit==null||this.ptsTotalLimit==false)?<int>[]:[readBufferFromBigInt(this.ptsTotalLimit,4,little:true,signed:true)].expand((element) => element).toList(),readBufferFromBigInt(this.date,4,little:true,signed:true),readBufferFromBigInt(this.qts,4,little:true,signed:true),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -55,7 +55,7 @@ class GetChannelDifference {
 	int limit;
 
 
-	GetChannelDifference({this.force, this.channel, this.filter, this.pts, this.limit});
+	GetChannelDifference({required this.force, required this.channel, required this.filter, required this.pts, required this.limit});
 
 	static GetChannelDifference fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final force = false;var channel = reader.tgReadObject();var filter = reader.tgReadObject();var pts = reader.readInt();var limit = reader.readInt();		return new GetChannelDifference(force : force, channel : channel, filter : filter, pts : pts, limit : limit);

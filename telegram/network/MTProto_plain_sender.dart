@@ -1,3 +1,7 @@
+import 'dart:ffi';
+import 'dart:typed_data';
+
+import '../crypto/auth_key.dart';
 import '../extensions/binary_reader.dart';
 import '../utils.dart';
 import 'MTProto_state.dart';
@@ -13,10 +17,10 @@ class MTProtoPlainSender {
    * @param connection connection: the Connection to be used.
    * @param loggers
    */
-  MTProtoState _state;
-  Connection _connection;
+  late MTProtoState _state;
+  late Connection _connection;
   MTProtoPlainSender(Connection connection, loggers) {
-    this._state = new MTProtoState(null, loggers);
+    this._state = new MTProtoState(AuthKey(null, null), loggers);
     this._connection = connection;
   }
 
@@ -29,11 +33,11 @@ class MTProtoPlainSender {
     List<int> body = request.getBytes();
     BigInt msgId = this._state.getNewMsgId();
     final m = toSignedLittleBuffer(msgId, number: 8);
-    final b = new List<int>();
+    final b = [];
     b.addAll(readBufferFromBigInt(body.length, 4,signed: true));
 
     final res = [new List.filled(8,0), m, b, body].expand((element) => element).toList();
-    await this._connection.send(res);
+    await this._connection.send(res as Uint8List);
     body = await this._connection.recv();
     if (body.length < 8) {
       throw ("Invalid response buffer (too short $body)");

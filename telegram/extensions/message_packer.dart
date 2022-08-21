@@ -8,10 +8,10 @@ import 'binary_writer.dart';
 import 'logger.dart';
 
 class MessagePacker {
-  MTProtoState _state;
-  List<dynamic> _queue;
-  Logger _log;
-  Completer<bool> _ready = new Completer<bool>();
+  late MTProtoState _state;
+  late List<dynamic> _queue;
+  late Logger _log;
+  late Completer<bool> _ready = new Completer<bool>();
 
   MessagePacker(MTProtoState state, Logger logger) {
     this._state = state;
@@ -50,7 +50,7 @@ class MessagePacker {
       return;
     }
     var data;
-    BinaryWriter buffer = new BinaryWriter(new List<int>());
+    BinaryWriter buffer = new BinaryWriter([]);
 
     final batch = [];
     var size = 0;
@@ -58,7 +58,7 @@ class MessagePacker {
     while (this._queue.length > 0 && batch.length <= MessageContainer.MAXIMUM_LENGTH) {
       final state = this._queue.removeAt(0);
 
-      size += state.data.length + TLMessage.SIZE_OVERHEAD;
+      size += (state.data.length as int) + TLMessage.SIZE_OVERHEAD;
       if (size <= MessageContainer.MAXIMUM_SIZE) {
         var afterId;
         if (state.after != null) {
@@ -92,7 +92,7 @@ class MessagePacker {
           .toList();
 
       data = [b, buffer.getValue()].expand((element) => element).toList();
-      buffer = new BinaryWriter(new List());
+      buffer = new BinaryWriter([]);
       final containerId = await this._state.writeDataAsMessage(
             buffer,
             data,

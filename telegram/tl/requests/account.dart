@@ -14,7 +14,7 @@ class RegisterDevice {
 	List<int> otherUids;
 
 
-	RegisterDevice({this.noMuted, this.tokenType, this.token, this.appSandbox, this.secret, this.otherUids});
+	RegisterDevice({required this.noMuted, required this.tokenType, required this.token, required this.appSandbox, required this.secret, required this.otherUids});
 
 	static RegisterDevice fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final noMuted = false;var tokenType = reader.readInt();var token = reader.tgReadString();var appSandbox = reader.tgReadBool();var secret = reader.tgReadBytes();reader.readInt();
@@ -40,7 +40,7 @@ class UnregisterDevice {
 	List<int> otherUids;
 
 
-	UnregisterDevice({this.tokenType, this.token, this.otherUids});
+	UnregisterDevice({required this.tokenType, required this.token, required this.otherUids});
 
 	static UnregisterDevice fromReader(BinaryReader reader) {
 	var temp,len;var tokenType = reader.readInt();var token = reader.tgReadString();reader.readInt();
@@ -65,7 +65,7 @@ class UpdateNotifySettings {
 	var settings;
 
 
-	UpdateNotifySettings({this.peer, this.settings});
+	UpdateNotifySettings({required this.peer, required this.settings});
 
 	static UpdateNotifySettings fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var settings = reader.tgReadObject();		return new UpdateNotifySettings(peer : peer, settings : settings);
@@ -85,7 +85,7 @@ class GetNotifySettings {
 	var peer;
 
 
-	GetNotifySettings({this.peer});
+	GetNotifySettings({required this.peer});
 
 	static GetNotifySettings fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();		return new GetNotifySettings(peer : peer);
@@ -126,12 +126,12 @@ class UpdateProfile {
 	String about;
 
 
-	UpdateProfile({this.firstName, this.lastName, this.about});
+	UpdateProfile({required this.firstName, required this.lastName, required this.about});
 
 	static UpdateProfile fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var firstName;if ((flags & 1)==1){var firstName = reader.tgReadString(); } else {firstName=null;}var lastName;if ((flags & 2)==1){var lastName = reader.tgReadString(); } else {lastName=null;}var about;if ((flags & 4)==1){var about = reader.tgReadString(); } else {about=null;}		return new UpdateProfile(firstName : firstName, lastName : lastName, about : about);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2018596725,4),[0,0,0,0],(this.firstName==null||this.firstName==false)?new List<int>():[serializeBytes(this.firstName)].expand((element) => element).toList(),(this.lastName==null||this.lastName==false)?new List<int>():[serializeBytes(this.lastName)].expand((element) => element).toList(),(this.about==null||this.about==false)?new List<int>():[serializeBytes(this.about)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2018596725,4),[0,0,0,0],(this.firstName==null||this.firstName==false)?<int>[]:[serializeBytes(this.firstName)].expand((element) => element).toList(),(this.lastName==null||this.lastName==false)?<int>[]:[serializeBytes(this.lastName)].expand((element) => element).toList(),(this.about==null||this.about==false)?<int>[]:[serializeBytes(this.about)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -146,7 +146,7 @@ class UpdateStatus {
 	bool offline;
 
 
-	UpdateStatus({this.offline});
+	UpdateStatus({required this.offline});
 
 	static UpdateStatus fromReader(BinaryReader reader) {
 	var temp,len;var offline = reader.tgReadBool();		return new UpdateStatus(offline : offline);
@@ -166,7 +166,7 @@ class GetWallPapers {
 	int hash;
 
 
-	GetWallPapers({this.hash});
+	GetWallPapers({required this.hash});
 
 	static GetWallPapers fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();		return new GetWallPapers(hash : hash);
@@ -187,7 +187,7 @@ class ReportPeer {
 	var reason;
 
 
-	ReportPeer({this.peer, this.reason});
+	ReportPeer({required this.peer, required this.reason});
 
 	static ReportPeer fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var reason = reader.tgReadObject();		return new ReportPeer(peer : peer, reason : reason);
@@ -207,7 +207,7 @@ class CheckUsername {
 	String username;
 
 
-	CheckUsername({this.username});
+	CheckUsername({required this.username});
 
 	static CheckUsername fromReader(BinaryReader reader) {
 	var temp,len;var username = reader.tgReadString();		return new CheckUsername(username : username);
@@ -227,7 +227,7 @@ class UpdateUsername {
 	String username;
 
 
-	UpdateUsername({this.username});
+	UpdateUsername({required this.username});
 
 	static UpdateUsername fromReader(BinaryReader reader) {
 	var temp,len;var username = reader.tgReadString();		return new UpdateUsername(username : username);
@@ -247,7 +247,7 @@ class GetPrivacy {
 	var key;
 
 
-	GetPrivacy({this.key});
+	GetPrivacy({required this.key});
 
 	static GetPrivacy fromReader(BinaryReader reader) {
 	var temp,len;var key = reader.tgReadObject();		return new GetPrivacy(key : key);
@@ -268,7 +268,7 @@ class SetPrivacy {
 	List<dynamic> rules;
 
 
-	SetPrivacy({this.key, this.rules});
+	SetPrivacy({required this.key, required this.rules});
 
 	static SetPrivacy fromReader(BinaryReader reader) {
 	var temp,len;var key = reader.tgReadObject();reader.readInt();
@@ -292,7 +292,7 @@ class DeleteAccount {
 	String reason;
 
 
-	DeleteAccount({this.reason});
+	DeleteAccount({required this.reason});
 
 	static DeleteAccount fromReader(BinaryReader reader) {
 	var temp,len;var reason = reader.tgReadString();		return new DeleteAccount(reason : reason);
@@ -331,7 +331,7 @@ class SetAccountTTL {
 	var ttl;
 
 
-	SetAccountTTL({this.ttl});
+	SetAccountTTL({required this.ttl});
 
 	static SetAccountTTL fromReader(BinaryReader reader) {
 	var temp,len;var ttl = reader.tgReadObject();		return new SetAccountTTL(ttl : ttl);
@@ -352,7 +352,7 @@ class SendChangePhoneCode {
 	var settings;
 
 
-	SendChangePhoneCode({this.phoneNumber, this.settings});
+	SendChangePhoneCode({required this.phoneNumber, required this.settings});
 
 	static SendChangePhoneCode fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var settings = reader.tgReadObject();		return new SendChangePhoneCode(phoneNumber : phoneNumber, settings : settings);
@@ -374,7 +374,7 @@ class ChangePhone {
 	String phoneCode;
 
 
-	ChangePhone({this.phoneNumber, this.phoneCodeHash, this.phoneCode});
+	ChangePhone({required this.phoneNumber, required this.phoneCodeHash, required this.phoneCode});
 
 	static ChangePhone fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var phoneCodeHash = reader.tgReadString();var phoneCode = reader.tgReadString();		return new ChangePhone(phoneNumber : phoneNumber, phoneCodeHash : phoneCodeHash, phoneCode : phoneCode);
@@ -394,7 +394,7 @@ class UpdateDeviceLocked {
 	int period;
 
 
-	UpdateDeviceLocked({this.period});
+	UpdateDeviceLocked({required this.period});
 
 	static UpdateDeviceLocked fromReader(BinaryReader reader) {
 	var temp,len;var period = reader.readInt();		return new UpdateDeviceLocked(period : period);
@@ -433,7 +433,7 @@ class ResetAuthorization {
 	BigInt hash;
 
 
-	ResetAuthorization({this.hash});
+	ResetAuthorization({required this.hash});
 
 	static ResetAuthorization fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readLong();		return new ResetAuthorization(hash : hash);
@@ -472,7 +472,7 @@ class GetPasswordSettings {
 	var password;
 
 
-	GetPasswordSettings({this.password});
+	GetPasswordSettings({required this.password});
 
 	static GetPasswordSettings fromReader(BinaryReader reader) {
 	var temp,len;var password = reader.tgReadObject();		return new GetPasswordSettings(password : password);
@@ -493,7 +493,7 @@ class UpdatePasswordSettings {
 	var newSettings;
 
 
-	UpdatePasswordSettings({this.password, this.newSettings});
+	UpdatePasswordSettings({required this.password, required this.newSettings});
 
 	static UpdatePasswordSettings fromReader(BinaryReader reader) {
 	var temp,len;var password = reader.tgReadObject();var newSettings = reader.tgReadObject();		return new UpdatePasswordSettings(password : password, newSettings : newSettings);
@@ -514,7 +514,7 @@ class SendConfirmPhoneCode {
 	var settings;
 
 
-	SendConfirmPhoneCode({this.hash, this.settings});
+	SendConfirmPhoneCode({required this.hash, required this.settings});
 
 	static SendConfirmPhoneCode fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.tgReadString();var settings = reader.tgReadObject();		return new SendConfirmPhoneCode(hash : hash, settings : settings);
@@ -535,7 +535,7 @@ class ConfirmPhone {
 	String phoneCode;
 
 
-	ConfirmPhone({this.phoneCodeHash, this.phoneCode});
+	ConfirmPhone({required this.phoneCodeHash, required this.phoneCode});
 
 	static ConfirmPhone fromReader(BinaryReader reader) {
 	var temp,len;var phoneCodeHash = reader.tgReadString();var phoneCode = reader.tgReadString();		return new ConfirmPhone(phoneCodeHash : phoneCodeHash, phoneCode : phoneCode);
@@ -556,7 +556,7 @@ class GetTmpPassword {
 	int period;
 
 
-	GetTmpPassword({this.password, this.period});
+	GetTmpPassword({required this.password, required this.period});
 
 	static GetTmpPassword fromReader(BinaryReader reader) {
 	var temp,len;var password = reader.tgReadObject();var period = reader.readInt();		return new GetTmpPassword(password : password, period : period);
@@ -595,7 +595,7 @@ class ResetWebAuthorization {
 	BigInt hash;
 
 
-	ResetWebAuthorization({this.hash});
+	ResetWebAuthorization({required this.hash});
 
 	static ResetWebAuthorization fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readLong();		return new ResetWebAuthorization(hash : hash);
@@ -653,7 +653,7 @@ class GetSecureValue {
 	List<dynamic> types;
 
 
-	GetSecureValue({this.types});
+	GetSecureValue({required this.types});
 
 	static GetSecureValue fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -678,7 +678,7 @@ class SaveSecureValue {
 	BigInt secureSecretId;
 
 
-	SaveSecureValue({this.value, this.secureSecretId});
+	SaveSecureValue({required this.value, required this.secureSecretId});
 
 	static SaveSecureValue fromReader(BinaryReader reader) {
 	var temp,len;var value = reader.tgReadObject();var secureSecretId = reader.readLong();		return new SaveSecureValue(value : value, secureSecretId : secureSecretId);
@@ -698,7 +698,7 @@ class DeleteSecureValue {
 	List<dynamic> types;
 
 
-	DeleteSecureValue({this.types});
+	DeleteSecureValue({required this.types});
 
 	static DeleteSecureValue fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -724,7 +724,7 @@ class GetAuthorizationForm {
 	String publicKey;
 
 
-	GetAuthorizationForm({this.botId, this.scope, this.publicKey});
+	GetAuthorizationForm({required this.botId, required this.scope, required this.publicKey});
 
 	static GetAuthorizationForm fromReader(BinaryReader reader) {
 	var temp,len;var botId = reader.readInt();var scope = reader.tgReadString();var publicKey = reader.tgReadString();		return new GetAuthorizationForm(botId : botId, scope : scope, publicKey : publicKey);
@@ -748,7 +748,7 @@ class AcceptAuthorization {
 	var credentials;
 
 
-	AcceptAuthorization({this.botId, this.scope, this.publicKey, this.valueHashes, this.credentials});
+	AcceptAuthorization({required this.botId, required this.scope, required this.publicKey, required this.valueHashes, required this.credentials});
 
 	static AcceptAuthorization fromReader(BinaryReader reader) {
 	var temp,len;var botId = reader.readInt();var scope = reader.tgReadString();var publicKey = reader.tgReadString();reader.readInt();
@@ -773,7 +773,7 @@ class SendVerifyPhoneCode {
 	var settings;
 
 
-	SendVerifyPhoneCode({this.phoneNumber, this.settings});
+	SendVerifyPhoneCode({required this.phoneNumber, required this.settings});
 
 	static SendVerifyPhoneCode fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var settings = reader.tgReadObject();		return new SendVerifyPhoneCode(phoneNumber : phoneNumber, settings : settings);
@@ -795,7 +795,7 @@ class VerifyPhone {
 	String phoneCode;
 
 
-	VerifyPhone({this.phoneNumber, this.phoneCodeHash, this.phoneCode});
+	VerifyPhone({required this.phoneNumber, required this.phoneCodeHash, required this.phoneCode});
 
 	static VerifyPhone fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var phoneCodeHash = reader.tgReadString();var phoneCode = reader.tgReadString();		return new VerifyPhone(phoneNumber : phoneNumber, phoneCodeHash : phoneCodeHash, phoneCode : phoneCode);
@@ -815,7 +815,7 @@ class SendVerifyEmailCode {
 	String email;
 
 
-	SendVerifyEmailCode({this.email});
+	SendVerifyEmailCode({required this.email});
 
 	static SendVerifyEmailCode fromReader(BinaryReader reader) {
 	var temp,len;var email = reader.tgReadString();		return new SendVerifyEmailCode(email : email);
@@ -836,7 +836,7 @@ class VerifyEmail {
 	String code;
 
 
-	VerifyEmail({this.email, this.code});
+	VerifyEmail({required this.email, required this.code});
 
 	static VerifyEmail fromReader(BinaryReader reader) {
 	var temp,len;var email = reader.tgReadString();var code = reader.tgReadString();		return new VerifyEmail(email : email, code : code);
@@ -862,12 +862,12 @@ class InitTakeoutSession {
 	int fileMaxSize;
 
 
-	InitTakeoutSession({this.contacts, this.messageUsers, this.messageChats, this.messageMegagroups, this.messageChannels, this.files, this.fileMaxSize});
+	InitTakeoutSession({required this.contacts, required this.messageUsers, required this.messageChats, required this.messageMegagroups, required this.messageChannels, required this.files, required this.fileMaxSize});
 
 	static InitTakeoutSession fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final contacts = false;final messageUsers = false;final messageChats = false;final messageMegagroups = false;final messageChannels = false;final files = false;var fileMaxSize;if ((flags & 32)==1){var fileMaxSize = reader.readInt(); } else {fileMaxSize=null;}		return new InitTakeoutSession(contacts : contacts, messageUsers : messageUsers, messageChats : messageChats, messageMegagroups : messageMegagroups, messageChannels : messageChannels, files : files, fileMaxSize : fileMaxSize);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(4032514052,4),[0,0,0,0],(this.fileMaxSize==null||this.fileMaxSize==false)?new List<int>():[readBufferFromBigInt(this.fileMaxSize,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(4032514052,4),[0,0,0,0],(this.fileMaxSize==null||this.fileMaxSize==false)?<int>[]:[readBufferFromBigInt(this.fileMaxSize,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -882,7 +882,7 @@ class FinishTakeoutSession {
 	bool success;
 
 
-	FinishTakeoutSession({this.success});
+	FinishTakeoutSession({required this.success});
 
 	static FinishTakeoutSession fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final success = false;		return new FinishTakeoutSession(success : success);
@@ -902,7 +902,7 @@ class ConfirmPasswordEmail {
 	String code;
 
 
-	ConfirmPasswordEmail({this.code});
+	ConfirmPasswordEmail({required this.code});
 
 	static ConfirmPasswordEmail fromReader(BinaryReader reader) {
 	var temp,len;var code = reader.tgReadString();		return new ConfirmPasswordEmail(code : code);
@@ -979,7 +979,7 @@ class SetContactSignUpNotification {
 	bool silent;
 
 
-	SetContactSignUpNotification({this.silent});
+	SetContactSignUpNotification({required this.silent});
 
 	static SetContactSignUpNotification fromReader(BinaryReader reader) {
 	var temp,len;var silent = reader.tgReadBool();		return new SetContactSignUpNotification(silent : silent);
@@ -1000,12 +1000,12 @@ class GetNotifyExceptions {
 	var peer;
 
 
-	GetNotifyExceptions({this.compareSound, this.peer});
+	GetNotifyExceptions({required this.compareSound, required this.peer});
 
 	static GetNotifyExceptions fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final compareSound = false;var peer;if ((flags & 1)==1){var peer = reader.tgReadObject(); } else {peer=null;}		return new GetNotifyExceptions(compareSound : compareSound, peer : peer);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1398240377,4),[0,0,0,0],(this.peer==null||this.peer==false)?new List<int>():[(this.peer.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1398240377,4),[0,0,0,0],(this.peer==null||this.peer==false)?<int>[]:[(this.peer.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1020,7 +1020,7 @@ class GetWallPaper {
 	var wallpaper;
 
 
-	GetWallPaper({this.wallpaper});
+	GetWallPaper({required this.wallpaper});
 
 	static GetWallPaper fromReader(BinaryReader reader) {
 	var temp,len;var wallpaper = reader.tgReadObject();		return new GetWallPaper(wallpaper : wallpaper);
@@ -1042,7 +1042,7 @@ class UploadWallPaper {
 	var settings;
 
 
-	UploadWallPaper({this.file, this.mimeType, this.settings});
+	UploadWallPaper({required this.file, required this.mimeType, required this.settings});
 
 	static UploadWallPaper fromReader(BinaryReader reader) {
 	var temp,len;var file = reader.tgReadObject();var mimeType = reader.tgReadString();var settings = reader.tgReadObject();		return new UploadWallPaper(file : file, mimeType : mimeType, settings : settings);
@@ -1064,7 +1064,7 @@ class SaveWallPaper {
 	var settings;
 
 
-	SaveWallPaper({this.wallpaper, this.unsave, this.settings});
+	SaveWallPaper({required this.wallpaper, required this.unsave, required this.settings});
 
 	static SaveWallPaper fromReader(BinaryReader reader) {
 	var temp,len;var wallpaper = reader.tgReadObject();var unsave = reader.tgReadBool();var settings = reader.tgReadObject();		return new SaveWallPaper(wallpaper : wallpaper, unsave : unsave, settings : settings);
@@ -1085,7 +1085,7 @@ class InstallWallPaper {
 	var settings;
 
 
-	InstallWallPaper({this.wallpaper, this.settings});
+	InstallWallPaper({required this.wallpaper, required this.settings});
 
 	static InstallWallPaper fromReader(BinaryReader reader) {
 	var temp,len;var wallpaper = reader.tgReadObject();var settings = reader.tgReadObject();		return new InstallWallPaper(wallpaper : wallpaper, settings : settings);
@@ -1145,7 +1145,7 @@ class SaveAutoDownloadSettings {
 	var settings;
 
 
-	SaveAutoDownloadSettings({this.low, this.high, this.settings});
+	SaveAutoDownloadSettings({required this.low, required this.high, required this.settings});
 
 	static SaveAutoDownloadSettings fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final low = false;final high = false;var settings = reader.tgReadObject();		return new SaveAutoDownloadSettings(low : low, high : high, settings : settings);
@@ -1168,12 +1168,12 @@ class UploadTheme {
 	String mimeType;
 
 
-	UploadTheme({this.file, this.thumb, this.fileName, this.mimeType});
+	UploadTheme({required this.file, required this.thumb, required this.fileName, required this.mimeType});
 
 	static UploadTheme fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var file = reader.tgReadObject();var thumb;if ((flags & 1)==1){var thumb = reader.tgReadObject(); } else {thumb=null;}var fileName = reader.tgReadString();var mimeType = reader.tgReadString();		return new UploadTheme(file : file, thumb : thumb, fileName : fileName, mimeType : mimeType);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(473805619,4),[0,0,0,0],(this.file.getBytes() as List<int>),(this.thumb==null||this.thumb==false)?new List<int>():[(this.thumb.getBytes() as List<int>)].expand((element) => element).toList(),serializeBytes(this.fileName),serializeBytes(this.mimeType),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(473805619,4),[0,0,0,0],(this.file.getBytes() as List<int>),(this.thumb==null||this.thumb==false)?<int>[]:[(this.thumb.getBytes() as List<int>)].expand((element) => element).toList(),serializeBytes(this.fileName),serializeBytes(this.mimeType),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1191,12 +1191,12 @@ class CreateTheme {
 	var settings;
 
 
-	CreateTheme({this.slug, this.title, this.document, this.settings});
+	CreateTheme({required this.slug, required this.title, required this.document, required this.settings});
 
 	static CreateTheme fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var slug = reader.tgReadString();var title = reader.tgReadString();var document;if ((flags & 4)==1){var document = reader.tgReadObject(); } else {document=null;}var settings;if ((flags & 8)==1){var settings = reader.tgReadObject(); } else {settings=null;}		return new CreateTheme(slug : slug, title : title, document : document, settings : settings);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2217919007,4),[0,0,0,0],serializeBytes(this.slug),serializeBytes(this.title),(this.document==null||this.document==false)?new List<int>():[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.settings==null||this.settings==false)?new List<int>():[(this.settings.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2217919007,4),[0,0,0,0],serializeBytes(this.slug),serializeBytes(this.title),(this.document==null||this.document==false)?<int>[]:[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.settings==null||this.settings==false)?<int>[]:[(this.settings.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1216,12 +1216,12 @@ class UpdateTheme {
 	var settings;
 
 
-	UpdateTheme({this.format, this.theme, this.slug, this.title, this.document, this.settings});
+	UpdateTheme({required this.format, required this.theme, required this.slug, required this.title, required this.document, required this.settings});
 
 	static UpdateTheme fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var format = reader.tgReadString();var theme = reader.tgReadObject();var slug;if ((flags & 1)==1){var slug = reader.tgReadString(); } else {slug=null;}var title;if ((flags & 2)==1){var title = reader.tgReadString(); } else {title=null;}var document;if ((flags & 4)==1){var document = reader.tgReadObject(); } else {document=null;}var settings;if ((flags & 8)==1){var settings = reader.tgReadObject(); } else {settings=null;}		return new UpdateTheme(format : format, theme : theme, slug : slug, title : title, document : document, settings : settings);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1555261397,4),[0,0,0,0],serializeBytes(this.format),(this.theme.getBytes() as List<int>),(this.slug==null||this.slug==false)?new List<int>():[serializeBytes(this.slug)].expand((element) => element).toList(),(this.title==null||this.title==false)?new List<int>():[serializeBytes(this.title)].expand((element) => element).toList(),(this.document==null||this.document==false)?new List<int>():[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.settings==null||this.settings==false)?new List<int>():[(this.settings.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1555261397,4),[0,0,0,0],serializeBytes(this.format),(this.theme.getBytes() as List<int>),(this.slug==null||this.slug==false)?<int>[]:[serializeBytes(this.slug)].expand((element) => element).toList(),(this.title==null||this.title==false)?<int>[]:[serializeBytes(this.title)].expand((element) => element).toList(),(this.document==null||this.document==false)?<int>[]:[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.settings==null||this.settings==false)?<int>[]:[(this.settings.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1237,7 +1237,7 @@ class SaveTheme {
 	bool unsave;
 
 
-	SaveTheme({this.theme, this.unsave});
+	SaveTheme({required this.theme, required this.unsave});
 
 	static SaveTheme fromReader(BinaryReader reader) {
 	var temp,len;var theme = reader.tgReadObject();var unsave = reader.tgReadBool();		return new SaveTheme(theme : theme, unsave : unsave);
@@ -1259,12 +1259,12 @@ class InstallTheme {
 	var theme;
 
 
-	InstallTheme({this.dark, this.format, this.theme});
+	InstallTheme({required this.dark, required this.format, required this.theme});
 
 	static InstallTheme fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final dark = false;var format;if ((flags & 2)==1){var format = reader.tgReadString(); } else {format=null;}var theme;if ((flags & 2)==1){var theme = reader.tgReadObject(); } else {theme=null;}		return new InstallTheme(dark : dark, format : format, theme : theme);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2061776695,4),[0,0,0,0],(this.format==null||this.format==false)?new List<int>():[serializeBytes(this.format)].expand((element) => element).toList(),(this.theme==null||this.theme==false)?new List<int>():[(this.theme.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2061776695,4),[0,0,0,0],(this.format==null||this.format==false)?<int>[]:[serializeBytes(this.format)].expand((element) => element).toList(),(this.theme==null||this.theme==false)?<int>[]:[(this.theme.getBytes() as List<int>)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1281,7 +1281,7 @@ class GetTheme {
 	BigInt documentId;
 
 
-	GetTheme({this.format, this.theme, this.documentId});
+	GetTheme({required this.format, required this.theme, required this.documentId});
 
 	static GetTheme fromReader(BinaryReader reader) {
 	var temp,len;var format = reader.tgReadString();var theme = reader.tgReadObject();var documentId = reader.readLong();		return new GetTheme(format : format, theme : theme, documentId : documentId);
@@ -1302,7 +1302,7 @@ class GetThemes {
 	int hash;
 
 
-	GetThemes({this.format, this.hash});
+	GetThemes({required this.format, required this.hash});
 
 	static GetThemes fromReader(BinaryReader reader) {
 	var temp,len;var format = reader.tgReadString();var hash = reader.readInt();		return new GetThemes(format : format, hash : hash);
@@ -1322,7 +1322,7 @@ class SetContentSettings {
 	bool sensitiveEnabled;
 
 
-	SetContentSettings({this.sensitiveEnabled});
+	SetContentSettings({required this.sensitiveEnabled});
 
 	static SetContentSettings fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final sensitiveEnabled = false;		return new SetContentSettings(sensitiveEnabled : sensitiveEnabled);
@@ -1361,7 +1361,7 @@ class GetMultiWallPapers {
 	List<dynamic> wallpapers;
 
 
-	GetMultiWallPapers({this.wallpapers});
+	GetMultiWallPapers({required this.wallpapers});
 
 	static GetMultiWallPapers fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();

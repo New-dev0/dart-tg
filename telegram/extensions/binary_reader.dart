@@ -56,7 +56,7 @@ class BinaryReader {
    * Read the given amount of bytes, or -1 to read all remaining.
    * @param length {number}
    */
-  List<int> read({length: -1}) {
+  List<int> read({int length: -1}) {
     if (length == -1) {
       length = this.stream.length - this.offset;
     }
@@ -242,7 +242,7 @@ class BinaryReader {
    * The offset may be negative.
    * @param offset
    */
-  void seek(offset) {
+  void seek(int offset) {
     this.offset += offset;
   }
 

@@ -7,7 +7,7 @@ import '../../utils.dart';
 class GZIPPacked {
   static const CONSTRUCTOR_ID = 0x3072cfa1;
   static const classType = 'constructor';
-  List<int> data;
+  late List<int> data;
   GZIPPacked(data) {
     this.data = data;
   }

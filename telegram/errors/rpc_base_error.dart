@@ -1,9 +1,9 @@
 class RPCError implements Exception {
-  int code;
-  String message;
+  int? code;
+  late String message;
   var request;
 
-  RPCError(message, request, {code: null}) {
+  RPCError(message, request, {code}) {
     this.code = code;
     this.message = message;
     this.request = request;

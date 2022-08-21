@@ -9,7 +9,7 @@ class GetContactIDs {
 	int hash;
 
 
-	GetContactIDs({this.hash});
+	GetContactIDs({required this.hash});
 
 	static GetContactIDs fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();		return new GetContactIDs(hash : hash);
@@ -22,7 +22,7 @@ final range = reader.readInt();
 final List<int> result = [];
  for (int i=0;i<range;i++){
 	result.add(reader.readInt());}
-	}
+	return result;}
 
 }
 
@@ -53,7 +53,7 @@ class GetContacts {
 	int hash;
 
 
-	GetContacts({this.hash});
+	GetContacts({required this.hash});
 
 	static GetContacts fromReader(BinaryReader reader) {
 	var temp,len;var hash = reader.readInt();		return new GetContacts(hash : hash);
@@ -73,7 +73,7 @@ class ImportContacts {
 	List<dynamic> contacts;
 
 
-	ImportContacts({this.contacts});
+	ImportContacts({required this.contacts});
 
 	static ImportContacts fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -97,7 +97,7 @@ class DeleteContacts {
 	List<dynamic> id;
 
 
-	DeleteContacts({this.id});
+	DeleteContacts({required this.id});
 
 	static DeleteContacts fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -121,7 +121,7 @@ class DeleteByPhones {
 	List<String> phones;
 
 
-	DeleteByPhones({this.phones});
+	DeleteByPhones({required this.phones});
 
 	static DeleteByPhones fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -145,7 +145,7 @@ class Block {
 	var id;
 
 
-	Block({this.id});
+	Block({required this.id});
 
 	static Block fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();		return new Block(id : id);
@@ -165,7 +165,7 @@ class Unblock {
 	var id;
 
 
-	Unblock({this.id});
+	Unblock({required this.id});
 
 	static Unblock fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();		return new Unblock(id : id);
@@ -186,7 +186,7 @@ class GetBlocked {
 	int limit;
 
 
-	GetBlocked({this.offset, this.limit});
+	GetBlocked({required this.offset, required this.limit});
 
 	static GetBlocked fromReader(BinaryReader reader) {
 	var temp,len;var offset = reader.readInt();var limit = reader.readInt();		return new GetBlocked(offset : offset, limit : limit);
@@ -207,7 +207,7 @@ class Search {
 	int limit;
 
 
-	Search({this.q, this.limit});
+	Search({required this.q, required this.limit});
 
 	static Search fromReader(BinaryReader reader) {
 	var temp,len;var q = reader.tgReadString();var limit = reader.readInt();		return new Search(q : q, limit : limit);
@@ -227,7 +227,7 @@ class ResolveUsername {
 	String username;
 
 
-	ResolveUsername({this.username});
+	ResolveUsername({required this.username});
 
 	static ResolveUsername fromReader(BinaryReader reader) {
 	var temp,len;var username = reader.tgReadString();		return new ResolveUsername(username : username);
@@ -257,7 +257,7 @@ class GetTopPeers {
 	int hash;
 
 
-	GetTopPeers({this.correspondents, this.botsPm, this.botsInline, this.phoneCalls, this.forwardUsers, this.forwardChats, this.groups, this.channels, this.offset, this.limit, this.hash});
+	GetTopPeers({required this.correspondents, required this.botsPm, required this.botsInline, required this.phoneCalls, required this.forwardUsers, required this.forwardChats, required this.groups, required this.channels, required this.offset, required this.limit, required this.hash});
 
 	static GetTopPeers fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final correspondents = false;final botsPm = false;final botsInline = false;final phoneCalls = false;final forwardUsers = false;final forwardChats = false;final groups = false;final channels = false;var offset = reader.readInt();var limit = reader.readInt();var hash = reader.readInt();		return new GetTopPeers(correspondents : correspondents, botsPm : botsPm, botsInline : botsInline, phoneCalls : phoneCalls, forwardUsers : forwardUsers, forwardChats : forwardChats, groups : groups, channels : channels, offset : offset, limit : limit, hash : hash);
@@ -278,7 +278,7 @@ class ResetTopPeerRating {
 	var peer;
 
 
-	ResetTopPeerRating({this.category, this.peer});
+	ResetTopPeerRating({required this.category, required this.peer});
 
 	static ResetTopPeerRating fromReader(BinaryReader reader) {
 	var temp,len;var category = reader.tgReadObject();var peer = reader.tgReadObject();		return new ResetTopPeerRating(category : category, peer : peer);
@@ -336,7 +336,7 @@ class ToggleTopPeers {
 	bool enabled;
 
 
-	ToggleTopPeers({this.enabled});
+	ToggleTopPeers({required this.enabled});
 
 	static ToggleTopPeers fromReader(BinaryReader reader) {
 	var temp,len;var enabled = reader.tgReadBool();		return new ToggleTopPeers(enabled : enabled);
@@ -360,7 +360,7 @@ class AddContact {
 	String phone;
 
 
-	AddContact({this.addPhonePrivacyException, this.id, this.firstName, this.lastName, this.phone});
+	AddContact({required this.addPhonePrivacyException, required this.id, required this.firstName, required this.lastName, required this.phone});
 
 	static AddContact fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final addPhonePrivacyException = false;var id = reader.tgReadObject();var firstName = reader.tgReadString();var lastName = reader.tgReadString();var phone = reader.tgReadString();		return new AddContact(addPhonePrivacyException : addPhonePrivacyException, id : id, firstName : firstName, lastName : lastName, phone : phone);
@@ -380,7 +380,7 @@ class AcceptContact {
 	var id;
 
 
-	AcceptContact({this.id});
+	AcceptContact({required this.id});
 
 	static AcceptContact fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();		return new AcceptContact(id : id);
@@ -402,12 +402,12 @@ class GetLocated {
 	int selfExpires;
 
 
-	GetLocated({this.background, this.geoPoint, this.selfExpires});
+	GetLocated({required this.background, required this.geoPoint, required this.selfExpires});
 
 	static GetLocated fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final background = false;var geoPoint = reader.tgReadObject();var selfExpires;if ((flags & 1)==1){var selfExpires = reader.readInt(); } else {selfExpires=null;}		return new GetLocated(background : background, geoPoint : geoPoint, selfExpires : selfExpires);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3544759364,4),[0,0,0,0],(this.geoPoint.getBytes() as List<int>),(this.selfExpires==null||this.selfExpires==false)?new List<int>():[readBufferFromBigInt(this.selfExpires,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3544759364,4),[0,0,0,0],(this.geoPoint.getBytes() as List<int>),(this.selfExpires==null||this.selfExpires==false)?<int>[]:[readBufferFromBigInt(this.selfExpires,4,little:true,signed:true)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

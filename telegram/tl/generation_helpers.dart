@@ -6,12 +6,12 @@ import 'package:crclib/crclib.dart';
 import '../utils.dart';
 
 String snakeToCamelCase(String name) {
-  final result = name.replaceAllMapped(new RegExp(r'(?:^|_)([a-z])'), (g) => g.group(1).toUpperCase());
+  final result = name.replaceAllMapped(new RegExp(r'(?:^|_)([a-z])'), (g) => g.group(1)!.toUpperCase());
   return result.replaceAll(new RegExp(r'_'), '');
 }
 
 variableSnakeToCamelCase(String str) {
-  var s = str.replaceAllMapped(new RegExp(r'([-_][a-z])'), (group) => group.group(0).toUpperCase().replaceAll('-', '').replaceAll('_', ''));
+  var s = str.replaceAllMapped(new RegExp(r'([-_][a-z])'), (group) => group.group(0)!.toUpperCase().replaceAll('-', '').replaceAll('_', ''));
   if (["final","default"].contains(s)) {
     s += "Var";
   }
@@ -55,9 +55,9 @@ fromLine(String line, bool isFunction) {
 
   final currentConfig = <String, dynamic>{
     'name': match[1],
-    'constructorId': match[2] != null ? int.parse(match[2], radix: 16) : null,
+    'constructorId': match[2] != null ? int.parse(match[2]!, radix: 16) : null,
     'argsConfig': new Map<String, dynamic>(),
-    'subclassOfId': Crc32Zlib().convert(utf8.encode(match.group(3))),
+    'subclassOfId': Crc32Zlib().convert(utf8.encode(match.group(3)!)),
     'result': match.group(3),
     'isFunction': isFunction,
     'namespace': null
@@ -74,7 +74,7 @@ fromLine(String line, bool isFunction) {
     }
 
     final representation = '${currentConfig['name']}${hexId}${args} = ${currentConfig['result']}'
-        .replaceAllMapped(new RegExp(r'([:?])bytes'), (match) => match.group(0) + 'string')
+        .replaceAllMapped(new RegExp(r'([:?])bytes'), (match) => match.group(0)! + 'string')
         .replaceAll('<', ' ')
         .replaceAll(new RegExp(r'[>{}]'), '')
         .replaceAll(new RegExp(r'\w+:flags\.\d+\?true'), '');
@@ -92,7 +92,7 @@ fromLine(String line, bool isFunction) {
     var argType = element[3];
 
     if (brace == null) {
-      currentConfig['argsConfig'][variableSnakeToCamelCase(name)] = buildArgConfig(name, argType);
+      currentConfig['argsConfig'][variableSnakeToCamelCase(name!)] = buildArgConfig(name, argType!);
     }
   });
 
@@ -116,12 +116,12 @@ fromLine(String line, bool isFunction) {
 List<int> serializeBytes(data) {
   if (!(data is List<int>)) {
     if (data is String) {
-      data = utf8.decode(data);
+      data = utf8.decode(data.runes.toList());
     } else {
       throw ("Bytes or str expected, not ${data.constructor.name}");
     }
   }
-  final r = [];
+  final r = <List<int>>[];
   int padding;
   if (data.length < 254) {
     padding = (data.length + 1) % 4;
@@ -138,7 +138,7 @@ List<int> serializeBytes(data) {
     r.add([254, data.length % 256 + (data.length >> 8) % 256 + (data.length >> 16) % 256]);
     r.add(data);
   }
-  final s = new List(padding);
+  final s = <int>[padding];
   s.fillRange(0, padding, 0);
   r.add(s);
 
@@ -189,17 +189,17 @@ buildArgConfig(name, String argType) {
     // is determined by a previous argument
     // However, we assume that the argument will always be called 'flags'
     // @ts-ignore
-    final flagMatch = new RegExp(r'flags.(\d+)\?([\w<>.]+)').allMatches(currentConfig['type']).toList();
+    final flagMatch = new RegExp(r'flags.(\d+)\?([\w<>.]+)').allMatches(currentConfig['type'] as String).toList();
 
     if (flagMatch.length > 0) {
       currentConfig['isFlag'] = true;
-      currentConfig['flagIndex'] = int.parse(flagMatch[0].group(1));
+      currentConfig['flagIndex'] = int.parse(flagMatch[0].group(1)!);
       // Update the type to match the exact type, not the "flagged" one
       currentConfig['type'] = flagMatch[0].group(2);
     }
 
     // Then check if the type is a Vector<REAL_TYPE>
-    final vectorMatch = new RegExp(r'[Vv]ector<([\w\d.]+)>').allMatches(currentConfig['type']).toList();
+    final vectorMatch = new RegExp(r'[Vv]ector<([\w\d.]+)>').allMatches(currentConfig['type'] as String).toList();
 
     if (vectorMatch.length > 0) {
       currentConfig['isVector'] = true;
@@ -234,7 +234,7 @@ buildArgConfig(name, String argType) {
   return currentConfig;
 }
 
-parseTl(content, layer, {methods: null, List<int> ignoreIds: null}) sync* {
+parseTl(content, layer, {methods, List<int>? ignoreIds}) sync* {
   methods ??= [];
   ignoreIds ??= CORE_TYPES;
   /*final methodInfo = (methods ?? []).reduce(

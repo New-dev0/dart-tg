@@ -12,7 +12,7 @@ class SendCode {
 	var settings;
 
 
-	SendCode({this.phoneNumber, this.apiId, this.apiHash, this.settings});
+	SendCode({required this.phoneNumber, required this.apiId, required this.apiHash, required this.settings});
 
 	static SendCode fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var apiId = reader.readInt();var apiHash = reader.tgReadString();var settings = reader.tgReadObject();		return new SendCode(phoneNumber : phoneNumber, apiId : apiId, apiHash : apiHash, settings : settings);
@@ -35,7 +35,7 @@ class SignUp {
 	String lastName;
 
 
-	SignUp({this.phoneNumber, this.phoneCodeHash, this.firstName, this.lastName});
+	SignUp({required this.phoneNumber, required this.phoneCodeHash, required this.firstName, required this.lastName});
 
 	static SignUp fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var phoneCodeHash = reader.tgReadString();var firstName = reader.tgReadString();var lastName = reader.tgReadString();		return new SignUp(phoneNumber : phoneNumber, phoneCodeHash : phoneCodeHash, firstName : firstName, lastName : lastName);
@@ -57,7 +57,7 @@ class SignIn {
 	String phoneCode;
 
 
-	SignIn({this.phoneNumber, this.phoneCodeHash, this.phoneCode});
+	SignIn({required this.phoneNumber, required this.phoneCodeHash, required this.phoneCode});
 
 	static SignIn fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var phoneCodeHash = reader.tgReadString();var phoneCode = reader.tgReadString();		return new SignIn(phoneNumber : phoneNumber, phoneCodeHash : phoneCodeHash, phoneCode : phoneCode);
@@ -115,7 +115,7 @@ class ExportAuthorization {
 	int dcId;
 
 
-	ExportAuthorization({this.dcId});
+	ExportAuthorization({required this.dcId});
 
 	static ExportAuthorization fromReader(BinaryReader reader) {
 	var temp,len;var dcId = reader.readInt();		return new ExportAuthorization(dcId : dcId);
@@ -136,7 +136,7 @@ class ImportAuthorization {
 	List<int> bytes;
 
 
-	ImportAuthorization({this.id, this.bytes});
+	ImportAuthorization({required this.id, required this.bytes});
 
 	static ImportAuthorization fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.readInt();var bytes = reader.tgReadBytes();		return new ImportAuthorization(id : id, bytes : bytes);
@@ -159,7 +159,7 @@ class BindTempAuthKey {
 	List<int> encryptedMessage;
 
 
-	BindTempAuthKey({this.permAuthKeyId, this.nonce, this.expiresAt, this.encryptedMessage});
+	BindTempAuthKey({required this.permAuthKeyId, required this.nonce, required this.expiresAt, required this.encryptedMessage});
 
 	static BindTempAuthKey fromReader(BinaryReader reader) {
 	var temp,len;var permAuthKeyId = reader.readLong();var nonce = reader.readLong();var expiresAt = reader.readInt();var encryptedMessage = reader.tgReadBytes();		return new BindTempAuthKey(permAuthKeyId : permAuthKeyId, nonce : nonce, expiresAt : expiresAt, encryptedMessage : encryptedMessage);
@@ -176,16 +176,16 @@ class ImportBotAuthorization {
     static const SUBCLASS_OF_ID = 3118485049;
     final classType = "request";
     final ID = 1738800940;
-	int flags;
-	int apiId;
-	String apiHash;
-	String botAuthToken;
+	  int? flags;
+	  int apiId;
+	  String apiHash;
+	  String botAuthToken;
 
 
-	ImportBotAuthorization({this.flags, this.apiId, this.apiHash, this.botAuthToken});
+	ImportBotAuthorization({required this.flags, required this.apiId, required this.apiHash, required this.botAuthToken});
 
 	static ImportBotAuthorization fromReader(BinaryReader reader) {
-	var temp,len;var flags = reader.readInt();var apiId = reader.readInt();var apiHash = reader.tgReadString();var botAuthToken = reader.tgReadString();		return new ImportBotAuthorization(apiId : apiId, apiHash : apiHash, botAuthToken : botAuthToken);
+	var temp,len;var flags = reader.readInt();var apiId = reader.readInt();var apiHash = reader.tgReadString();var botAuthToken = reader.tgReadString();		return new ImportBotAuthorization(apiId : apiId, apiHash : apiHash, botAuthToken : botAuthToken, flags: flags);
 	}
 	List<int> getBytes(){return [readBufferFromBigInt(1738800940,4),readBufferFromBigInt(this.flags,4,little:true,signed:true),readBufferFromBigInt(this.apiId,4,little:true,signed:true),serializeBytes(this.apiHash),serializeBytes(this.botAuthToken),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
@@ -202,7 +202,7 @@ class CheckPassword {
 	var password;
 
 
-	CheckPassword({this.password});
+	CheckPassword({required this.password});
 
 	static CheckPassword fromReader(BinaryReader reader) {
 	var temp,len;var password = reader.tgReadObject();		return new CheckPassword(password : password);
@@ -241,7 +241,7 @@ class RecoverPassword {
 	String code;
 
 
-	RecoverPassword({this.code});
+	RecoverPassword({required this.code});
 
 	static RecoverPassword fromReader(BinaryReader reader) {
 	var temp,len;var code = reader.tgReadString();		return new RecoverPassword(code : code);
@@ -262,7 +262,7 @@ class ResendCode {
 	String phoneCodeHash;
 
 
-	ResendCode({this.phoneNumber, this.phoneCodeHash});
+	ResendCode({required this.phoneNumber, required this.phoneCodeHash});
 
 	static ResendCode fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var phoneCodeHash = reader.tgReadString();		return new ResendCode(phoneNumber : phoneNumber, phoneCodeHash : phoneCodeHash);
@@ -283,7 +283,7 @@ class CancelCode {
 	String phoneCodeHash;
 
 
-	CancelCode({this.phoneNumber, this.phoneCodeHash});
+	CancelCode({required this.phoneNumber, required this.phoneCodeHash});
 
 	static CancelCode fromReader(BinaryReader reader) {
 	var temp,len;var phoneNumber = reader.tgReadString();var phoneCodeHash = reader.tgReadString();		return new CancelCode(phoneNumber : phoneNumber, phoneCodeHash : phoneCodeHash);
@@ -303,7 +303,7 @@ class DropTempAuthKeys {
 	List<BigInt> exceptAuthKeys;
 
 
-	DropTempAuthKeys({this.exceptAuthKeys});
+	DropTempAuthKeys({required this.exceptAuthKeys});
 
 	static DropTempAuthKeys fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
@@ -329,7 +329,7 @@ class ExportLoginToken {
 	List<int> exceptIds;
 
 
-	ExportLoginToken({this.apiId, this.apiHash, this.exceptIds});
+	ExportLoginToken({required this.apiId, required this.apiHash, required this.exceptIds});
 
 	static ExportLoginToken fromReader(BinaryReader reader) {
 	var temp,len;var apiId = reader.readInt();var apiHash = reader.tgReadString();reader.readInt();
@@ -353,7 +353,7 @@ class ImportLoginToken {
 	List<int> token;
 
 
-	ImportLoginToken({this.token});
+	ImportLoginToken({required this.token});
 
 	static ImportLoginToken fromReader(BinaryReader reader) {
 	var temp,len;var token = reader.tgReadBytes();		return new ImportLoginToken(token : token);
@@ -373,7 +373,7 @@ class AcceptLoginToken {
 	List<int> token;
 
 
-	AcceptLoginToken({this.token});
+	AcceptLoginToken({required this.token});
 
 	static AcceptLoginToken fromReader(BinaryReader reader) {
 	var temp,len;var token = reader.tgReadBytes();		return new AcceptLoginToken(token : token);

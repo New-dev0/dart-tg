@@ -194,10 +194,8 @@ bool writeArgToBytes(ClassWriter writer, arg, Map<dynamic, dynamic> argsConfig, 
   if (arg['isFlag']) {
     if (arg['type'] == 'true') {
       return false;
-    } else if (arg['isVector']) {
-      writer.write("($name==null||$name==false)?new List<int>():[");
     } else {
-      writer.write("($name==null||$name==false)?new List<int>():[");
+      writer.write("($name==null||$name==false)?<int>[]:[");
     }
   }
 
@@ -282,7 +280,7 @@ writeGetBytes(ClassWriter writer, String name, argsConfig, constructorId) {
       if (!repeatedArgs.containsKey([arg['flagIndex']])) {
         repeatedArgs[arg['flagIndex']] = [];
       }
-      repeatedArgs[arg['flagIndex']].add(arg);
+      repeatedArgs[arg['flagIndex']]!.add(arg);
     }
   });
   writer.write("return [readBufferFromBigInt(" + constructorId.toString() + ",4),");
@@ -329,7 +327,7 @@ createClasses(classesType, params) {
       if (key == "flags" && value['flagIndicator']) {
         return;
       }
-      filtered.add("this.$key");
+      filtered.add("required this.$key");
       writer.write("""\t${getType(value['type'], value['isVector'])} $key;\n""");
     });
     //Constructor
@@ -364,8 +362,8 @@ void writeReadResults(ClassWriter writer, String name, Map<String, dynamic> args
   writer.write("\nfinal range = reader.readInt();");
   writer.write("\nfinal List<${type=="int"?"int":"BigInt"}> result = [];");
   writer.write("\n for (int i=0;i<range;i++){\n\t");
-  writer.write("result.add(reader.read${type.substring(0, 1).toUpperCase()}${type.substring(1, type.length)}());");
-  writer.write("}\n\t}");
+  writer.write("result.add(reader.read${type!.substring(0, 1).toUpperCase()}${type.substring(1, type.length)}());");
+  writer.write("}\n\treturn result;}");
 }
 
 getArgFromReader(ClassWriter writer, arg, argName, {end: true}) {

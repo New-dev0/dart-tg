@@ -11,7 +11,7 @@ class ChannelParticipants {
 	List<dynamic> users;
 
 
-	ChannelParticipants({this.count, this.participants, this.users});
+	ChannelParticipants({required this.count, required this.participants, required this.users});
 
 	static ChannelParticipants fromReader(BinaryReader reader) {
 	var temp,len;var count = reader.readInt();reader.readInt();
@@ -53,7 +53,7 @@ class ChannelParticipant {
 	List<dynamic> users;
 
 
-	ChannelParticipant({this.participant, this.users});
+	ChannelParticipant({required this.participant, required this.users});
 
 	static ChannelParticipant fromReader(BinaryReader reader) {
 	var temp,len;var participant = reader.tgReadObject();reader.readInt();
@@ -76,7 +76,7 @@ class AdminLogResults {
 	List<dynamic> users;
 
 
-	AdminLogResults({this.events, this.chats, this.users});
+	AdminLogResults({required this.events, required this.chats, required this.users});
 
 	static AdminLogResults fromReader(BinaryReader reader) {
 	var temp,len;reader.readInt();
